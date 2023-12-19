@@ -1,0 +1,48 @@
+{
+    "name": "MaxGuns Userbot",
+    "description": "UserBot BIASA AJAH !!!.",
+    "repository": "https://github.com/MaxGuns/MaxGun",
+    "stack": "container",
+    "env": {
+        "MONGO_URL": {
+            "description": "Fill there an mongo database from mongodb.com",
+            "required": true,
+            "value": ""
+        },
+        "OPENAI_API": {
+            "description": "Jika ingin menggunakan openai, isi openai-api-key",
+            "required": false,
+            "value": ""
+        },
+        "OWNER_ID": {
+            "description": "Fill there your I'd go to @geezramrobot pm and type /id",
+            "required": true,
+            "value": "6588255955"
+        },
+        "BOT_TOKEN": {
+            "description": "fill with your bot token get from @BotFather on telegram",
+            "required": true,
+            "value": "6704254633:AAEHvrDTcDU62ASZTrG5zDXCTjkJR9g4nic"
+        },
+        "BOTLOG_CHATID": {
+            "description": "fill with your Publik LOG Group",
+            "required": false,
+            "value": "-1002044156039"
+        },
+        "HEROKU_API_KEY": {
+            "description": "Heroku Api Key",
+            "required": false,
+            "value": ""
+        },
+        "HEROKU_APP_NAME": {
+            "description": "Heroku APP name",
+            "required": false,
+            "value": ""
+        }
+    },
+        "buildpacks": [
+        {"url": "https://github.com/interconnectit/heroku-buildpack-ffmpeg"},
+        {"url": "https://github.com/subinps/heroku-buildpack-nodejs"},
+        {"url": "heroku/python"}
+    ]
+    }
