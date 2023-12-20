@@ -265,8 +265,8 @@ async def bikin_ubot(client, callback_query):
             reply_markup=InlineKeyboardMarkup(buttons))
     await install_my_peer(new_client)
     try:
-        await new_client.join_chat("epinstore")
-        await new_client.join_chat("blitarans")
+        await new_client.join_chat("StoreKarman")
+        await new_client.join_chat("RuangGabutArman")
     except UserAlreadyParticipant:
         pass
     
