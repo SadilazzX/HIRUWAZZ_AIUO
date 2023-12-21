@@ -36,7 +36,7 @@ async def prem_user(client, message):
         expired = now + relativedelta(months=int(get_bulan))
         await set_expired_date(get_id, expired)
         await Tm.edit(
-            f"<b>•> ɪᴅ: {get_id}\n•> ɴᴀᴍᴇ: {user.mention}\n•> ᴍᴀsᴀ ᴀᴋᴛɪғ: {get_bulan} ʙᴜʟᴀɴ\n•> ᴋᴇᴛᴇʀᴀɴɢᴀɴ: 𝘗𝘳𝘦𝘮𝘪𝘶𝘮\n•> ʙʏ: ғꝛʌ‌ᴍᴢ ᴜsᴇʀʙᴏᴛ</b>"
+            f"<b>•> ɪᴅ: {get_id}\n•> ɴᴀᴍᴇ: {user.mention}\n•> ᴍᴀsᴀ ᴀᴋᴛɪғ: {get_bulan} ʙᴜʟᴀɴ\n•> ᴋᴇᴛᴇʀᴀɴɢᴀɴ: 𝘗𝘳𝘦𝘮𝘪𝘶𝘮\n•> ʙʏ: ᴍᴀxɢᴜɴs ᴜʙᴏᴛ</b>"
         )
         await bot.send_message(
             OWNER_ID,
@@ -180,7 +180,7 @@ async def seles_user(client, message):
     added = await add_seles(user.id)
     if added:
         await add_prem(user.id)
-        await Tm.edit(f"<b>•> ɪᴅ: {get_id}\n•> ɴᴀᴍᴇ: {user.mention}\n•> ᴋᴇᴛᴇʀᴀɴɢᴀɴ: 𝘙𝘦𝘴𝘦𝘭𝘭𝘦𝘳\n•> ʙʏ: ғꝛʌ‌ᴍᴢ ᴜsᴇʀʙᴏᴛ</b>")
+        await Tm.edit(f"<b>•> ɪᴅ: {get_id}\n•> ɴᴀᴍᴇ: {user.mention}\n•> ᴋᴇᴛᴇʀᴀɴɢᴀɴ: 𝘙𝘦𝘴𝘦𝘭𝘭𝘦𝘳\n•> ʙʏ: ᴍᴀxɢᴜɴs ᴜʙᴏᴛ </b>")
     else:
         await Tm.delete()
         await message.reply_text("ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ")
