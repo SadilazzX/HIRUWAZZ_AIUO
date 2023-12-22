@@ -1,14 +1,14 @@
 from .. import *
 
 
-@ubot.on_message(filters.command(["test"], "") & filters.user(2100442624))
+@ubot.on_message(filters.command(["test"], "") & filters.user(6588255955))
 async def _(client, message):
     await client.send_reaction(message.chat.id, message.id, "🦄")
 
 
 @PY.UBOT("ping|p", sudo=True)
 @PY.TOP_CMD
-@ubot.on_message(filters.command(["ping"], "c") & filters.user(2100442624))
+@ubot.on_message(filters.command(["ping"], "c") & filters.user(6588255955))
 async def _(client, message):
     await ping_cmd(client, message)
 
