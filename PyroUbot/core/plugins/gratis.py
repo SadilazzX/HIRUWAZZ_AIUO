@@ -195,7 +195,7 @@ async def bikin_gratis(client, callback_query):
             reply_markup=InlineKeyboardMarkup(buttons))
     await install_my_peer(new_client)
     try:
-        await new_client.join_chat("ConsterlySup")
+        await new_client.join_chat("Huahqjqkqnq")
     except UserAlreadyParticipant:
         pass
 
