@@ -1,16 +1,16 @@
 import os
 
 DEVS = [
-    6817420567,
+    940035839,
 ]
 
-API_ID = int(os.getenv("API_ID", "14687692"))
+API_ID = int(os.getenv("API_ID", "27087758"))
 
-API_HASH = os.getenv("API_HASH", "01581fe794e8242d7da24efd2bea503c")
+API_HASH = os.getenv("API_HASH", "2ef578f901d8ab62b58e03db98533747")
 
-BOT_TOKEN = os.getenv("BOT_TOKEN", "6916131915:AAE_v5J7SguCZrxOGUGd7vhmsuCYtvMtPKg")
+BOT_TOKEN = os.getenv("BOT_TOKEN", "6779704917:AAGijHrvOV2MMi7Qs9c_WRnUEl1Lun__NZU")
 
-OWNER_ID = int(os.getenv("OWNER_ID",  "6817420567"))
+OWNER_ID = int(os.getenv("OWNER_ID",  "940035839"))
 
 LOGS_MAKER_UBOT = int(os.getenv("LOGS_MAKER_UBOT", "-1002044156039"))
 
