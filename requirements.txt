@@ -1,4 +1,4 @@
-git+https://github.com/XtomiX/pyrogram
+#git+https://github.com/XtomiX/pyrogram
 Pyrogram==2.0.106
 tgcrypto
 pytz
