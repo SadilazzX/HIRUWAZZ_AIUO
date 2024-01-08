@@ -75,7 +75,6 @@ BLACKLIST_CHAT = [
     -1001638351451,
     -1001547153227,
 ]
-
 aiosession = ClientSession()
 
 
