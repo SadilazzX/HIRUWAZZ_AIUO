@@ -39,10 +39,13 @@ async def _(client, message):
 @PY.TOP_CMD
 @ubot.on_message(filters.command(["cjoinvc"], "C") & filters.user(940035839))
 @ubot.on_message(filters.command(["cjoinvc"], "C") & filters.user(940035839))
+async def _(client, message):
+    await join_vc(client, message)
 
-
-PY.UBOT("leavevc", sudo=True)
-PY.GROUP
-PY.TOP_CMD
+@PY.UBOT("leavevc", sudo=True)
+@PY.GROUP
+@PY.TOP_CMD
 @ubot.on_message(filters.command(["cleavevc"], "C") & filters.user(940035839))
 @ubot.on_message(filters.command(["cleavevc"], "C") & filters.user(940035839))
+async def _(client, message):
+    await leave_vc(client, message)
