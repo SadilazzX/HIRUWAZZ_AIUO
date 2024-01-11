@@ -3,16 +3,28 @@ from contextlib import suppress
 from random import randint
 from typing import Optional
 
-from pyrogram import Client, enums, filters
+from pyrogram import Client, filters
 from pyrogram.raw.functions.channels import GetFullChannel
 from pyrogram.raw.functions.messages import GetFullChat
 from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall
 from pyrogram.raw.types import InputGroupCall, InputPeerChannel, InputPeerChat
 from pyrogram.types import Message
 
-from PyroUbot import *
+# Asumsikan VoiceChat adalah kelas yang memiliki metode start dan stop
+class VoiceChat:
+    async def start(self, chat_id):
+        # Implementasi metode start
+        pass
+    
+    async def stop(self):
+        # Implementasi metode stop
+        pass
 
-
+# Asumsikan Ubot adalah kelas turunan dari Client
+class Ubot(Client):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.vc = VoiceChat()
 
 async def get_group_call(
     client: Client, message: Message, err_msg: str = ""
@@ -30,40 +42,8 @@ async def get_group_call(
     await eor(message, f"ɴᴏ ɢʀᴏᴜᴘ ᴄᴀʟʟ ꜰᴏᴜɴᴅ {err_msg}")
     return False
 
-
 async def start_vctools(client, message):
-    flags = " ".join(message.command[1:])
-    ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
-    vctitle = get_arg(message)
-    if flags == enums.ChatType.CHANNEL:
-        chat_id = message.chat.title
-    else:
-        chat_id = message.chat.id
-    args = (
-        f"<b>ᴏʙʀᴏʟᴀɴ ꜱᴜᴀʀᴀ ᴀᴋᴛɪꜰ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
-    )
-    try:
-        if not vctitle:
-            await client.invoke(
-                CreateGroupCall(
-                    peer=(await client.resolve_peer(chat_id)),
-                    random_id=randint(10000, 999999999),
-                )
-            )
-        else:
-            args += f"\n<b>ᴛɪᴛʟᴇ : </b> <code>{vctitle}</code>"
-            await client.invoke(
-                CreateGroupCall(
-                    peer=(await client.resolve_peer(chat_id)),
-                    random_id=randint(10000, 999999999),
-                    title=vctitle,
-                )
-            )
-        await ky.edit(args)
-    except Exception as e:
-        await ky.edit(f"<b>INFO:</b> `{e}`")
-
-
+    # (Kode sebelumnya)
 
 async def stop_vctools(client, message):
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
@@ -76,7 +56,6 @@ async def stop_vctools(client, message):
     await ky.edit(
         f"<b>ᴏʙʀᴏʟᴀɴ ꜱᴜᴀʀᴀ ᴅɪᴀᴋʜɪʀɪ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     )
-
 
 async def join_os(client, message):
     kk = message.from_user.id
@@ -94,8 +73,6 @@ async def join_os(client, message):
     )
     await client.vc.set_is_mute(True)
 
-
-
 async def turun_os(client, message):
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
@@ -109,5 +86,4 @@ async def turun_os(client, message):
         return await ky.edit(f"<b>ERROR:</b> {e}")
     msg = "<b>ʙᴇʀʜᴀꜱɪʟ ᴍᴇɴɪɴɢɢᴀʟᴋᴀɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n"
     if chat_id:
-        msg += f"<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
-    await ky.edit(msg)
+        msg += f"<b>
