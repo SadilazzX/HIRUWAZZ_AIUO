@@ -25,3 +25,6 @@ async def _(client, message):
 @PY.TOP_CMD
 async def _(client, message):
     await stop_vctools(client, message)
+
+
+#@PY.UBOT("joinvc", 
