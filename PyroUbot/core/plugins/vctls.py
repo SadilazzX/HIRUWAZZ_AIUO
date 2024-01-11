@@ -111,3 +111,55 @@ async def turun_os(client, message):
     if chat_id:
         msg += f"<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     await ky.edit(msg)
+
+
+def vcmention(user):
+    full_name = get_display_name(user)
+    if not isinstance(user, User):
+        return full_name
+    return f"[{full_name}](tg://user?id={user.id})"
+
+async def join_vc(client, message):
+    await edit_or_reply(message, f"**Processing....**")
+    if len(message.text.split()) > 1:
+        chat = message.chat.id
+        chats = message.text.split(" ", 1)[1]
+        try:
+            chat = await client.get_chat(ngentod(chats))
+        except asu as e:
+            await call_py.leave_group_call(chat)
+            clear_queue(chat)
+            await asyncio.sleep(3)
+            return await edit_delete(message, f"**ERROR:** `{e}`", 30)
+        except (NodeJSNotInstalled, TooOldNodeJSVersion):
+            return await edit_or_reply(message, "NodeJs is not installed or installed version is too old.")
+    else:
+        chat_id = message.chat.id
+        chats = message.text.split(" ", 1)[1]
+        vcmention(message.from_user)
+    if not call_py.is_connected:
+        await call_py.start()
+    await call_py.join_group_call(
+        chat_id,
+        kartod('http://duramecho.com/Misc/SilentCd/Silence01s.mp3'),
+        chats,
+        stream_type=ya().pulse_stream,
+    )
+    await edit_delete(message, f"**Successfully Joined OS Jamet.**\n**ID:{chat_id}**", 5)
+
+async def leave_vc(client, message):
+    """ leave video chat """
+    await edit_or_reply(message, "**Processing....**")
+    chat_id = message.chat.id
+    from_user = vcmention(message.from_user)
+    if from_user:
+        try:
+            await client.raw(functions.phone.LeaveGroupCall(
+                call=await client.raw(functions.phone.Call(
+                    users=await client.resolve_peer(chat_id),
+                    video=True,
+                )),
+            ))
+        except (memek, ajg):
+            await edit_or_reply(message, f"Woy {from_user}, Kontol Kau Ga Ada Di OS")
+        await edit_delete(message, f"**In OS, Many Jamets, {from_user} Wants to Get Down Hahaha **", 2)
