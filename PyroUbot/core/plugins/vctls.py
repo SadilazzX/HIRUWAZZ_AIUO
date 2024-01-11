@@ -43,7 +43,37 @@ async def get_group_call(
     return False
 
 async def start_vctools(client, message):
-    # (Kode sebelumnya)
+    flags = " ".join(message.command[1:])
+    ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
+    vctitle = get_arg(message)
+    if flags == enums.ChatType.CHANNEL:
+        chat_id = message.chat.title
+    else:
+        chat_id = message.chat.id
+    args = (
+        f"<b>ᴏʙʀᴏʟᴀɴ ꜱᴜᴀʀᴀ ᴀᴋᴛɪꜰ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
+    )
+    try:
+        if not vctitle:
+            await client.invoke(
+                CreateGroupCall(
+                    peer=(await client.resolve_peer(chat_id)),
+                    random_id=randint(10000, 999999999),
+                )
+            )
+        else:
+            args += f"\n<b>ᴛɪᴛʟᴇ : </b> <code>{vctitle}</code>"
+            await client.invoke(
+                CreateGroupCall(
+                    peer=(await client.resolve_peer(chat_id)),
+                    random_id=randint(10000, 999999999),
+                    title=vctitle,
+                )
+            )
+        await ky.edit(args)
+    except Exception as e:
+        await ky.edit(f"<b>INFO:</b> `{e}`")
+
 
 async def stop_vctools(client, message):
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
@@ -52,10 +82,8 @@ async def stop_vctools(client, message):
         group_call := (await get_group_call(client, message, err_msg=", ᴋᴇꜱᴀʟᴀʜᴀɴ..."))
     ):
         return
-    await client.invoke(DiscardGroupCall(call=group_call))
-    await ky.edit(
-        f"<b>ᴏʙʀᴏʟᴀɴ ꜱᴜᴀʀᴀ ᴅɪᴀᴋʜɪʀɪ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
-    )
+    await client.invoke(DiscardGroupCall(call=
+
 
 async def join_os(client, message):
     kk = message.from_user.id
