@@ -111,11 +111,10 @@ async def turun_os(client, message):
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
-      
         await client.vc.stop()
-
     except Exception as e:
         return await ky.edit(f"<b>ERROR:</b> {e}")
     msg = "<b>ʙᴇʀʜᴀꜱɪʟ ᴍᴇɴɪɴɢɢᴀʟᴋᴀɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n"
     if chat_id:
-        msg += f"<b>
+        msg += f"<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
+    await ky.edit(msg)
