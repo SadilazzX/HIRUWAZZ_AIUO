@@ -82,7 +82,11 @@ async def stop_vctools(client, message):
         group_call := (await get_group_call(client, message, err_msg=", ᴋᴇꜱᴀʟᴀʜᴀɴ..."))
     ):
         return
-    await client.invoke(DiscardGroupCall(call=
+    await client.invoke(DiscardGroupCall(call=group_call))
+    await ky.edit(
+        f"<b>ᴏʙʀᴏʟᴀɴ ꜱᴜᴀʀᴀ ᴅɪᴀᴋʜɪʀɪ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
+    )
+
 
 
 async def join_os(client, message):
