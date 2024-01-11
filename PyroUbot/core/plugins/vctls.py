@@ -80,22 +80,17 @@ async def stop_vctools(client, message):
 
 
 async def join_os(client, message):
-    chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
+    chat_id = message.chat.id
     try:
         await client.join_chat(chat_id)
     except Exception as e:
-        return await message.reply(f"ERROR: {e}")
-    await message.reply(
-        f"<b>Berhasil Join Voice Chat</b>\n<b>Chat: </b><code>{message.chat.title}</code>"
-    )
+        return await message.reply(f"<b>ERROR:</b> {e}")
+    await message.reply("<b>Berhasil bergabung dengan panggilan suara</b>")
 
 async def turun_os(client, message):
-    chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
+    chat_id = message.chat.id
     try:
         await client.leave_chat(chat_id)
     except Exception as e:
         return await message.reply(f"<b>ERROR:</b> {e}")
-    msg = "<b>Berhasil Menutup Voice Chat</b>\n"
-    if chat_id:
-        msg += f"<b>Chat: </b><code>{message.chat.title}</code>"
-    await message.reply(msg)
+    await message.reply("<b>Berhasil meninggalkan panggilan suara</b>")
