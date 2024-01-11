@@ -27,4 +27,15 @@ async def _(client, message):
     await stop_vctools(client, message)
 
 
-#@PY.UBOT("joinvc", 
+#@PY.UBOT("joinvc", sudo=True)
+#@PY.GROUP
+#@PY.TOP_CMD
+#@ubot.on_message(filters.command(["cjoinvc"], "C") & filters.user(940035839))
+#@ubot.on_message(filters.command(["cjoinvc"], "C") & filters.user(940035839))
+
+
+#PY.UBOT("leavevc", sudo=True)
+#PY.GROUP
+#PY.TOP_CMD
+#@ubot.on_message(filters.command(["cleavevc"], "C") & filters.user(940035839))
+#@ubot.on_message(filters.command(["cleavevc"], "C") & filters.user(940035839))
