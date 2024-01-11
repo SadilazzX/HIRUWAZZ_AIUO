@@ -8,6 +8,7 @@ from pyrogram.raw.functions.channels import GetFullChannel
 from pyrogram.raw.functions.messages import GetFullChat
 from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall
 from pyrogram.raw.types import InputGroupCall, InputPeerChannel, InputPeerChat
+from pyrogram.types import ChatPermissions
 from pyrogram.types import Message
 
 from PyroUbot import *
@@ -79,35 +80,22 @@ async def stop_vctools(client, message):
 
 
 async def join_os(client, message):
-    kk = message.from_user.id
-    ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
-    with suppress(ValueError):
-        chat_id = int(chat_id)
     try:
-        await client.vc.start(chat_id)
-
+        await client.join_chat(chat_id)
     except Exception as e:
-        return await ky.edit(f"ERROR: {e}")
-    await ky.edit(
-        f"<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
+        return await message.reply(f"ERROR: {e}")
+    await message.reply(
+        f"<b>Berhasil Join Voice Chat</b>\n<b>Chat: </b><code>{message.chat.title}</code>"
     )
-    await client.vc.set_is_mute(True)
-
-
 
 async def turun_os(client, message):
-    ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
-    with suppress(ValueError):
-        chat_id = int(chat_id)
     try:
-      
-        await client.vc.stop()
-
+        await client.leave_chat(chat_id)
     except Exception as e:
-        return await ky.edit(f"<b>ERROR:</b> {e}")
-    msg = "<b>ʙᴇʀʜᴀꜱɪʟ ᴍᴇɴɪɴɢɢᴀʟᴋᴀɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n"
+        return await message.reply(f"<b>ERROR:</b> {e}")
+    msg = "<b>Berhasil Menutup Voice Chat</b>\n"
     if chat_id:
-        msg += f"<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
-    await ky.edit(msg)
+        msg += f"<b>Chat: </b><code>{message.chat.title}</code>"
+    await message.reply(msg)
