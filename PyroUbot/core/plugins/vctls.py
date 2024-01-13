@@ -78,25 +78,34 @@ async def stop_vctools(client, message):
     )
 
 
+class Ubot:
+    def __init__(self):
+        # atribut lainnya
+        self.group_call = None  # atau inisialisasi sesuai kebutuhan
+
 async def joinvc(client, message):
     if message.from_user.id != client.me.id:
         ky = await message.reply("<code>Processing....</code>")
     else:
         ky = await eor(message, "<code>Processing....</code>")
+    
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     with suppress(ValueError):
         chat_id = int(chat_id)
+    
     try:
         await client.group_call.start(chat_id)
 
     except Exception as e:
         return await ky.edit(f"ERROR: {e}")
+
     await ky.edit(
         f"❏ <b>Berhasil Join Voice Chat</b>\n└ <b>Chat :</b><code>{message.chat.title}</code>"
     )
     await sleep(1)
     await client.group_call.set_is_mute(True)
     await ky.delete()
+
     
 
 async def leavevc(client: Client, message: Message):
