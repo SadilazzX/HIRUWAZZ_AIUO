@@ -65,7 +65,6 @@ async def start_vctools(client, message):
         await ky.edit(f"<b>INFO:</b> `{e}`")
 
 
-
 async def stop_vctools(client, message):
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     message.chat.id
@@ -79,18 +78,42 @@ async def stop_vctools(client, message):
     )
 
 
-async def join_os(client, message):
-    chat_id = message.chat.id
+async def joinvc(client, message):
+    if message.from_user.id != client.me.id:
+        ky = await message.reply("<code>Processing....</code>")
+    else:
+        ky = await eor(message, "<code>Processing....</code>")
+    chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
+    with suppress(ValueError):
+        chat_id = int(chat_id)
     try:
-        await client.join_chat(chat_id)
-    except Exception as e:
-        return await message.reply(f"<b>ERROR:</b> {e}")
-    await message.reply("<b>Berhasil bergabung dengan panggilan suara</b>")
+        await client.group_call.start(chat_id)
 
-async def turun_os(client, message):
-    chat_id = message.chat.id
-    try:
-        await client.leave_chat(chat_id)
     except Exception as e:
-        return await message.reply(f"<b>ERROR:</b> {e}")
-    await message.reply("<b>Berhasil meninggalkan panggilan suara</b>")
+        return await ky.edit(f"ERROR: {e}")
+    await ky.edit(
+        f"❏ <b>Berhasil Join Voice Chat</b>\n└ <b>Chat :</b><code>{message.chat.title}</code>"
+    )
+    await sleep(1)
+    await client.group_call.set_is_mute(True)
+    await ky.delete()
+    
+
+async def leavevc(client: Client, message: Message):
+    if message.from_user.id != client.me.id:
+        ky = await message.reply("<code>Processing....</code>")
+    else:
+        ky = await eor(message, "<code>Processing....</code>")
+    chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
+    with suppress(ValueError):
+        chat_id = int(chat_id)
+    try:
+        await client.group_call.stop()
+    except Exception as e:
+        return await ky.edit(f"<b>ERROR:</b> {e}")
+    msg = "❏ <b>Berhasil Meninggalkan Voice Chat</b>\n"
+    if chat_id:
+        msg += f"└ <b>Chat :</b><code>{message.chat.title}</code>"
+    await ky.edit(msg)
+    await sleep(1)
+    await ky.delete()
