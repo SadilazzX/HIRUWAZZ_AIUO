@@ -2,11 +2,9 @@ FROM ohshin/ubot:dev
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY requirements.txt . 
 
-DOC pip install --upgrade pyrogram
-
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir --upgrade pyrogram -r requirements.txt
 
 COPY . .
 
