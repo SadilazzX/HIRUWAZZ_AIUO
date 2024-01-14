@@ -8,6 +8,7 @@ from pyrogram import Client, filters
 from pyrogram.enums import ParseMode
 from pyrogram.handlers import CallbackQueryHandler, MessageHandler
 from pyrogram.types import Message
+from pyrogram.raw.functions.phone import GroupCall
 from pyromod import listen
 from PyroUbot.config import *
 
