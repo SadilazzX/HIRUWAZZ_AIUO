@@ -6,7 +6,7 @@ from typing import Optional
 from pyrogram import Client, enums, filters
 from pyrogram.raw.functions.channels import GetFullChannel
 from pyrogram.raw.functions.messages import GetFullChat
-from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall, Group_call
+from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall, GroupCall
 from pyrogram.raw.types import InputGroupCall, InputPeerChannel, InputPeerChat
 from pyrogram.types import ChatPermissions
 from pyrogram.types import Message
