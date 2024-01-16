@@ -87,7 +87,7 @@ class Ubot(Client):
     async def initialize_group_call(self, chat_id):
         # Misalnya, menginisialisasi group_call sebagai InputPeerChat
         chat_peer = await self.resolve_peer(chat_id)
-        self.group_call = InputPeerChat(chat_peer.chat_id
+        self.group_call = InputPeerChat(chat_peer.chat_id)
 
 ubot = Ubot(
     name="ubot",
