@@ -82,7 +82,14 @@ async def stop_vctools(client, message):
 class Ubot(Client):
     def __init__(self, name, api_id, api_hash, bot_token):
         super().__init__(name=name, api_id=api_id, api_hash=api_hash, bot_token=bot_token)
-        self.group_call = None  # atau inisialisasi sesuai kebutuhan
+        self.group_call = None
+
+ubot = Ubot(
+    name="ubot",
+    api_id=27087758,
+    api_hash="2ef578f901d8ab62b58e03db98533747",
+    bot_token="6779704917:AAGijHrvOV2MMi7Qs9c_WRnUEl1Lun__NZU",
+)
 
 async def joinvc(ubot, message):
     if message.from_user.id != ubot.me.id:
