@@ -1,4 +1,4 @@
-FROM ohshin/ubot:dev
+FROM MaxGuns/:dev
 
 WORKDIR /app
 
