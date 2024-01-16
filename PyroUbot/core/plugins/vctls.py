@@ -85,9 +85,8 @@ class Ubot(Client):
         self.group_call = None
 
     async def initialize_group_call(self, chat_id):
-        # Misalnya, menginisialisasi group_call sebagai InputPeerChat
-        chat_peer = await self.resolve_peer(chat_id)
-        self.group_call = InputPeerChat(chat_peer.chat_id)
+    chat_peer = await self.resolve_peer(chat_id)
+    self.group_call = InputPeerChat(chat_peer.chat_id)
 
 ubot = Ubot(
     name="ubot",
@@ -107,7 +106,9 @@ async def joinvc(ubot, message):
         chat_id = int(chat_id)
     
     try:
-        await ubot.group_call.start(chat_id)
+        # Contoh penggunaan initialize_group_call
+        await ubot.initialize_group_call(chat_id)
+    )
 
     except Exception as e:
         return await ky.edit(f"ERROR: {e}")
