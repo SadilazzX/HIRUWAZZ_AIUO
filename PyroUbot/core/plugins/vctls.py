@@ -1,5 +1,5 @@
 from asyncio import sleep
-from pyromod import eor
+#from pyromod import eor
 from contextlib import suppress
 from random import randint
 from typing import Optional
