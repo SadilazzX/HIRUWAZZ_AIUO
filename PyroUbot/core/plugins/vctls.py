@@ -1,4 +1,5 @@
 from asyncio import sleep
+from pyromod import eor
 from contextlib import suppress
 from random import randint
 from typing import Optional
@@ -78,13 +79,13 @@ async def stop_vctools(client, message):
     )
 
 
-class Ubot:
-    def __init__(self):
-        # atribut lainnya
+class Ubot(Client):
+    def __init__(self, name, api_id, api_hash, bot_token):
+        super().__init__(name=name, api_id=api_id, api_hash=api_hash, bot_token=bot_token)
         self.group_call = None  # atau inisialisasi sesuai kebutuhan
 
-async def joinvc(client, message):
-    if message.from_user.id != client.me.id:
+async def joinvc(ubot, message):
+    if message.from_user.id != ubot.me.id:
         ky = await message.reply("<code>Processing....</code>")
     else:
         ky = await eor(message, "<code>Processing....</code>")
@@ -94,7 +95,7 @@ async def joinvc(client, message):
         chat_id = int(chat_id)
     
     try:
-        await client.group_call.start(chat_id)
+        await ubot.group_call.start(chat_id)
 
     except Exception as e:
         return await ky.edit(f"ERROR: {e}")
@@ -103,13 +104,11 @@ async def joinvc(client, message):
         f"❏ <b>Berhasil Join Voice Chat</b>\n└ <b>Chat :</b><code>{message.chat.title}</code>"
     )
     await sleep(1)
-    await client.group_call.set_is_mute(True)
+    await ubot.group_call.set_is_mute(True)
     await ky.delete()
 
-    
-
-async def leavevc(client: Client, message: Message):
-    if message.from_user.id != client.me.id:
+async def leavevc(ubot, message):
+    if message.from_user.id != ubot.me.id:
         ky = await message.reply("<code>Processing....</code>")
     else:
         ky = await eor(message, "<code>Processing....</code>")
@@ -117,7 +116,7 @@ async def leavevc(client: Client, message: Message):
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
-        await client.group_call.stop()
+        await ubot.group_call.stop()
     except Exception as e:
         return await ky.edit(f"<b>ERROR:</b> {e}")
     msg = "❏ <b>Berhasil Meninggalkan Voice Chat</b>\n"
