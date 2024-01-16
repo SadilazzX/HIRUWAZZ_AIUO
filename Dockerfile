@@ -1,4 +1,4 @@
-FROM MaxGuns/:dev
+FROM MaxGuns/PyroUbot:dev
 
 WORKDIR /app
 
