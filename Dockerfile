@@ -1,4 +1,4 @@
-FROM MaxGuns/PyroUbot:dev
+FROM ohshin/ubot:dev
 
 WORKDIR /app
 
