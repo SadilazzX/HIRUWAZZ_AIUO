@@ -84,6 +84,11 @@ class Ubot(Client):
         super().__init__(name=name, api_id=api_id, api_hash=api_hash, bot_token=bot_token)
         self.group_call = None
 
+    async def initialize_group_call(self, chat_id):
+        # Misalnya, menginisialisasi group_call sebagai InputPeerChat
+        chat_peer = await self.resolve_peer(chat_id)
+        self.group_call = InputPeerChat(chat_peer.chat_id
+
 ubot = Ubot(
     name="ubot",
     api_id=27087758,
