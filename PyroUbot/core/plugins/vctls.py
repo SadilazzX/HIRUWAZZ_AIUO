@@ -79,14 +79,16 @@ async def stop_vctools(client, message):
     )
 
 
+
 class Ubot(Client):
     def __init__(self, name, api_id, api_hash, bot_token):
         super().__init__(name=name, api_id=api_id, api_hash=api_hash, bot_token=bot_token)
         self.group_call = None
 
     async def initialize_group_call(self, chat_id):
-    chat_peer = await self.resolve_peer(chat_id)
-    self.group_call = InputPeerChat(chat_peer.chat_id)
+        chat_peer = await self.resolve_peer(chat_id)
+        full_chat = await self.send(GetFullChat(chat_id=chat_peer.chat_id))
+        self.group_call = full_chat.full_chat.call
 
 ubot = Ubot(
     name="ubot",
@@ -108,8 +110,6 @@ async def joinvc(ubot, message):
     try:
         # Contoh penggunaan initialize_group_call
         await ubot.initialize_group_call(chat_id)
-    )
-
     except Exception as e:
         return await ky.edit(f"ERROR: {e}")
 
