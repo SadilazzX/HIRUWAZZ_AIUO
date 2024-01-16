@@ -16,7 +16,7 @@ async def help_cmd(client, message):
         module = Fonts.smallcap(get_arg(message))
         if get_arg(message) in HELP_COMMANDS:
             await message.reply(
-                HELP_COMMANDS[get_arg(message)].__HELP__ + "\n<b> framzubot </b>",
+                HELP_COMMANDS[get_arg(message)].__HELP__ + "\n<b> MaxGunsBot </b>",
                 quote=True,
             )
         else:
