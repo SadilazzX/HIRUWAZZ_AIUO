@@ -96,29 +96,44 @@ ubot = Ubot(
     bot_token="6779704917:AAGijHrvOV2MMi7Qs9c_WRnUEl1Lun__NZU",
 )
 
-async def joinvc(client: Client, message: Message):
+async def joinvc(ubot, message):
+    if message.from_user.id != ubot.me.id:
+        ky = await message.reply("<code>Processing....</code>")
+    else:
+        ky = await eor(message, "<code>Processing....</code>")
+    
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
-    mmk = await message.edit("Joining....")
     with suppress(ValueError):
         chat_id = int(chat_id)
+    
     try:
-        await client.group_call.join()
-        await mmk.edit(f"**Successful joined the Voice Chat**\n└ **Chat ID**: {chat_id}")
-        await asyncio.sleep(5)
-        await client.group_call.set_is_mute(True)
-    except Exception as f:
-        return await mmk.edit(f"ERROR: {f}")
+        # Contoh penggunaan start_group_call
+        await ubot.start_group_call(chat_id)
+    except Exception as e:
+        return await ky.edit(f"ERROR: {e}")
 
-async def leavevc(client, message):
+    await ky.edit(
+        f"❏ <b>Berhasil Join Voice Chat</b>\n└ <b>Chat :</b><code>{message.chat.title}</code>"
+    )
+    await sleep(1)
+    await ubot.group_call.set_is_mute(True)
+    await ky.delete()
+
+async def leavevc(ubot, message):
+    if message.from_user.id != ubot.me.id:
+        ky = await message.reply("<code>Processing....</code>")
+    else:
+        ky = await eor(message, "<code>Processing....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
-    mmk = await message.edit("`Leaving....`")
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
-        await client.group_call.leave()
-    except Exception as f:
-        return await edit_or_reply(message, f"**ERROR:** `{f}`")
-    msg = "**Successfully leave the Voice Chat**\n**"
+        await ubot.group_call.stop()
+    except Exception as e:
+        return await ky.edit(f"<b>ERROR:</b> {e}")
+    msg = "❏ <b>Berhasil Meninggalkan Voice Chat</b>\n"
     if chat_id:
-        msg += f"\n└ **Chat ID:** `{chat_id}`"
-    await mmk.edit(msg)
+        msg += f"└ <b>Chat :</b><code>{message.chat.title}</code>"
+    await ky.edit(msg)
+    await sleep(1)
+    await ky.delete()
