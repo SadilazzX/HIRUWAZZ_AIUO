@@ -1,3 +1,6 @@
+import random
+from random import choice
+
 from PyroUbot import *
 from pyrogram import enums, filters
 from pyrogram.enums import MessagesFilter
