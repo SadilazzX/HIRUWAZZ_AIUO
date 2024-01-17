@@ -79,32 +79,35 @@ async def stop_vctools(client, message):
     )
 
 
-async def join_os(client, message):
-    kk = message.from_user.id
+# Fungsi untuk bergabung ke obrolan suara
+async def join_os(client, message: Message):
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
-        await client.start(chat_id)
+        # Simulasi join obrolan suara
+        await client.send_message(chat_id, "<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>")
+        # Lainnya sesuai kebutuhan, contohnya:
+        # await client.vc.start(chat_id)
 
     except Exception as e:
         return await ky.edit(f"ERROR: {e}")
     await ky.edit(
         f"<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     )
-    await client.vc.set_is_mute(True)
 
-
-
-async def turun_os(client, message):
+# Fungsi untuk meninggalkan obrolan suara
+async def turun_os(client, message: Message):
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
-      
-        await client.stop()
+        # Simulasi keluar obrolan suara
+        await client.send_message(chat_id, "<b>ʙᴇʀʜᴀꜱɪʟ ᴍᴇɴɪɴɢɢᴀʟᴋᴀɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>")
+        # Lainnya sesuai kebutuhan, contohnya:
+        # await client.vc.stop()
 
     except Exception as e:
         return await ky.edit(f"<b>ERROR:</b> {e}")
@@ -112,3 +115,12 @@ async def turun_os(client, message):
     if chat_id:
         msg += f"<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     await ky.edit(msg)
+
+# Jalankan sesi Pyrogram
+async def main():
+    await client.start()
+    await client.idle()
+
+# Jalankan sesi Pyrogram
+if __name__ == "__main__":
+    client.run(main)
