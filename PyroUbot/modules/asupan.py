@@ -25,7 +25,7 @@ async def _(client, message):
 @PY.UBOT("pap", sudo=True)
 @PY.TOP_CMD
 async def _(client, message):
-    await bugil(client, message)
+    await sange_ah(client, message)
 
 
 @PY.UBOT("bokep", sudo=True)
