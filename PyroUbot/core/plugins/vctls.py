@@ -86,7 +86,7 @@ async def join_os(client, message):
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
-        await client.vc.start(chat_id)
+        await client.start(chat_id)
 
     except Exception as e:
         return await ky.edit(f"ERROR: {e}")
@@ -104,7 +104,7 @@ async def turun_os(client, message):
         chat_id = int(chat_id)
     try:
       
-        await client.vc.stop()
+        await client.stop()
 
     except Exception as e:
         return await ky.edit(f"<b>ERROR:</b> {e}")
