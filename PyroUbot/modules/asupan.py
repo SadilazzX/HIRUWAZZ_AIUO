@@ -1,4 +1,6 @@
 from PyroUbot import *
+from PyroUbot import sange_ah
+
 
 
 __MODULE__ = "asupan"
