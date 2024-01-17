@@ -78,86 +78,37 @@ async def stop_vctools(client, message):
         f"<b>ᴏʙʀᴏʟᴀɴ ꜱᴜᴀʀᴀ ᴅɪᴀᴋʜɪʀɪ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     )
 
-class Ubot(Client):
-    def __init__(self, name, api_id, api_hash, bot_token):
-        super().__init__(name=name, api_id=api_id, api_hash=api_hash, bot_token=bot_token)
-        self.group_calls = {}  # Gunakan dictionary untuk menyimpan group_call untuk setiap obrolan
 
-    async def initialize_group_calls(self):
-        try:
-            # Dapatkan daftar obrolan menggunakan GetDialogs
-            dialogs = await self.send(GetDialogs(
-                exclude_pinned=False,
-                offset_date=None,
-                offset_id=0,
-                offset_peer=InputPeerEmpty(),
-                limit=50  # Sesuaikan dengan kebutuhan
-            ))
-
-            for dialog in dialogs.chats:
-                # Inisialisasi panggilan grup untuk setiap obrolan
-                try:
-                    if isinstance(dialog, Chat):
-                        full_chat = await self.send(GetFullChat(chat_id=dialog.id))
-                    elif isinstance(dialog, Channel):
-                        full_chat = await self.send(GetFullChannel(channel=InputPeerChannel(dialog.id, dialog.access_hash)))
-                    self.group_calls[dialog.id] = full_chat.full_chat.call
-                except Exception as e:
-                    print(f"ERROR in initialize_group_calls: {e}")
-
-ubot = Ubot(
-    name="ubot",
-    api_id=27087758,
-    api_hash="2ef578f901d8ab62b58e03db98533747",
-    bot_token="6779704917:AAGijHrvOV2MMi7Qs9c_WRnUEl1Lun__NZU",
-)
-
-# Contoh penggunaan initialize_group_calls
-await ubot.start()
-await ubot.initialize_group_calls()
-
-# Cek apakah group_calls telah diinisialisasi dengan benar
-print(ubot.group_calls)
-
-
-async def joinvc(ubot, message):
-    if message.from_user.id != ubot.me.id:
-        ky = await message.reply("<code>Processing....</code>")
-    else:
-        ky = await eor(message, "<code>Processing....</code>")
-    
+async def join_os(client, message):
+    kk = message.from_user.id
+    ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     with suppress(ValueError):
         chat_id = int(chat_id)
-    
     try:
-        # Contoh penggunaan initialize_group_call
-        await ubot.initialize_group_call(chat_id)
+        await client.vc.start(chat_id)
+
     except Exception as e:
         return await ky.edit(f"ERROR: {e}")
-
     await ky.edit(
-        f"❏ <b>Berhasil Join Voice Chat</b>\n└ <b>Chat :</b><code>{message.chat.title}</code>"
+        f"<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     )
-    await sleep(1)
-    await ubot.group_call.set_is_mute(True)
-    await ky.delete()
+    await client.vc.set_is_mute(True)
 
-async def leavevc(ubot, message):
-    if message.from_user.id != ubot.me.id:
-        ky = await message.reply("<code>Processing....</code>")
-    else:
-        ky = await eor(message, "<code>Processing....</code>")
+
+
+async def turun_os(client, message):
+    ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
-        await ubot.group_call.stop()
+      
+        await client.vc.stop()
+
     except Exception as e:
         return await ky.edit(f"<b>ERROR:</b> {e}")
-    msg = "❏ <b>Berhasil Meninggalkan Voice Chat</b>\n"
+    msg = "<b>ʙᴇʀʜᴀꜱɪʟ ᴍᴇɴɪɴɢɢᴀʟᴋᴀɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n"
     if chat_id:
-        msg += f"└ <b>Chat :</b><code>{message.chat.title}</code>"
+        msg += f"<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     await ky.edit(msg)
-    await sleep(1)
-    await ky.delete()
