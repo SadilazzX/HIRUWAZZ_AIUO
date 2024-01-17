@@ -21,16 +21,16 @@ __HELP__ = f"""
 @PY.UBOT("asupan", sudo=True)
 @PY.TOP_CMD
 async def _(client, message):
-    await _(client, message)
+    return await _(client, message)
 
 
 @PY.UBOT("pap", sudo=True)
 @PY.TOP_CMD
 async def _(client, message):
-    await sange_ah(client, message)
+    return await sange_ah(client, message)
 
 
 @PY.UBOT("bokep", sudo=True)
 @PY.TOP_CMD
 async def _(client, message):
-    await _(client, message)
+    return await _(client, message)
