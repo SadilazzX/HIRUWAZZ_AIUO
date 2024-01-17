@@ -124,7 +124,7 @@ async def nimek(client, message):
     await erna.delete()
 
 
-async def bugil(client, message):
+async def sange_ah(client, message):
     kazu = await message.reply("🔎 <code>Nih PAP Nya...</code>")
     await message.reply_photo(
         choice(
