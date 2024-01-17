@@ -98,7 +98,7 @@ async def join_os(client, message: Message):
         # Simulasi join obrolan suara
         await client.send_message(chat_id, "<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>")
         # Lainnya sesuai kebutuhan, contohnya:
-       # await client.vc.start(chat_id)
+        await client.vc.start(chat_id)
 
     except Exception as e:
         return await ky.edit(f"ERROR: {e}")
@@ -116,7 +116,7 @@ async def turun_os(client, message: Message):
         # Simulasi keluar obrolan suara
         await client.send_message(chat_id, "<b>ʙᴇʀʜᴀꜱɪʟ ᴍᴇɴɪɴɢɢᴀʟᴋᴀɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>")
         # Lainnya sesuai kebutuhan, contohnya:
-        # await client.vc.stop()
+        await client.vc.stop()
 
     except Exception as e:
         return await ky.edit(f"<b>ERROR:</b> {e}")
