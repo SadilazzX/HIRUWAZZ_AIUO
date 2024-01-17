@@ -79,44 +79,32 @@ async def stop_vctools(client, message):
     )
 
 
-# Gantilah dengan informasi API Anda
-api_id = "27087758"
-api_hash = "2ef578f901d8ab62b58e03db98533747"
-bot_token = "6779704917:AAGijHrvOV2MMi7Qs9c_WRnUEl1Lun__NZU"
-
-# Inisialisasi objek Client
-client = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
-
-
-# Fungsi untuk bergabung ke obrolan suara
-async def join_os(client, message: Message):
+async def join_os(client, message):
+    kk = message.from_user.id
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
-        # Simulasi join obrolan suara
-        await client.send_message(chat_id, "<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>")
-        # Lainnya sesuai kebutuhan, contohnya:
-        await client.vc.start(chat_id)
+        await client.voice_chat.start(chat_id)
 
     except Exception as e:
         return await ky.edit(f"ERROR: {e}")
     await ky.edit(
         f"<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     )
+    await client.voice_chat.set_is_mute(True)
 
-# Fungsi untuk meninggalkan obrolan suara
-async def turun_os(client, message: Message):
+
+
+async def turun_os(client, message):
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
-        # Simulasi keluar obrolan suara
-        await client.send_message(chat_id, "<b>ʙᴇʀʜᴀꜱɪʟ ᴍᴇɴɪɴɢɢᴀʟᴋᴀɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>")
-        # Lainnya sesuai kebutuhan, contohnya:
-        await client.vc.stop()
+      
+        await client.voice_chat.stop()
 
     except Exception as e:
         return await ky.edit(f"<b>ERROR:</b> {e}")
@@ -124,12 +112,3 @@ async def turun_os(client, message: Message):
     if chat_id:
         msg += f"<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     await ky.edit(msg)
-
-# Jalankan sesi Pyrogram
-async def main():
-    await client.start()
-    await client.idle()
-
-# Jalankan sesi Pyrogram
-if __name__ == "__main__":
-    client.run(main)
