@@ -1,3 +1,5 @@
+import asyncio
+import os
 import random
 from random import choice
 
