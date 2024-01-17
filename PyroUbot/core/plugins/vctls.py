@@ -86,14 +86,14 @@ async def join_os(client, message):
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
-        await client.voice_chat.start(chat_id)
+        await client.vc.start(chat_id)
 
     except Exception as e:
         return await ky.edit(f"ERROR: {e}")
     await ky.edit(
         f"<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     )
-    await client.voice_chat.set_is_mute(True)
+    await client.vc.set_is_mute(True)
 
 
 
@@ -104,7 +104,7 @@ async def turun_os(client, message):
         chat_id = int(chat_id)
     try:
       
-        await client.voice_chat.stop()
+        await client.vc.stop()
 
     except Exception as e:
         return await ky.edit(f"<b>ERROR:</b> {e}")
