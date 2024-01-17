@@ -9,7 +9,7 @@ __HELP__ = f"""
   <b>• ᴘᴇʀɪɴᴛᴀʜ:</b> <code>{PREFIX[0]}asupan</code>
   <b>• ᴘᴇɴᴊᴇʟᴀsᴀɴ:</b> ᴜɴᴛᴜᴋ ɢᴀʙᴜᴛ ᴅᴏᴀɴɢ ɪɴɪ 
 
-  <b>• ᴘᴇʀɪɴᴛᴀʜ:</b> <code>{PREFIX[0]}pap</code>
+  <b>• ᴘᴇʀɪɴᴛᴀʜ:</b> <code>{PREFIX[0]}sex</code>
   <b>• ᴘᴇɴᴊᴇʟᴀsᴀɴ:</b> ᴜɴᴛᴜᴋ ᴅᴀᴘᴀᴛᴋᴀɴ ᴘᴀᴘ ʙᴜɢɪʟ ᴅᴀʀɪ ᴛᴜʜᴀɴ
 
   <b>• ᴘᴇʀɪɴᴛᴀʜ:</b> <code>{PREFIX[0]}bokep</code>
