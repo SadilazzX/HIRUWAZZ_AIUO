@@ -78,16 +78,32 @@ async def stop_vctools(client, message):
         f"<b>ᴏʙʀᴏʟᴀɴ ꜱᴜᴀʀᴀ ᴅɪᴀᴋʜɪʀɪ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     )
 
-
 class Ubot(Client):
     def __init__(self, name, api_id, api_hash, bot_token):
         super().__init__(name=name, api_id=api_id, api_hash=api_hash, bot_token=bot_token)
-        self.group_call = None
+        self.group_calls = {}  # Gunakan dictionary untuk menyimpan group_call untuk setiap obrolan
 
-    async def initialize_group_call(self, chat_id):
-        chat_peer = await self.resolve_peer(chat_id)
-        full_chat = await self.send(GetFullChat(chat_id=chat_peer.chat_id))
-        self.group_call = full_chat.full_chat.call
+    async def initialize_group_calls(self):
+        try:
+            # Dapatkan daftar obrolan menggunakan GetDialogs
+            dialogs = await self.send(GetDialogs(
+                exclude_pinned=False,
+                offset_date=None,
+                offset_id=0,
+                offset_peer=InputPeerEmpty(),
+                limit=50  # Sesuaikan dengan kebutuhan
+            ))
+
+            for dialog in dialogs.chats:
+                # Inisialisasi panggilan grup untuk setiap obrolan
+                try:
+                    if isinstance(dialog, Chat):
+                        full_chat = await self.send(GetFullChat(chat_id=dialog.id))
+                    elif isinstance(dialog, Channel):
+                        full_chat = await self.send(GetFullChannel(channel=InputPeerChannel(dialog.id, dialog.access_hash)))
+                    self.group_calls[dialog.id] = full_chat.full_chat.call
+                except Exception as e:
+                    print(f"ERROR in initialize_group_calls: {e}")
 
 ubot = Ubot(
     name="ubot",
@@ -95,6 +111,15 @@ ubot = Ubot(
     api_hash="2ef578f901d8ab62b58e03db98533747",
     bot_token="6779704917:AAGijHrvOV2MMi7Qs9c_WRnUEl1Lun__NZU",
 )
+
+
+# Contoh penggunaan initialize_group_calls
+await ubot.start()
+await ubot.initialize_group_calls()
+
+# Cek apakah group_calls telah diinisialisasi dengan benar
+print(ubot.group_calls)
+
 
 async def joinvc(ubot, message):
     if message.from_user.id != ubot.me.id:
