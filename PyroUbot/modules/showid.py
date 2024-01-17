@@ -18,4 +18,4 @@ __HELP__ = f"""
 @PY.UBOT("id", sudo=True)
 @PY.TOP_CMD
 async def _(client, message):
-    await id_cmd(client, message)
+    await getid(client, message)
