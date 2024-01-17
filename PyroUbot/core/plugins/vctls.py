@@ -112,7 +112,6 @@ ubot = Ubot(
     bot_token="6779704917:AAGijHrvOV2MMi7Qs9c_WRnUEl1Lun__NZU",
 )
 
-
 # Contoh penggunaan initialize_group_calls
 await ubot.start()
 await ubot.initialize_group_calls()
