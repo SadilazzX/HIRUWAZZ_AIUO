@@ -37,15 +37,11 @@ async def _(client, message):
 @PY.UBOT("joinvc", sudo=True)
 @PY.GROUP
 @PY.TOP_CMD
-@ubot.on_message(filters.command(["joinvc"], "C") & filters.user(940035839))
-@ubot.on_message(filters.command(["joinvc"], "C") & filters.user(940035839))
 async def _(client, message):
-    await joinvc(client, message)
+    await join_os(client, message)
 
 @PY.UBOT("leavevc", sudo=True)
 @PY.GROUP
 @PY.TOP_CMD
-@ubot.on_message(filters.command(["leavevc"], "C") & filters.user(940035839))
-@ubot.on_message(filters.command(["leavevc"], "C") & filters.user(940035839))
 async def _(client, message):
-    await leavevc(client, message)
+    await turun_os(client, message)
