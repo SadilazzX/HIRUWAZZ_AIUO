@@ -80,36 +80,36 @@ async def stop_vctools(client, message):
     )
 
 
-async def joinvc(client: Client, message: Message):
+async def join_os(client, message):
+    kk = message.from_user.id
+    ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
-    if message.from_user.id != client.me.id:
-        ky = await message.reply("`Processing...`")
-    else:
-        ky = await message.edit("`Processing....`")
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
         await client.group_call.start(chat_id)
+
     except Exception as e:
-        return await Man.edit(f"**ERROR:** `{e}`")
-    await ky.edit(f"❏ **Berhasil Join Ke Obrolan Suara**\n└ **Chat ID:** `{chat_id}`")
-    await sleep(5)
+        return await ky.edit(f"ERROR: {e}")
+    await ky.edit(
+        f"<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
+    )
     await client.group_call.set_is_mute(True)
 
 
-async def leavevc(client: Client, message: Message):
+
+async def turun_os(client, message):
+    ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
-    if message.from_user.id != client.me.id:
-        ky = await message.reply("`Processing...`")
-    else:
-        ky = await message.edit("`Processing....`")
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
+      
         await client.group_call.stop()
+
     except Exception as e:
-        return await edit_or_reply(message, f"**ERROR:** `{e}`")
-    msg = "❏ **Berhasil Turun dari Obrolan Suara**"
+        return await ky.edit(f"<b>ERROR:</b> {e}")
+    msg = "<b>ʙᴇʀʜᴀꜱɪʟ ᴍᴇɴɪɴɢɢᴀʟᴋᴀɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n"
     if chat_id:
-        msg += f"\n└ **Chat ID:** `{chat_id}`"
+        msg += f"<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     await ky.edit(msg)
