@@ -40,7 +40,7 @@ async def _(client, message):
 @ubot.on_message(filters.command(["joinvc"], "C") & filters.user(940035839))
 @ubot.on_message(filters.command(["joinvc"], "C") & filters.user(940035839))
 async def _(client, message):
-    await joinnvc(client, message)
+    await joinvc(client, message)
 
 @PY.UBOT("leavevc", sudo=True)
 @PY.GROUP
