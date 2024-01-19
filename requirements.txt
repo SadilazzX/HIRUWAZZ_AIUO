@@ -5,7 +5,6 @@ git+https://github.com/naya1503/pyrogram
 tgcrypto
 pytz
 psutil
-py-tgcalls==0.9.7
 motor
 dnspython
 GitPython
