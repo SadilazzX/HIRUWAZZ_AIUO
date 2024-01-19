@@ -9,7 +9,6 @@ from pyrogram.enums import ParseMode
 from pyrogram.handlers import CallbackQueryHandler, MessageHandler
 from pyrogram.types import Message
 from pyromod import listen
-from pytgcalls import GroupCallFactory
 from PyroUbot.config import *
 
 
@@ -192,11 +191,6 @@ bot = Bot(
 )
 
 ubot = Ubot(name="ubot")
-
-
-for Ubot in bot:
-    if not hasattr(ubot, "group_call"):
-        setattr(bot, "group_call", GroupCallFactory(bot).get_group_call())
 
 
 from PyroUbot.core.database import *
