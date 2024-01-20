@@ -87,7 +87,7 @@ async def join_os(client, message):
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
-        await client.start_group_call(chat_id)
+        await client.group_call(chat_id)
 
     except Exception as e:
         return await ky.edit(f"ERROR: {e}")
