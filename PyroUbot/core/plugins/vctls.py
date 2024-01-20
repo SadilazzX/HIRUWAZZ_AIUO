@@ -87,14 +87,14 @@ async def join_os(client, message):
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
-        await client.group_call.start(chat_id)
+        await app.start_group_call(chat_id)
 
     except Exception as e:
         return await ky.edit(f"ERROR: {e}")
     await ky.edit(
         f"<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     )
-    await client.group_call.set_is_mute(True)
+    await app.group_call.set_is_mute(True)
 
 
 
@@ -105,7 +105,7 @@ async def turun_os(client, message):
         chat_id = int(chat_id)
     try:
       
-        await client.group_call.stop()
+        await app.group_call.stop()
 
     except Exception as e:
         return await ky.edit(f"<b>ERROR:</b> {e}")
