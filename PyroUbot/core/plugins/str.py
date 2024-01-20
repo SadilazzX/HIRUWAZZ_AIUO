@@ -12,6 +12,15 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from PyroUbot import *
 
 
+# Menambahkan variabel global untuk menyimpan waktu awal
+start_time = datetime.now()
+
+# Fungsi untuk mendapatkan waktu 'uptime'
+def get_uptime():
+    now = datetime.now()
+    uptime = now - start_time
+    return uptime
+
 
 async def ping_cmd(client, message):
     start = datetime.now()
@@ -31,6 +40,7 @@ async def ping_cmd(client, message):
         _ping = f"""
 <b>sɪɢɴᴀʟ:</b> <code>{str(delta_ping).replace('.', ',')} ms</code>
 <b>ᴏᴡɴᴇʀ:</b> <code>{client.me.mention}</code>
+<b>ᴜᴘᴛɪᴍᴇ:</b> <code>{str(get_uptime())}</code>
 """
     await message.reply(_ping)
 
