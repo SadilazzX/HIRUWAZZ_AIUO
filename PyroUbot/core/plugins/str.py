@@ -9,6 +9,7 @@ from pyrogram import __version__
 from pyrogram.raw.functions import Ping
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
+from PyroUbot.max import get_uptime
 from PyroUbot import *
 
 
