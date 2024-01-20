@@ -12,17 +12,10 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from PyroUbot import *
 
 
-# Menambahkan variabel global untuk menyimpan waktu awal
-start_time = datetime.now()
-
-# Fungsi untuk mendapatkan waktu 'uptime'
-def get_time():
-    now = datetime.now()
-    uptime = now - start_time
-    return uptime
-
 
 async def ping_cmd(client, message):
+    ub_uptime = await get_uptime(client.me.id)
+    uptime = await get_time((time() - ub_uptime))
     start = datetime.now()
     await client.invoke(Ping(ping_id=0))
     end = datetime.now()
@@ -33,14 +26,14 @@ async def ping_cmd(client, message):
     emot_owner = emot_2 if emot_2 else "6226371543065167427"
     if client.me.is_premium:
         _ping = f"""
-<b><emoji id={emot_signal}>🏓</emoji>sɪɢɴᴀʟ:</b> <code>{str(delta_ping).replace('.', ',')} ms</code>
+<b><emoji id={emot_ping}>🏓</emoji>ᴘᴏɴɢ:</b> <code>{str(delta_ping).replace('.', ',')} ms</code>
 <b><emoji id={emot_owner}>👑</emoji>ᴏᴡɴᴇʀ:</b> <code>{client.me.mention}</code>
 """
     else:
         _ping = f"""
-<b>sɪɢɴᴀʟ:</b> <code>{str(delta_ping).replace('.', ',')} ms</code>
+<b>ᴘɪɴɢ !!</b> {str(delta_ping).replace('.', ',')} ms
+<b>ᴜᴘᴛɪᴍᴇ -</b> {uptime}
 <b>ᴏᴡɴᴇʀ:</b> <code>{client.me.mention}</code>
-<b>ᴜᴘᴛɪᴍᴇ: -</b>{uptime}
 """
     await message.reply(_ping)
 
