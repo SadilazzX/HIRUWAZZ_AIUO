@@ -31,7 +31,7 @@ async def ping_cmd(client, message):
     else:
         _ping = f"""
 <b>ᴘɪɴɢ:</b> {str(delta_ping).replace('.', ',')} ms
-<b>ᴜᴘᴛɪᴍᴇ: -</b> { uptime }
+<b>ᴜᴘᴛɪᴍᴇ: - <code>{uptime}</code></b>
 <b>ᴜsᴇʀ:</b> <code>{client.me.mention}</code>
 """
     await message.reply(_ping)
