@@ -4,7 +4,7 @@ from contextlib import suppress
 from random import randint
 from typing import Optional
 
-from pyrogram import Client, enums, filters, app
+from pyrogram import Client, enums, filters
 from pyrogram.raw.functions.channels import GetFullChannel
 from pyrogram.raw.functions.messages import GetFullChat
 from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall
@@ -88,14 +88,14 @@ async def join_os(client, message):
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
-        await app.start_group_call(chat_id)
+        await client.start_group_call(chat_id)
 
     except Exception as e:
         return await ky.edit(f"ERROR: {e}")
     await ky.edit(
         f"<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     )
-    await app.group_call.set_is_mute(True)
+    await client.group_call.set_is_mute(True)
 
 
 
@@ -106,7 +106,7 @@ async def turun_os(client, message):
         chat_id = int(chat_id)
     try:
       
-        await app.group_call.stop()
+        await client.group_call.stop()
 
     except Exception as e:
         return await ky.edit(f"<b>ERROR:</b> {e}")
