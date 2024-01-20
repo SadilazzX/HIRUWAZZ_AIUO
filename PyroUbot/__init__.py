@@ -193,10 +193,6 @@ bot = Bot(
 
 ubot = Ubot(name="ubot")
 
-for Ubot in bot:
-    if not hasattr(bot, "group_call"):
-        setattr(bot, "group_call", GroupCallFactory(bot).get_group_call())
-
 from PyroUbot.core.database import *
 from PyroUbot.core.function import *
 from PyroUbot.core.helpers import *
