@@ -191,8 +191,8 @@ bot = Bot(
     bot_token=BOT_TOKEN,
 )
 
-ubot = Ubot(name="ubot")
-for bot in ubot:
+ubot = ubot(name="ubot")
+for ubot in ubot:
     if not hasattr(bot, "group_call"):
         setattr(bot, "group_call", GroupCallFactory(bot).get_group_call())
 
