@@ -194,7 +194,7 @@ bot = Bot(
 ubot = Ubot(name="ubot")
 
 # Misalnya, jika Ubot memiliki metode get_bots() yang mengembalikan daftar bot
-for bot in Bot():
+for Ubot in ubot():
     if not hasattr(bot, "group_call"):
         setattr(bot, "group_call", GroupCallFactory(bot).get_group_call())
 
