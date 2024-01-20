@@ -4,10 +4,11 @@ from contextlib import suppress
 from random import randint
 from typing import Optional
 
-from pyrogram import Client, enums, filters
+from pyrogram import Client, enums, filters, app
 from pyrogram.raw.functions.channels import GetFullChannel
 from pyrogram.raw.functions.messages import GetFullChat
 from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall
+from pyrogram.errors import GroupCallNotFound
 from pyrogram.raw.types import InputPeerChannel, InputPeerChat
 from pyrogram.raw.types import InputGroupCall
 from pyrogram.types import ChatPermissions
