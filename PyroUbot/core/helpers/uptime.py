@@ -7,7 +7,7 @@ async def get_time(seconds):
     count = 0
     up_time = ""
     time_list = []
-    time_suffix_list = ["s", "ᴍ", "ʜ", "ᴅ"]
+    time_suffix_list = ["s", "m", "h", "d"]
 
     while count < 4:
         count += 1
