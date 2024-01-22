@@ -25,8 +25,8 @@ async def ping_cmd(client, message):
     emot_owner = emot_2 if emot_2 else "6226371543065167427"
     if client.me.is_premium:
         _ping = f"""
-<b><emoji id={EMOJI_PING}>🏓</emoji>ᴘᴏɴɢ:</b> <code>{str(delta_ping).replace('.', ',')} ms</code>
-<b><emoji id={EMOJI_MENTION}>👑</emoji>ᴏᴡɴᴇʀ:</b> <code>{client.me.mention}</code>
+<b><emoji id={emot_ping}>🏓</emoji>ᴘᴏɴɢ:</b> <code>{str(delta_ping).replace('.', ',')} ms</code>
+<b><emoji id={emot_owner}>👑</emoji>ᴏᴡɴᴇʀ:</b> <code>{client.me.mention}</code>
 """
     else:
         _ping = f"""
