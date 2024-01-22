@@ -1,5 +1,6 @@
 pytgcalls==3.0.0.dev22
 python-dotenv
+pyrogram
 git+https://github.com/MaxGuns/Pyrogram
 tgcrypto
 pytz
