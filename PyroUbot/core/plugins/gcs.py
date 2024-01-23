@@ -24,15 +24,15 @@ async def get_broadcast_id(client, query):
 
 
 async def broadcast_group_cmd(client, message):
-    emot_1 = await get_vars(client.me.id, "EMOJI_PROSES")
-    emot_2 = await get_vars(client.me.id, "EMOJI_GCAST")
-    emot_proses = emot_1 of emot_1 else ""
-    emot_gcast = emot_2 if emot_2 else ""
-    if client.me.is_premium:
-        _broadcast = f"""
-<b><emoji id={emot_proses}>⏰</emoji>
-<b><emoji id={emot_gcast}>✅>/emoji> ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ɢʀᴏᴜᴘ</b>
-"""
+   # emot_1 = await get_vars(client.me.id, "EMOJI_PROSES")
+   # emot_2 = await get_vars(client.me.id, "EMOJI_GCAST")
+   # emot_proses = emot_1 of emot_1 else ""
+   # emot_gcast = emot_2 if emot_2 else ""
+   # if client.me.is_premium:
+   #     _broadcast = f"""
+#<b><emoji id={emot_proses}>⏰</emoji>
+#<b><emoji id={emot_gcast}>✅>/emoji> ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ɢʀᴏᴜᴘ</b>
+#"""
     msg = await message.reply("ᴍᴇᴍᴘʀᴏsᴇs", quote=True)
 
     send = get_message(message)
