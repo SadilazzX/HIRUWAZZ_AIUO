@@ -29,7 +29,7 @@ async def broadcast_group_cmd(client, message):
     emot_proses = emot_1 of emot_1 else ""
     emot_gcast = emot_2 if emot_2 else ""
     if client.me.is_premium:
-        _ping = f"""
+        _broadcast = f"""
 <b><emoji id={emot_proses}>⏰</emoji>
 <b><emoji id={emot_gcast}>✅>/emoji> ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ɢʀᴏᴜᴘ</b>
 """
