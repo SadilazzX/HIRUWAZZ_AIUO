@@ -108,7 +108,7 @@ class Ubot(Client):
     _get_my_id = []
     _translate = {}
     _get_my_peer = {}
-    group_call = GroupCall 
+    group_call = {} 
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs, device_model="ᴍᴀxɢᴜɴs ᴜʙᴏᴛ")
