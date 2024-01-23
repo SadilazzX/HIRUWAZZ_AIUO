@@ -3,6 +3,7 @@ import os
 import re
 
 from aiohttp import ClientSession
+from typing import Dict, Optional
 
 from pyrogram import Client, filters
 from pyrogram.enums import ParseMode
