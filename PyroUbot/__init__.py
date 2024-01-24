@@ -187,8 +187,8 @@ class Ubot(Client):
 
 
 bot_token = "6779704917:AAECKFCTfEaLXxJY3BVRkh_5ioWMqITJKtc"
-api_id = 12345
-api_hash = "0123456789abcdef0123456789abcdef"
+api_id = 27087758
+api_hash = "2ef578f901d8ab62b58e03db98533747"
 
 bot = Client(
     "bot",
