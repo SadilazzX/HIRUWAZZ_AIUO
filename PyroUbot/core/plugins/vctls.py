@@ -1,5 +1,4 @@
 from asyncio import sleep
-#from pyromod import eor
 from contextlib import suppress
 from random import randint
 from typing import Optional
@@ -8,9 +7,7 @@ from pyrogram import Client, enums, filters
 from pyrogram.raw.functions.channels import GetFullChannel
 from pyrogram.raw.functions.messages import GetFullChat
 from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall
-from pyrogram.raw.types import InputPeerChannel, InputPeerChat
-from pyrogram.raw.types import InputGroupCall
-from pyrogram.types import ChatPermissions
+from pyrogram.raw.types import InputGroupCall, InputPeerChannel, InputPeerChat
 from pyrogram.types import Message
 
 from PyroUbot import *
@@ -30,7 +27,7 @@ async def get_group_call(
             ).full_chat
         if full_chat is not None:
             return full_chat.call
-    await message.edit(f"**No group call Found** {err_msg}")
+    await message.edit(f"**ɴᴏ ɢʀᴏᴜᴘ ᴄᴀʟʟ ꜰᴏᴜɴᴅ** {err_msg}")
     return False
 
 
