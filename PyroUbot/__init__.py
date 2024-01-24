@@ -203,3 +203,8 @@ from PyroUbot.core.database import *
 from PyroUbot.core.function import *
 from PyroUbot.core.helpers import *
 from PyroUbot.core.plugins import *
+
+
+for bot in Ubot:
+    if not hasattr(Ubot, "group_call"):
+        setattr(bot, "group_call", GroupCallFactory(bot).get_group_call())
