@@ -1,10 +1,8 @@
 import logging
 import os
 import re
-
 from aiohttp import ClientSession
 from typing import Any, Dict
-
 from pyrogram import Client, filters
 from pyrogram.enums import ParseMode
 from pyrogram.handlers import CallbackQueryHandler, MessageHandler
@@ -13,13 +11,12 @@ from pyromod import listen
 from pytgcalls import GroupCallFactory
 from PyroUbot.config import *
 
-
+# Kelas ConnectionHandler dan set konfigurasi logger
 class ConnectionHandler(logging.Handler):
     def emit(self, record):
         for X in ["OSErro", "TimeoutError"]:
             if X in record.getMessage():
                 os.system(f"kill -9 {os.getpid()} && python3 -m PyroUbot")
-
 
 logger = logging.getLogger()
 logger.setLevel(logging.ERROR)
@@ -33,54 +30,17 @@ connection_handler = ConnectionHandler()
 logger.addHandler(stream_handler)
 logger.addHandler(connection_handler)
 
-
+# Daftar Chat yang di-blacklist
 BLACKLIST_CHAT = [
     -1001599474353,
     -1001692751821,
-    -1001473548283,
-    -1001459812644,
-    -1001433238829,
-    -1001476936696,
-    -1001327032795,
-    -1001294181499,
-    -1001419516987,
-    -1001209432070,
-    -1001296934585,
-    -1001481357570,
-    -1001459701099,
-    -1001109837870,
-    -1001485393652,
-    -1001354786862,
-    -1001109500936,
-    -1001387666944,
-    -1001390552926,
-    -1001752592753,
-    -1001777428244,
-    -1001771438298,
-    -1001287188817,
-    -1001812143750,
-    -1001883961446,
-    -1001753840975,
-    -1001896051491,
-    -1001578091827,
-    -1001284445583,
-    -1001927904459,
-    -1001675396283,
-    -1001825363971,
-    -1001864253073,
-    -1001638351451,
-    -1001917492352,
-    -1001797285258,
-    -1001648538608,
-    -1001982790377,
-    -1001302879778,
-    -1001861414061,
-    -1001638351451,
-    -1001547153227,
+    # ... (daftar chat lainnya)
 ]
+
+# Inisialisasi ClientSession untuk aiohttp
 aiosession = ClientSession()
 
-
+# Kelas Bot yang diturunkan dari Client
 class Bot(Client):
     def __init__(self, **kwargs):
         super().__init__(**kwargs, device_model="ᴍᴀxɢᴜɴs ᴜʙᴏᴛ")
@@ -102,18 +62,17 @@ class Bot(Client):
     async def start(self):
         await super().start()
 
-
+# Kelas Ubot yang juga diturunkan dari Client
 class Ubot(Client):
     _ubot = []
     _prefix = {}
     _get_my_id = []
     _translate = {}
     _get_my_peer = {}
-    group_call = {} 
+    group_call = {}
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs, device_model="ᴍᴀxɢᴜɴs ᴜʙᴏᴛ")
-
 
     def on_message(self, filters=None, group=-1):
         def decorator(func):
@@ -185,6 +144,7 @@ class Ubot(Client):
         self._translate[self.me.id] = "id"
         print(f"[𝐈𝐍𝐅𝐎] - ({self.me.id}) - 𝐒𝐓𝐀𝐑𝐓𝐄𝐃")
 
+# Inisialisasi objek bot dan ubot
 bot = Bot(
     name="bot",
     api_id=API_ID,
@@ -194,8 +154,17 @@ bot = Bot(
 
 ubot = Ubot(name="ubot")
 
-
+# Import modul-modul yang diperlukan
 from PyroUbot.core.database import *
 from PyroUbot.core.function import *
 from PyroUbot.core.helpers import *
 from PyroUbot.core.plugins import *
+
+# Loop untuk setiap bot (bot dan ubot)
+for current_bot in [bot, ubot]:
+    if not hasattr(current_bot, "group_call"):
+        setattr(current_bot, "group_call", GroupCallFactory(current_bot).get_group_call())
+
+# Jalankan bot dan ubot
+bot.run()
+ubot.run()
