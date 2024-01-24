@@ -190,20 +190,12 @@ bot_token = "6779704917:AAECKFCTfEaLXxJY3BVRkh_5ioWMqITJKtc"
 api_id = 27087758
 api_hash = "2ef578f901d8ab62b58e03db98533747"
 
-bot = Client(
+bot = Bot(
     "bot",
-    api_id=api_id,
-    api_hash=api_hash,
-    bot_token=bot_token
+    api_id=API_ID,
+    api_hash=API_HASH,
+    bot_token=BOT_TOKEN,
 )
-
-app = Client(
-    "my_bot",
-    api_id=api_id,
-    api_hash=api_hash,
-    bot_token=bot_token
-)
-
 app.run()
 
 ubot = Ubot(name="ubot")
