@@ -3,7 +3,7 @@ import os
 import re
 
 from aiohttp import ClientSession
-from typing import Dict, Optional
+from typing import Any, Dict
 
 from pyrogram import Client, filters
 from pyrogram.enums import ParseMode
@@ -32,6 +32,10 @@ connection_handler = ConnectionHandler()
 
 logger.addHandler(stream_handler)
 logger.addHandler(connection_handler)
+
+
+TEMP_SETTINGS: Dict[Any, Any] = {}
+
 
 BLACKLIST_CHAT = [
     -1001599474353,
@@ -190,6 +194,7 @@ bot = Bot(
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
+    
 )
 
 ubot = Ubot(name="ubot")
