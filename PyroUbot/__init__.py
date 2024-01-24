@@ -196,7 +196,6 @@ bot = Bot(
     bot_token=BOT_TOKEN
 )
 
-bot.run()
 ubot = Ubot(name="ubot")
 
 for bot in [ubot]:
