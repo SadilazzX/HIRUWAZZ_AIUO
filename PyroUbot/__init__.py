@@ -186,15 +186,21 @@ class Ubot(Client):
         print(f"[𝐈𝐍𝐅𝐎] - ({self.me.id}) - 𝐒𝐓𝐀𝐑𝐓𝐄𝐃")
 
 
-bot = Bot(
-    name="bot",
-    api_id = 12345
-    api_hash = "0123456789abcdef0123456789abcdef"
-    bot_token = "6779704917:AAECKFCTfEaLXxJY3BVRkh_5ioWMqITJKtc"
+bot_token = "6779704917:AAECKFCTfEaLXxJY3BVRkh_5ioWMqITJKtc"
+api_id = 12345
+api_hash = "0123456789abcdef0123456789abcdef"
+
+bot = Client(
+    "bot",
+    api_id=api_id,
+    api_hash=api_hash,
+    bot_token=bot_token
+)
 
 app = Client(
     "my_bot",
-    api_id=api_id, api_hash=api_hash,
+    api_id=api_id,
+    api_hash=api_hash,
     bot_token=bot_token
 )
 
