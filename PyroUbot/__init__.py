@@ -48,6 +48,13 @@ custom_dict = {
     # ... (Tambahkan item sesuai kebutuhan)
 }
 
+# Fungsi get_userbots yang akan Anda tambahkan
+async def get_userbots(user_id):
+    # Implementasikan logika untuk mendapatkan daftar userbots
+    # Misalnya, Anda bisa menggunakan database atau sumber lainnya.
+    # Gantilah dengan implementasi sesuai kebutuhan Anda.
+    return ["userbot1", "userbot2", "userbot3"]
+
 # Kelas Bot yang diturunkan dari Client
 class Bot(Client):
     def __init__(self, **kwargs):
