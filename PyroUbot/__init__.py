@@ -4,7 +4,6 @@ import re
 from aiohttp import ClientSession
 from typing import Any, Dict
 from pyrogram import Client, filters
-from pyrogram.enums import ParseMode
 from pyrogram.handlers import CallbackQueryHandler, MessageHandler
 from pyrogram.types import Message
 from pyromod import listen
@@ -40,6 +39,15 @@ BLACKLIST_CHAT = [
 # Inisialisasi ClientSession untuk aiohttp
 aiosession = ClientSession()
 
+# Objek dict contoh
+custom_dict = {
+    "welcome_message": "Selamat datang di bot kami!",
+    "command_prefix": ".",
+    "api_key": "your_api_key_here",
+    "max_connections": 10,
+    # ... (Tambahkan item sesuai kebutuhan)
+}
+
 # Kelas Bot yang diturunkan dari Client
 class Bot(Client):
     def __init__(self, **kwargs):
@@ -70,6 +78,7 @@ class Ubot(Client):
     _translate = {}
     _get_my_peer = {}
     group_call = {}
+    custom_dict = custom_dict  # Tambahkan objek dict ke dalam kelas
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs, device_model="ᴍᴀxɢᴜɴs ᴜʙᴏᴛ")
@@ -153,12 +162,6 @@ bot = Bot(
 )
 
 ubot = Ubot(name="ubot")
-
-# Import modul-modul yang diperlukan
-from PyroUbot.core.database import *
-from PyroUbot.core.function import *
-from PyroUbot.core.helpers import *
-from PyroUbot.core.plugins import *
 
 # Loop untuk setiap bot (bot dan ubot)
 for current_bot in [bot, ubot]:
