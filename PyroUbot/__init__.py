@@ -1,21 +1,23 @@
 import logging
 import os
 import re
+
 from aiohttp import ClientSession
-from typing import Any, Dict
+
 from pyrogram import Client, filters
+from pyrogram.enums import ParseMode
 from pyrogram.handlers import CallbackQueryHandler, MessageHandler
 from pyrogram.types import Message
 from pyromod import listen
-from pytgcalls import GroupCallFactory
 from PyroUbot.config import *
 
-# Kelas ConnectionHandler dan set konfigurasi logger
+
 class ConnectionHandler(logging.Handler):
     def emit(self, record):
         for X in ["OSErro", "TimeoutError"]:
             if X in record.getMessage():
                 os.system(f"kill -9 {os.getpid()} && python3 -m PyroUbot")
+
 
 logger = logging.getLogger()
 logger.setLevel(logging.ERROR)
@@ -29,33 +31,9 @@ connection_handler = ConnectionHandler()
 logger.addHandler(stream_handler)
 logger.addHandler(connection_handler)
 
-# Daftar Chat yang di-blacklist
-BLACKLIST_CHAT = [
-    -1001599474353,
-    -1001692751821,
-    # ... (daftar chat lainnya)
-]
-
-# Inisialisasi ClientSession untuk aiohttp
 aiosession = ClientSession()
 
-# Objek dict contoh
-custom_dict = {
-    "welcome_message": "Selamat datang di bot kami!",
-    "command_prefix": ".",
-    "api_key": "your_api_key_here",
-    "max_connections": 10,
-    # ... (Tambahkan item sesuai kebutuhan)
-}
 
-# Fungsi get_userbots yang akan Anda tambahkan
-async def get_userbots(user_id):
-    # Implementasikan logika untuk mendapatkan daftar userbots
-    # Misalnya, Anda bisa menggunakan database atau sumber lainnya.
-    # Gantilah dengan implementasi sesuai kebutuhan Anda.
-    return ["userbot1", "userbot2", "userbot3"]
-
-# Kelas Bot yang diturunkan dari Client
 class Bot(Client):
     def __init__(self, **kwargs):
         super().__init__(**kwargs, device_model="ᴍᴀxɢᴜɴs ᴜʙᴏᴛ")
@@ -77,18 +55,17 @@ class Bot(Client):
     async def start(self):
         await super().start()
 
-# Kelas Ubot yang juga diturunkan dari Client
+
 class Ubot(Client):
     _ubot = []
     _prefix = {}
     _get_my_id = []
     _translate = {}
     _get_my_peer = {}
-    group_call = {}
-    custom_dict = custom_dict  # Tambahkan objek dict ke dalam kelas
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs, device_model="ᴍᴀxɢᴜɴs ᴜʙᴏᴛ")
+
 
     def on_message(self, filters=None, group=-1):
         def decorator(func):
@@ -160,7 +137,7 @@ class Ubot(Client):
         self._translate[self.me.id] = "id"
         print(f"[𝐈𝐍𝐅𝐎] - ({self.me.id}) - 𝐒𝐓𝐀𝐑𝐓𝐄𝐃")
 
-# Inisialisasi objek bot dan ubot
+
 bot = Bot(
     name="bot",
     api_id=API_ID,
@@ -170,7 +147,8 @@ bot = Bot(
 
 ubot = Ubot(name="ubot")
 
-# Loop untuk setiap bot (bot dan ubot)
-for current_bot in [bot, ubot]:
-    if not hasattr(current_bot, "group_call"):
-        setattr(current_bot, "group_call", GroupCallFactory(current_bot).get_group_call())
+
+from PyroUbot.core.database import *
+from PyroUbot.core.function import *
+from PyroUbot.core.helpers import *
+from PyroUbot.core.plugins import *
