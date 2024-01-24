@@ -1,9 +1,7 @@
 import asyncio
-
 from pyrogram import idle
-
 from PyroUbot import *
-
+from PyroUbot import get_userbots  # Gantilah "nama_modul_anda" dengan nama modul yang sesuai
 
 async def start_ubot(user_id, _ubot):
     ubot_ = Ubot(**_ubot)
@@ -22,14 +20,12 @@ async def start_ubot(user_id, _ubot):
             await remove_chat(user_id, X)
         print(f"✅ {user_id} 𝗕𝗘𝗥𝗛𝗔𝗦𝗜𝗟 𝗗𝗜𝗛𝗔𝗣𝗨𝗦")
 
-
 async def main():
     tasks = []
     for _ubot in await get_userbots():
         tasks.append(asyncio.create_task(start_ubot(int(_ubot["name"]), _ubot)))
     await asyncio.gather(*tasks, bot.start())
     await asyncio.gather(loadPlugins(), installPeer(), expiredUserbots(), idle())
-
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop_policy().get_event_loop()
