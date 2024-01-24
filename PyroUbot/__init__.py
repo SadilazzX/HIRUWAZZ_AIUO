@@ -34,9 +34,6 @@ logger.addHandler(stream_handler)
 logger.addHandler(connection_handler)
 
 
-TEMP_SETTINGS: Dict[Any, Any] = {}
-
-
 BLACKLIST_CHAT = [
     -1001599474353,
     -1001692751821,
@@ -194,7 +191,6 @@ bot = Bot(
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
-    plugins=dict(root="PyroUbot/modules"),
 )
 
 ubot = Ubot(name="ubot")
