@@ -205,6 +205,6 @@ from PyroUbot.core.helpers import *
 from PyroUbot.core.plugins import *
 
 
-for bot in Ubot:
-    if not hasattr(Ubot, "group_call"):
+for bot in [ubot]:
+    if not hasattr(bot, "group_call"):
         setattr(bot, "group_call", GroupCallFactory(bot).get_group_call())
