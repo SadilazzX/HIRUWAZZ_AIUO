@@ -185,16 +185,14 @@ class Ubot(Client):
         self._translate[self.me.id] = "id"
         print(f"[𝐈𝐍𝐅𝐎] - ({self.me.id}) - 𝐒𝐓𝐀𝐑𝐓𝐄𝐃")
 
-
-bot_token = "6779704917:AAECKFCTfEaLXxJY3BVRkh_5ioWMqITJKtc"
-api_id = 27087758
-api_hash = "2ef578f901d8ab62b58e03db98533747"
-
 bot = Bot(
-    "bot",
+    name="bot",
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
+bot_token = "6779704917:AAECKFCTfEaLXxJY3BVRkh_5ioWMqITJKtc"
+api_id = 27087758
+api_hash = "2ef578f901d8ab62b58e03db98533747"
 )
 app.run()
 
