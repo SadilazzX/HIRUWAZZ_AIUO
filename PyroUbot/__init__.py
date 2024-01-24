@@ -164,7 +164,3 @@ from PyroUbot.core.plugins import *
 for current_bot in [bot, ubot]:
     if not hasattr(current_bot, "group_call"):
         setattr(current_bot, "group_call", GroupCallFactory(current_bot).get_group_call())
-
-# Jalankan bot dan ubot
-bot.run()
-ubot.run()
