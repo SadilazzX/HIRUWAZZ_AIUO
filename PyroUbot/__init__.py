@@ -188,10 +188,17 @@ class Ubot(Client):
 
 bot = Bot(
     name="bot",
-    api_id=API_ID,
-    api_hash=API_HASH,
-    bot_token=BOT_TOKEN,
+    api_id = 12345
+    api_hash = "0123456789abcdef0123456789abcdef"
+    bot_token = "6779704917:AAECKFCTfEaLXxJY3BVRkh_5ioWMqITJKtc"
+
+app = Client(
+    "my_bot",
+    api_id=api_id, api_hash=api_hash,
+    bot_token=bot_token
 )
+
+app.run()
 
 ubot = Ubot(name="ubot")
 
