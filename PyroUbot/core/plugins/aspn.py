@@ -6,7 +6,7 @@ from pyrogram import Client, filters
 from pyrogram.enums import MessagesFilter
 import random
 from random import choice
-from PyroUbot.helpers import *
+from PyroUbot.core.helpers import *
 
 
 async def asupan(client, message):
