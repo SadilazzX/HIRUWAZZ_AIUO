@@ -7,6 +7,7 @@ from platform import python_version
 from pyrogram import __version__
 
 from pyrogram.raw.functions import Ping
+from PyroUbot.core.
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from PyroUbot import *
@@ -14,7 +15,8 @@ from PyroUbot import *
 
 
 async def ping_cmd(client, message):
-    uptime = await get_time(time())
+    ub_uptime = await get_uptime(client.me.id)
+    uptime = await get_time((time() - ub_uptime))
     start = datetime.now()
     await client.invoke(Ping(ping_id=0))
     end = datetime.now()
