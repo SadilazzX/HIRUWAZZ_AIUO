@@ -1,5 +1,6 @@
 from 
 
+aktif = mongodb["PyroUbot"]["uptime"]
 
 
 async def get_uptime(user_id):
