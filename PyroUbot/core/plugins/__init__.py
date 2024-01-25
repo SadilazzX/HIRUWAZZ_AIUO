@@ -1,7 +1,6 @@
 from PyroUbot.core.plugins.anime import *
 from PyroUbot.core.plugins.aspn import *
 from PyroUbot.core.plugins.spt import *
-from PyroUbot.core.plugins.buttn import *
 from PyroUbot.core.plugins.topc import *
 from PyroUbot.core.plugins.pmper import *
 from PyroUbot.core.plugins.lck import *
