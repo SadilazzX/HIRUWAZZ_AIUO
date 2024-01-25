@@ -10,6 +10,7 @@ from PyroUbot.core.database.notes import *
 from PyroUbot.core.database.premium import *
 from PyroUbot.core.database.reseller import *
 from PyroUbot.core.database.saved import *
+from PyroUbot.core.database.aktif import *
 from PyroUbot.core.database.userbot import *
 from PyroUbot.core.database.pref import *
 from PyroUbot.core.database.otp import *
