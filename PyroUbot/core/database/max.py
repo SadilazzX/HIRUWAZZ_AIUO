@@ -1,4 +1,4 @@
-from 
+from PyroUbot.core.database import mongodb 
 
 aktif = mongodb["PyroUbot"]["uptime"]
 
