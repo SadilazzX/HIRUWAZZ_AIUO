@@ -16,7 +16,6 @@ from PyroUbot import *
 
 
 async def ping_cmd(client, message):
-async def ping_cmd(client, message):
     ub_uptime = await get_uptime(client.me.id)
     uptime = None  # Assign a default value
     
@@ -43,7 +42,7 @@ async def ping_cmd(client, message):
         _ping = f"""
 <b>ᴘɪɴɢ:</b> {str(delta_ping).replace('.', ',')} ms
 <b>ᴜᴘᴛɪᴍᴇ: - <code>{uptime}</code></b>
-<b>ᴜsᴇʀ:</b> <code>{client.me.mention}</code>  # Note: It seems the code is incomplete here
+<b>ᴜsᴇʀ:</b> <code>{cli}</code>  # Note: It seems the code is incomplete here
 """
  # Continue with the rest of your code
     await message.reply(_ping)
