@@ -16,8 +16,11 @@ from PyroUbot import *
 
 
 async def ping_cmd(client, message):
-    get_uptime = await get_uptime(client.me.id)
-    uptime = await get_time((time() - get_uptime))
+    ub_uptime = await get_uptime(client.me.id)
+    
+    if ub_uptime is not None:
+        uptime = await get_time((time() - ub_uptime))
+        # Lanjutkan dengan penggunaan nilai uptime
     start = datetime.now()
     await client.invoke(Ping(ping_id=0))
     end = datetime.now()
