@@ -7,7 +7,7 @@ from platform import python_version
 from pyrogram import __version__
 
 from pyrogram.raw.functions import Ping
-from PyroUbot.core.
+from PyroUbot.core.helpers.
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from PyroUbot import *
