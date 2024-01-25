@@ -10,7 +10,7 @@ from PyroUbot.helpers import *
 
 
 async def asupan(client, message):
-    y = await message.reply("<b>🔍 Mencari Video Asupan...</b>")
+    ky = await message.reply("<b>🔍 Mencari Video Asupan...</b>")
     try:
         asupannya = []
         async for asupan in client.search_messages(
@@ -23,13 +23,13 @@ async def asupan(client, message):
             caption=f"<b>Asupan By <a href=tg://user?id={client.me.id}>{client.me.first_name} {client.me.last_name or ''}</a></b>",
             reply_to_message_id=message.id,
         )
-        await y.delete()
+        await ky.delete()
     except Exception:
-        await y.edit("<b>Video tidak ditemukan silahkan ulangi beberapa saat lagi</b>")
+        await ky.edit("<b>Video tidak ditemukan silahkan ulangi beberapa saat lagi</b>")
 
 
 async def ayang(client, message):
-    y = await message.reply("<b>🔍 Mencari Ayang...</b>")
+    ky = await message.reply("<b>🔍 Mencari Ayang...</b>")
     try:
         ayangnya = []
         async for ayang in client.search_messages(
@@ -42,13 +42,13 @@ async def ayang(client, message):
             caption=f"<b>Ayang By <a href=tg://user?id={client.me.id}>{client.me.first_name} {client.me.last_name or ''}</a></b>",
             reply_to_message_id=message.id,
         )
-        await y.delete()
+        await ky.delete()
     except Exception:
-        await y.edit("<b>Ayang tidak ditemukan silahkan ulangi beberapa saat lagi</b>")
+        await ky.edit("<b>Ayang tidak ditemukan silahkan ulangi beberapa saat lagi</b>")
 
 
 async def ayangaht(client, message):
-    y = await message.reply("<b>🔍 Mencari Ayang...</b>")
+    ky = await message.reply("<b>🔍 Mencari Ayang...</b>")
     try:
         ayang2nya = []
         async for ayang2 in client.search_messages(
@@ -61,15 +61,15 @@ async def ayangaht(client, message):
             caption=f"<b>Ayang By <a href=tg://user?id={client.me.id}>{client.me.first_name} {client.me.last_name or ''}</a></b>",
             reply_to_message_id=message.id,
         )
-        await y.delete()
+        await ky.delete()
     except Exception:
-        await y.edit("<b>Ayang tidak ditemukan silahkan ulangi beberapa saat lagi</b>")
+        await ky.edit("<b>Ayang tidak ditemukan silahkan ulangi beberapa saat lagi</b>")
 
 
 async def xnxx(client, message):
     if message.chat.id in BLACKLIST_CHAT:
         return await message.reply("<b>Maaf perintah ini dilarang di sini</b>")
-    y = await message.reply("<b>🔍 Mencari Video Bokep...</b>")
+    ky = await message.reply("<b>🔍 Mencari Video Bokep...</b>")
     try:
         await client.join_chat("https://t.me/+kJJqN5kUQbs1NTVl")
     except BaseException:
@@ -86,16 +86,16 @@ async def xnxx(client, message):
             caption=f"<b>Bokep By <a href=tg://user?id={client.me.id}>{client.me.first_name} {client.me.last_name or ''}</a></b>",
             reply_to_message_id=message.id,
         )
-        await y.delete()
+        await ky.delete()
     except Exception:
-        await y.edit("<b>Video tidak ditemukan silahkan ulangi beberapa saat lagi</b>")
+        await ky.edit("<b>Video tidak ditemukan silahkan ulangi beberapa saat lagi</b>")
     if client.me.id == 1898065191:
         return
     await client.leave_chat(-1001867672427)
 
 
 async def anim(client, message):
-    iis = await message.reply("🔎 <code>Search Anime...</code>")
+    ky = await message.reply("🔎 <code>Search Anime...</code>")
     await message.reply_photo(
         choice(
             [
@@ -113,7 +113,7 @@ async def anim(client, message):
 
 
 async def nimek(client, message):
-    erna = await message.reply("🔎 <code>Search Anime...</code>")
+    ky = await message.reply("🔎 <code>Search Anime...</code>")
     await message.reply_photo(
         choice(
             [
@@ -127,11 +127,11 @@ async def nimek(client, message):
         caption=f"Upload by {client.me.mention}",
     )
 
-    await erna.delete()
+    await ky.delete()
 
 
 async def bugil(client, message):
-    kazu = await message.reply("🔎 <code>Nih PAP Nya...</code>")
+    ky = await message.reply("🔎 <code>Nih PAP Nya...</code>")
     await message.reply_photo(
         choice(
             [
@@ -145,30 +145,30 @@ async def bugil(client, message):
         caption="<b>Buat Kamu...</b>",
     )
 
-    await kazu.delete()
-        await y.delete()
+    await ky.delete()
+        await ky.delete()
     except Exception:
-        await y.edit("<b>Video tidak ditemukan silahkan ulangi beberapa saat lagi</b>")
+        await ky.edit("<b>Video tidak ditemukan silahkan ulangi beberapa saat lagi</b>")
     if client.me.id == 1898065191:
         return
     await client.leave_chat(-1001867672427)
 
 async def cari_anime(client, message, channel):
-    iis = await message.reply("🔎 <code>Search Anime...</code>")
+    ky = await message.reply("🔎 <code>Search Anime...</code>")
     try:
     finally:
         await iis.delete()
 
 async def cari_nimek(client, message):
-    erna = await message.reply("🔎 <code>Search Anime...</code>")
+    ky = await message.reply("🔎 <code>Search Anime...</code>")
     try:
         # ...
     finally:
-        await erna.delete()
+        await ky.delete()
 
 async def cari_sange_ah(client, message):
-    kazu = await message.reply("🔎 <code>Nih PAP Nya...</code>")
+    ky = await message.reply("🔎 <code>Nih PAP Nya...</code>")
     try:
         # ...
     finally:
-        await kazu.delete()
+        await ky.delete()
