@@ -9,7 +9,7 @@ from random import choice
 from PyroUbot.helpers import *
 
 
-async def _(client, message):
+async def asupan(client, message):
     y = await message.reply("<b>🔍 Mencari Video Asupan...</b>")
     try:
         asupannya = []
@@ -28,7 +28,7 @@ async def _(client, message):
         await y.edit("<b>Video tidak ditemukan silahkan ulangi beberapa saat lagi</b>")
 
 
-async def _(client, message):
+ async def ayang(client, message):
     y = await message.reply("<b>🔍 Mencari Ayang...</b>")
     try:
         ayangnya = []
@@ -47,7 +47,7 @@ async def _(client, message):
         await y.edit("<b>Ayang tidak ditemukan silahkan ulangi beberapa saat lagi</b>")
 
 
-async def _(client, message):
+async def ayangaht(client, message):
     y = await message.reply("<b>🔍 Mencari Ayang...</b>")
     try:
         ayang2nya = []
@@ -66,7 +66,7 @@ async def _(client, message):
         await y.edit("<b>Ayang tidak ditemukan silahkan ulangi beberapa saat lagi</b>")
 
 
-async def _(client, message):
+async def xnxx(client, message):
     if message.chat.id in BLACKLIST_CHAT:
         return await message.reply("<b>Maaf perintah ini dilarang di sini</b>")
     y = await message.reply("<b>🔍 Mencari Video Bokep...</b>")
