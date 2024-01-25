@@ -6,7 +6,7 @@ from pyrogram import Client, filters
 from pyrogram.enums import MessagesFilter
 import random
 from random import choice
-from PyroUbot. import *
+from PyroUbot.helpers import *
 
 
 async def _(client, message):
