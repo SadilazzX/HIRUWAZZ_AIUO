@@ -146,29 +146,3 @@ async def bugil(client, message):
     )
 
     await ky.delete()
-        await ky.delete()
-    except Exception:
-        await ky.edit("<b>Video tidak ditemukan silahkan ulangi beberapa saat lagi</b>")
-    if client.me.id == 1898065191:
-        return
-    await client.leave_chat(-1001867672427)
-
-async def cari_anime(client, message, channel):
-    ky = await message.reply("🔎 <code>Search Anime...</code>")
-    try:
-    finally:
-        await iis.delete()
-
-async def cari_nimek(client, message):
-    ky = await message.reply("🔎 <code>Search Anime...</code>")
-    try:
-        # ...
-    finally:
-        await ky.delete()
-
-async def cari_sange_ah(client, message):
-    ky = await message.reply("🔎 <code>Nih PAP Nya...</code>")
-    try:
-        # ...
-    finally:
-        await ky.delete()
