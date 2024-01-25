@@ -16,19 +16,24 @@ from PyroUbot import *
 
 
 async def ping_cmd(client, message):
+async def ping_cmd(client, message):
     ub_uptime = await get_uptime(client.me.id)
+    uptime = None  # Assign a default value
     
     if ub_uptime is not None:
         uptime = await get_time((time() - ub_uptime))
-        # Lanjutkan dengan penggunaan nilai uptime
+        # Continue with the usage of uptime
+    
     start = datetime.now()
     await client.invoke(Ping(ping_id=0))
     end = datetime.now()
     delta_ping = (end - start).microseconds / 1000
+    
     emot_1 = await get_vars(client.me.id, "EMOJI_PING")
     emot_2 = await get_vars(client.me.id, "EMOJI_MENTION")
     emot_ping = emot_1 if emot_1 else "5269563867305879894"
     emot_owner = emot_2 if emot_2 else "6226371543065167427"
+    
     if client.me.is_premium:
         _ping = f"""
 <b><emoji id={emot_ping}>🏓</emoji>ᴘᴏɴɢ:</b> <code>{str(delta_ping).replace('.', ',')} ms</code>
@@ -38,8 +43,9 @@ async def ping_cmd(client, message):
         _ping = f"""
 <b>ᴘɪɴɢ:</b> {str(delta_ping).replace('.', ',')} ms
 <b>ᴜᴘᴛɪᴍᴇ: - <code>{uptime}</code></b>
-<b>ᴜsᴇʀ:</b> <code>{client.me.mention}</code>
+<b>ᴜsᴇʀ:</b> <code>{client.me.mention}</code>  # Note: It seems the code is incomplete here
 """
+ # Continue with the rest of your code
     await message.reply(_ping)
 
 
