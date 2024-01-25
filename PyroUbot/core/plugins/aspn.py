@@ -28,7 +28,7 @@ async def asupan(client, message):
         await y.edit("<b>Video tidak ditemukan silahkan ulangi beberapa saat lagi</b>")
 
 
- async def ayang(client, message):
+async def ayang(client, message):
     y = await message.reply("<b>🔍 Mencari Ayang...</b>")
     try:
         ayangnya = []
