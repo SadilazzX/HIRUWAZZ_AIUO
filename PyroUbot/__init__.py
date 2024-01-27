@@ -14,74 +14,28 @@ from PyroUbot.config import *
 
 class ConnectionHandler(logging.Handler):
     def emit(self, record):
-        for X in ["OSErro", "TimeoutError"]:
-            if X in record.getMessage():
+        for error_type in ["OSErro", "TimeoutError"]:
+            if error_type in record.getMessage():
                 os.system(f"kill -9 {os.getpid()} && python3 -m PyroUbot")
 
 
 logger = logging.getLogger()
 logger.setLevel(logging.ERROR)
 
-formatter = logging.Formatter("[%(levelname)s] - %(name)s - %(message)s", "%d-%b %H:%M")
-stream_handler = logging.StreamHandler()
+formatter = logging.Formatter("[%(levelname)s] - %(name)s - %(message)s", "%m-%d %H:%M")
 
+stream_handler = logging.StreamHandler()
 stream_handler.setFormatter(formatter)
+
 connection_handler = ConnectionHandler()
 
 logger.addHandler(stream_handler)
 logger.addHandler(connection_handler)
 
-BLACKLIST_CHAT = [
-    -1001599474353,
-    -1001692751821,
-    -1001473548283,
-    -1001459812644,
-    -1001433238829,
-    -1001476936696,
-    -1001327032795,
-    -1001294181499,
-    -1001419516987,
-    -1001209432070,
-    -1001296934585,
-    -1001481357570,
-    -1001459701099,
-    -1001109837870,
-    -1001485393652,
-    -1001354786862,
-    -1001109500936,
-    -1001387666944,
-    -1001390552926,
-    -1001752592753,
-    -1001777428244,
-    -1001771438298,
-    -1001287188817,
-    -1001812143750,
-    -1001883961446,
-    -1001753840975,
-    -1001896051491,
-    -1001578091827,
-    -1001284445583,
-    -1001927904459,
-    -1001675396283,
-    -1001825363971,
-    -1001864253073,
-    -1001638351451,
-    -1001917492352,
-    -1001797285258,
-    -1001648538608,
-    -1001982790377,
-    -1001302879778,
-    -1001861414061,
-    -1001638351451,
-    -1001547153227,
-]
-
-aiosession = ClientSession()
-
 
 class Bot(Client):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs, device_model="ᴍᴀxɢᴜɴs ᴜʙᴏᴛ")
+        super().__init__(**kwargs, device_model="Titanium-Ubot")
 
     def on_message(self, filters=None, group=-1):
         def decorator(func):
@@ -109,8 +63,7 @@ class Ubot(Client):
     _get_my_peer = {}
 
     def __init__(self, **kwargs):
-        super().__init__(**kwargs, device_model="ᴍᴀxɢᴜɴs ᴜʙᴏᴛ")
-
+        super().__init__(**kwargs, device_model="ᴍᴀxɢᴜɴs_ᴜʙᴏᴛ")
 
     def on_message(self, filters=None, group=-1):
         def decorator(func):
@@ -124,7 +77,7 @@ class Ubot(Client):
         self._prefix[user_id] = prefix
 
     async def get_prefix(self, user_id):
-        return self._prefix.get(user_id, ["."])
+        return self._prefix.get(user_id, [".", ",", ":", ";", "!"])
 
     def cmd_prefix(self, cmd):
         command_re = re.compile(r"([\"'])(.*?)(?<!\\)\1|(\S+)")
@@ -176,7 +129,7 @@ class Ubot(Client):
         if handler:
             self._prefix[self.me.id] = handler
         else:
-            self._prefix[self.me.id] = ["."]
+            self._prefix[self.me.id] = [".", ",", ":", ";", "!"]
         self._ubot.append(self)
         self._get_my_id.append(self.me.id)
         self._translate[self.me.id] = "id"
