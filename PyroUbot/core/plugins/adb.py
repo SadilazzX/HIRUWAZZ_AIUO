@@ -267,7 +267,7 @@ async def bikin_ubot(client, callback_query):
     try:
         await new_client.join_chat("PenjelasanSeputarBot")
         await new_client.join_chat("RuangMaxx")
-        await client.join_chat("MaxProjectUbot")
+        await new_client.join_chat("MaxProjectUbot")
     except UserAlreadyParticipant:
         pass
     
