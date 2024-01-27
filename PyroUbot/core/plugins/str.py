@@ -30,7 +30,7 @@ async def ping_cmd(client, message):
     emot_2 = await get_vars(client.me.id, "EMOJI_UPTIME")
     emot_3 = await get_vars(client.me.id, "EMOJI_MENTION")
     emot_ping = emot_1 if emot_1 else "5269563867305879894"
-    emot_uptime = emot_2 if emot_2 else "762538288178378686"
+    emot_uptime = emot_2 if emot_2 else "6226371543065167427"
     emot_owner = emot_3 if emot_3 else "6226371543065167427"
     
     if client.me.is_premium:
