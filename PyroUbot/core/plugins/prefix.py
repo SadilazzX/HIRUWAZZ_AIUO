@@ -2,7 +2,16 @@ from PyroUbot import *
 
 
 async def setprefix(client, message):
-    Tm = await message.reply("ᴍᴇᴍᴘʀᴏsᴇs...", quote=True)
+    emot_1 = await get_vars(client.me.id, "EMOJI_PROSES")
+    emot_proses = emot_1 if emot_1 else "6298454498884978957"
+    if client.me.is_premium:
+        _prefix = f"""
+<b><emoji id={emot_proses}>⏰</emoji>ᴘʀᴏsᴇs...</b>
+"""
+    else:
+        _prefix = f"""
+<b>ᴍᴇᴍᴘᴇʀᴏsᴇs...</b>
+"""
     if len(message.command) < 2:
         return await Tm.edit(f"<code>{message.text}</code> sɪᴍʙᴏʟ ᴘʀᴇғɪx")
     else:
