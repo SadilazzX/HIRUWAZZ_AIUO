@@ -2,13 +2,13 @@ import logging
 import os
 import re
 
-from aiohttp import ClientSession
-
 from pyrogram import Client, filters
 from pyrogram.enums import ParseMode
 from pyrogram.handlers import CallbackQueryHandler, MessageHandler
 from pyrogram.types import Message
 from pyromod import listen
+from rich.logging import RichHandler
+
 from PyroUbot.config import *
 
 
