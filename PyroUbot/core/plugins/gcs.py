@@ -65,7 +65,17 @@ async def broadcast_group_cmd(client, message):
         except Exception:
             pass
 
-    return await msg.edit(f"<b>✅ ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ɢʀᴏᴜᴘ</b>")
+    emot_1 = await get_vars(client.me.id, "EMOJI_CEKLIS")
+    emot_ceklis = emot_1 if emot_1 else "5852871561983299073"
+    if client.me.is_premium:
+        _ceklis = f"""
+<b><emoji id={emot_ceklis}>✅</emoji>ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ɢʀᴏᴜᴘ</b>
+"""
+    else:
+        _ceklis = f"""
+<b>✅ ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ɢʀᴏᴜᴘ</b>
+"""
+    return await msg.edit(_ceklis)
 
 async def broadcast_users_cmd(client, message):
     msg = await message.reply("sᴇᴅᴀɴɢ ᴍᴇᴍᴘʀᴏsᴇs ᴍᴏʜᴏɴ ʙᴇʀsᴀʙᴀʀ", quote=True)
