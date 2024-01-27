@@ -4,7 +4,6 @@ from random import randint
 from typing import Optional
 
 from pyrogram import Client, enums, filters
-from pytgcalls import GroupCallFactory
 from pyrogram.raw.functions.channels import GetFullChannel
 from pyrogram.raw.functions.messages import GetFullChat
 from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall
