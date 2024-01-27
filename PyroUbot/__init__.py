@@ -5,6 +5,8 @@ import re
 from aiohttp import ClientSession
 
 from pyrogram import Client, filters
+from typing import Any, Dict
+from pytgcalls import GroupCallFactory
 from pyrogram.enums import ParseMode
 from pyrogram.handlers import CallbackQueryHandler, MessageHandler
 from pyrogram.types import Message
