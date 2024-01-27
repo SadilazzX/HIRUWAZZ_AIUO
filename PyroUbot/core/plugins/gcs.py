@@ -3,10 +3,10 @@ from gc import get_objects
 
 from pyrogram.enums import ChatType
 from pyrogram.errors.exceptions import FloodWait
-from pyrogram.types import InlineQueryResultArticle, InputTextMessageContent
 
 from PyroUbot import *
 from PyroUbot.config import *
+
 
 async def get_broadcast_id(client, query):
     chats = []
@@ -20,16 +20,17 @@ async def get_broadcast_id(client, query):
 
     return chats
 
+
 async def broadcast_group_cmd(client, message):
     emot_1 = await get_vars(client.me.id, "EMOJI_PROSES")
+    emot_2 = await get_vars(client.me.id, "EMOJI_GCAST")
     emot_proses = emot_1 if emot_1 else "6298454498884978957"
-    
-    premium_emoji = await get_vars(client.me.id, "PREMIUM_EMOJI")
-    premium_emoji = premium_emoji if premium_emoji else "⭐️"  # Default premium emoji
-    
+    emot_gcast = emot_2 if emot_2 else "5852871561983299073"
+
     if client.me.is_premium:
         _broadcast = f"""
-<b>{premium_emoji}<emoji id={emot_proses}>⏰</emoji>ᴘʀᴏsᴇs...
+<b><emoji id={emot_proses}>⏰</emoji>ᴘʀᴏsᴇs...
+<b><emoji id={emot_gcast}>✅</emoji> ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ɢʀᴏᴜᴘ</b>
 """
     msg = await message.reply("ᴍᴇᴍᴘʀᴏsᴇs...", quote=True)
 
@@ -127,7 +128,8 @@ async def broadcast_bot(client, message):
         except Exception:
             pass
 
-    return await msg.edit(f"<b>✅ ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ᴜsᴇʀs</b>")
+    return await msg.edit(f"<b>✅ ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛ {done} ᴜsᴇʀs</b>")
+
 
 async def send_msg_cmd(client, message):
     if message.reply_to_message:
