@@ -12,6 +12,7 @@ async def setprefix(client, message):
         _prefix = f"""
 <b>ᴍᴇᴍᴘᴇʀᴏsᴇs...</b>
 """
+        Tm = await message.reply(_prefix, quote=True)
     if len(message.command) < 2:
         return await Tm.edit(f"<code>{message.text}</code> sɪᴍʙᴏʟ ᴘʀᴇғɪx")
     else:
@@ -25,7 +26,17 @@ async def setprefix(client, message):
             client.set_prefix(message.from_user.id, ub_prefix)
             await set_pref(message.from_user.id, ub_prefix)
             parsed_prefix = " ".join(f"<code>{prefix}</code>" for prefix in ub_prefix)
-            return await Tm.edit(f"<b>✅ ᴘʀᴇғɪx ᴛᴇʟᴀʜ ᴅɪᴜʙᴀʜ ᴋᴇ: {parsed_prefix}</b>")
+    emot_1 = await get_vars(client.me.id, "EMOJI_SETUJU")
+    emot_setuju = emot_1 if emot_1 else "5852871561983299073"
+    if client.me.is_premium:
+        _setuju = f"""
+<b><emoji id={emot_setuju}>✅</emoji>ᴘʀᴇғɪx ᴛᴇʟᴀʜ ᴅɪᴜʙᴀʜ ᴋᴇ: {parsed_prefix}</b>
+"""
+    else:
+        _setuju = f"""
+<b>✅ ᴘʀᴇғɪx ᴛᴇʟᴀʜ ᴅɪᴜʙᴀʜ ᴋᴇ: {parsed_prefix}</b>
+"""
+            return await Tm.edit(_setuju)
         except Exception as error:
             return await Tm.edit(str(error))
 
