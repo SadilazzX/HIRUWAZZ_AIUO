@@ -12,7 +12,17 @@ from pyrogram.types import Message
 from pytgcalls import GroupCallFactory
 from PyroUbot import *
 
-# group_call = GroupCallFactory(Ubot).get_group_call()
+group_call = None
+
+def hdiiofficial(func):
+        async def wrapper(client, message):
+            global group_call
+            if not group_call:
+                group_call = GroupCallFactory(client).get_file_group_call()
+
+            await message.delete()
+            return await func(client, message)
+        return wrapper
 
 
 
@@ -78,8 +88,8 @@ async def stop_vctools(client, message):
         f"<b>ᴏʙʀᴏʟᴀɴ ꜱᴜᴀʀᴀ ᴅɪᴀᴋʜɪʀɪ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     )
 
-
-async def join_os(client, message):
+"""
+ async def join_os(client, message):
     kk = message.from_user.id
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
@@ -94,7 +104,17 @@ async def join_os(client, message):
         f"<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     )
     await client.group_call.set_is_mute(True)
+"""
 
+async def join_os(client, message):
+    cil = await message.reply("join to vcg...")
+    try:
+        await group_call.start(message.chat.id)
+        
+    except Exception as e:
+        return await cil.edit(f"Error: {e}")
+    await cil.edit("sukses")
+    await group_call.set_is_mute(True)
 
 
 async def turun_os(client, message):
