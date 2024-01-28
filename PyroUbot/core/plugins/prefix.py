@@ -6,7 +6,7 @@ async def setprefix(client, message):
     emot_proses = emot_1 if emot_1 else "6298454498884978957"
     if client.me.is_premium:
         _prefix = f"""
-<b><emoji id={emot_proses}>⏰</emoji>ᴘʀᴏsᴇs...</b>
+<b><emoji id={emot_proses}>⏰</emoji>ᴍᴇᴍᴘᴇʀᴏsᴇs...</b>
 """
     else:
         _prefix = f"""
