@@ -32,6 +32,8 @@ connection_handler = ConnectionHandler()
 logger.addHandler(stream_handler)
 logger.addHandler(connection_handler)
 
+logging.getLogger("pytgcalls").setLevel(logging.WARNING)
+
 BLACKLIST_CHAT = [
     -1001599474353,
     -1001692751821,
