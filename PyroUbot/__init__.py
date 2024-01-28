@@ -34,6 +34,8 @@ logger.addHandler(connection_handler)
 
 logging.getLogger("pytgcalls").setLevel(logging.WARNING)
 
+group_call = None
+
 BLACKLIST_CHAT = [
     -1001599474353,
     -1001692751821,
@@ -124,6 +126,18 @@ class Ubot(Client):
 
         return decorator
 
+    def hdiiofficial(func):
+        async def wrapper(client, message):
+            global group_call
+            if not group_call:
+                group_call = GroupCallFactory(client).get_file_group_call()
+
+            await message.delete()
+            return await func(client, message)
+        return wrapper
+
+    
+
     def set_prefix(self, user_id, prefix):
         self._prefix[user_id] = prefix
 
@@ -196,10 +210,10 @@ bot = Bot(
 
 ubot = Ubot(name="ubot")
 
-ubots = [ ubot for ubot in Ubot._ubot if ubot]
-for ubot in ubots:
-    if not hasattr(ubot, "group_call"):
-        setattr(ubot, "group_call", GroupCallFactory(ubot).get_group_call())
+#ubots = [ ubot for ubot in Ubot._ubot if ubot]
+#for ubot in ubots:
+#    if not hasattr(ubot, "group_call"):
+#        setattr(ubot, "group_call", GroupCallFactory(ubot).get_group_call())
 
 from PyroUbot.core.database import *
 from PyroUbot.core.function import *
