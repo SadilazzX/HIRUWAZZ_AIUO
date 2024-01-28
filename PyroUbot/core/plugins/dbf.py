@@ -102,53 +102,62 @@ async def get_prem_user(client, message):
 # ========================== #
 
 
-async def add_blaclist(client, message):
+async def add_blacklist(client, message):
     emot_1 = await get_vars(client.me.id, "EMOJI_TUNGGU")
     emot_tunggu = emot_1 if emot_1 else "6298454498884978957"
+    
     if client.me.is_premium:
         _tunggu = f"""
 <b><emoji id={emot_tunggu}>⏰</emoji>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . .</b>
 """
     else:
         _tunggu = f"""
-<b>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . ./b>
+<b>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . .</b>
 """
+
     Tm = await message.reply(_tunggu)
+    chat_id = message.chat.id  # Assuming 'chat_id' is defined somewhere
+
     if chat_id in blacklist:
-    emot_1 = await get_vars(client.me.id, "EMOJI_UDADA")
-    emot_udada = emot_1 if emot_1 else "4942776109449085714"
-    if client.me.is_premium:
-        _udada = f"""
+        emot_1 = await get_vars(client.me.id, "EMOJI_UDADA")
+        emot_udada = emot_1 if emot_1 else "4942776109449085714"
+        
+        if client.me.is_premium:
+            _udada = f"""
 <b><emoji id={emot_udada}>❌</emoji> ɢʀᴏᴜᴘ ɪɴɪ sᴜᴅᴀʜ ᴀᴅᴀ ᴅᴀʟᴀᴍ ʙʟᴀᴄᴋʟɪsᴛ</b>
 """
-    else:
-        _udada = f"""
+        else:
+            _udada = f"""
 <b>ɢʀᴏᴜᴘ ɪɴɪ sᴜᴅᴀʜ ᴀᴅᴀ ᴅᴀʟᴀᴍ ʙʟᴀᴄᴋʟɪsᴛ</b>
 """
-       return await Tm.edit(_udada)
+        return await Tm.edit(_udada)
+
     add_blacklist = await add_chat(client.me.id, chat_id)
+
     if add_blacklist:
-    emot_1 = await get_vars(client.me.id, "EMOJI_BERHASIL")
-    emot_berhasil = emot_1 if emot_1 else "4943174368881542467"
-    if client.me.is_premium:
-        _berhasil = f"""
+        emot_1 = await get_vars(client.me.id, "EMOJI_BERHASIL")
+        emot_berhasil = emot_1 if emot_1 else "4943174368881542467"
+        
+        if client.me.is_premium:
+            _berhasil = f"""
 <b><emoji id={emot_berhasil}>✅</emoji>{message.chat.title} ʙᴇʀʜᴀsɪʟ ᴅɪᴛᴀᴍʙᴀʜᴋᴀɴ ᴋᴇ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ</b>
 """
-    else:
-        _berhasil = f"""
+        else:
+            _berhasil = f"""
 <b>{message.chat.title} ʙᴇʀʜᴀsɪʟ ᴅɪᴛᴀᴍʙᴀʜᴋᴀɴ ᴋᴇ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ</b>
 """
         await Tm.edit(_berhasil)
     else:
-    emot_1 = await get_vars(client.me.id, "EMOJI_KESALAHAN")
-    emot_kesalahan = emot_1 if emot_1 else "4942820145748771860"
-    if client.me.is_premium:
-        _kesalahan = f"""
+        emot_1 = await get_vars(client.me.id, "EMOJI_KESALAHAN")
+        emot_kesalahan = emot_1 if emot_1 else "4942820145748771860"
+        
+        if client.me.is_premium:
+            _kesalahan = f"""
 <b><emoji id={emot_kesalahan}>❌</emoji>ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ</b>
 """
-    else:
-        _kesalahan = f"""
-<b>ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ/b>
+        else:
+            _kesalahan = f"""
+<b>ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ</b>
 """
         await Tm.edit(_kesalahan)
 
