@@ -120,7 +120,8 @@ async def add_blacklist(client, message):
 
     blacklist_result = await add_chat(client.me.id, chat_id)
 
-    if chat_id in blacklist_result:
+    # Check if adding to blacklist was successful
+    if blacklist_result:  
         emot_1 = await get_vars(client.me.id, "EMOJI_UDADA")
         emot_udada = emot_1 if emot_1 else "4942776109449085714"
         
@@ -134,19 +135,19 @@ async def add_blacklist(client, message):
 """
         return await Tm.edit(_udada)
 
-    if blacklist_result:
-        emot_1 = await get_vars(client.me.id, "EMOJI_BERHASIL")
-        emot_berhasil = emot_1 if emot_1 else "4943174368881542467"
-        
-        if client.me.is_premium:
-            _berhasil = f"""
+    # Continue with the rest of your code...
+    emot_1 = await get_vars(client.me.id, "EMOJI_BERHASIL")
+    emot_berhasil = emot_1 if emot_1 else "4943174368881542467"
+    
+    if client.me.is_premium:
+        _berhasil = f"""
 <b><emoji id={emot_berhasil}>✅</emoji>{message.chat.title} ʙᴇʀʜᴀsɪʟ ᴅɪᴛᴀᴍʙᴀʜᴋᴀɴ ᴋᴇ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ</b>
 """
-        else:
-            _berhasil = f"""
+    else:
+        _berhasil = f"""
 <b>{message.chat.title} ʙᴇʀʜᴀsɪʟ ᴅɪᴛᴀᴍʙᴀʜᴋᴀɴ ᴋᴇ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ</b>
 """
-        await Tm.edit(_berhasil)
+    await Tm.edit(_berhasil)
     else:
         emot_1 = await get_vars(client.me.id, "EMOJI_KESALAHAN")
         emot_kesalahan = emot_1 if emot_1 else "4942820145748771860"
