@@ -1,12 +1,18 @@
+# main.py
+
 import asyncio
-
 from pyrogram import idle
-
-from PyroUbot import *
+from PyroUbot import Ubot
+from PyroUbot import GroupCall
 
 
 async def start_ubot(user_id, _ubot):
     ubot_ = Ubot(**_ubot)
+    
+    group_call = GroupCall(ubot_)
+    
+    ubot_.group_call = group_call
+    
     try:
         await asyncio.wait_for(ubot_.start(), timeout=30)
     except asyncio.TimeoutError:
