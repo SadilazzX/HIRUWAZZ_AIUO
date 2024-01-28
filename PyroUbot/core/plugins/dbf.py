@@ -118,7 +118,9 @@ async def add_blacklist(client, message):
     Tm = await message.reply(_tunggu)
     chat_id = message.chat.id  # Assuming 'chat_id' is defined somewhere
 
-    if chat_id in add_blacklist:
+    blacklist_result = await add_chat(client.me.id, chat_id)
+
+    if chat_id in blacklist_result:
         emot_1 = await get_vars(client.me.id, "EMOJI_UDADA")
         emot_udada = emot_1 if emot_1 else "4942776109449085714"
         
@@ -132,9 +134,7 @@ async def add_blacklist(client, message):
 """
         return await Tm.edit(_udada)
 
-    add_blacklist = await add_chat(client.me.id, chat_id)
-
-    if add_blacklist:
+    if blacklist_result:
         emot_1 = await get_vars(client.me.id, "EMOJI_BERHASIL")
         emot_berhasil = emot_1 if emot_1 else "4943174368881542467"
         
@@ -161,24 +161,6 @@ async def add_blacklist(client, message):
 """
         await Tm.edit(_kesalahan)
 
-
-async def del_blacklist(client, message):
-    Tm = await message.reply("<b>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . .</b>")
-    try:
-        if not get_arg(message):
-            chat_id = message.chat.id
-        else:
-            chat_id = int(message.command[1])
-        blacklist = await get_chat(client.me.id)
-        if chat_id not in blacklist:
-            return await Tm.edit(f"{message.chat.title} ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴅᴀʟᴀᴍ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ")
-        del_blacklist = await remove_chat(client.me.id, chat_id)
-        if del_blacklist:
-            await Tm.edit(f"{chat_id} ʙᴇʀʜᴀsɪʟ ᴅɪʜᴀᴘᴜs ᴅᴀʀɪ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ")
-        else:
-            await Tm.edit("ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ")
-    except Exception as error:
-        await Tm.edit(error)
 
 
 async def get_blacklist(client, message):
