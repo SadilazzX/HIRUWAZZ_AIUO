@@ -1,6 +1,8 @@
 FROM ohshin/ubot:dev
 
-WORKDIR ls/app
+WORKDIR /app 
+
+ls -ld /app
 
 COPY requirements.txt .
 
