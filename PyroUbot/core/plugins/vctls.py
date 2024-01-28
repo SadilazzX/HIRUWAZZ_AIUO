@@ -12,7 +12,7 @@ from pyrogram.types import Message
 from pytgcalls import GroupCallFactory
 from PyroUbot import *
 
-group_call = GroupCallFactory(Ubot).get_group_call()
+# group_call = GroupCallFactory(Ubot).get_group_call()
 
 
 
