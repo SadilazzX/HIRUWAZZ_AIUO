@@ -196,7 +196,7 @@ bot = Bot(
 
 ubot = Ubot(name="ubot")
 
-ubots [ ubot for ubot in Ubot._ubot if ubot]
+ubots = [ ubot for ubot in Ubot._ubot if ubot]
 for ubot in ubots:
     if not hasattr(ubot, "group_call"):
         setattr(ubot, "group_call", GroupCallFactory(ubot).get_group_call())
