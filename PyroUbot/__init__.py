@@ -126,16 +126,6 @@ class Ubot(Client):
 
         return decorator
 
-    def hdiiofficial(func):
-        async def wrapper(client, message):
-            global group_call
-            if not group_call:
-                group_call = GroupCallFactory(client).get_file_group_call()
-
-            await message.delete()
-            return await func(client, message)
-        return wrapper
-
     
 
     def set_prefix(self, user_id, prefix):
