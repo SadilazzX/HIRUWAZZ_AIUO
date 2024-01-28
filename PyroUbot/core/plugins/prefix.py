@@ -2,19 +2,21 @@ from PyroUbot import *
 
 
 async def setprefix(client, message):
-    emot_1 = await get_vars(client.me.id, "EMOJI_PROSES")
-    emot_proses = emot_1 if emot_1 else "6298454498884978957"
+    emot_1 = await get_vars(client.me.id, "EMOJI_PREFIX")
+    emot_prefix = emot_1 if emot_1 else "6298454498884978957"
+    
     if client.me.is_premium:
         _prefix = f"""
-<b><emoji id={emot_proses}>⏰</emoji>ᴍᴇᴍᴘᴇʀᴏsᴇs...</b>
+<b><emoji id={emot_prefix}>⏰</emoji> ᴍᴇᴍᴘᴇʀᴏsᴇs...</b>
 """
     else:
         _prefix = f"""
 <b>ᴍᴇᴍᴘᴇʀᴏsᴇs...</b>
 """
         Tm = await message.reply(_prefix, quote=True)
+
     if len(message.command) < 2:
-        return await Tm.edit(f"<code>{message.text}</code> sɪᴍʙᴏʟ ᴘʀᴇғɪx")
+        return await Tm.edit(f"<code>{message.text}</code> Simbol prefix tidak mencukupi")
     else:
         ub_prefix = []
         for prefix in message.command[1:]:
@@ -26,14 +28,15 @@ async def setprefix(client, message):
             client.set_prefix(message.from_user.id, ub_prefix)
             await set_pref(message.from_user.id, ub_prefix)
             parsed_prefix = " ".join(f"<code>{prefix}</code>" for prefix in ub_prefix)
-    emot_1 = await get_vars(client.me.id, "EMOJI_SETUJU")
-    emot_setuju = emot_1 if emot_1 else "5852871561983299073"
-    if client.me.is_premium:
-        _setuju = f"""
-<b><emoji id={emot_setuju}>✅</emoji>ᴘʀᴇғɪx ᴛᴇʟᴀʜ ᴅɪᴜʙᴀʜ ᴋᴇ: {parsed_prefix}</b>
+            emot_1 = await get_vars(client.me.id, "EMOJI_SETUJU")
+            emot_setuju = emot_1 if emot_1 else "5852871561983299073"
+            
+            if client.me.is_premium:
+                _setuju = f"""
+<b><emoji id={emot_setuju}>✅</emoji> ᴘʀᴇғɪx ᴛᴇʟᴀʜ ᴅɪᴜʙᴀʜ ᴋᴇ: {parsed_prefix}</b>
 """
-    else:
-        _setuju = f"""
+            else:
+                _setuju = f"""
 <b>✅ ᴘʀᴇғɪx ᴛᴇʟᴀʜ ᴅɪᴜʙᴀʜ ᴋᴇ: {parsed_prefix}</b>
 """
             return await Tm.edit(_setuju)
