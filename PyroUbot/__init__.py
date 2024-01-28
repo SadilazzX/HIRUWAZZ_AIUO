@@ -5,7 +5,6 @@ import re
 from aiohttp import ClientSession
 
 from pyrogram import Client, filters
-from pytgcalls import GroupCallFactory
 from pyrogram.enums import ParseMode
 from pyrogram.handlers import CallbackQueryHandler, MessageHandler
 from pyrogram.types import Message
@@ -193,12 +192,6 @@ bot = Bot(
 
 ubot = Ubot(name="ubot")
 
-# Tambahkan blok kode berikut di sini
-for bot_instance in [bot, ubot]:
-    if not hasattr(bot_instance, "group_call"):
-        setattr(bot_instance, "group_call", GroupCallFactory(bot_instance).get_group_call())
-
-# Import lainnya dan kode berikutnya
 from PyroUbot.core.database import *
 from PyroUbot.core.function import *
 from PyroUbot.core.helpers import *
