@@ -9,8 +9,10 @@ from pyrogram.raw.functions.messages import GetFullChat
 from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall
 from pyrogram.raw.types import InputGroupCall, InputPeerChannel, InputPeerChat
 from pyrogram.types import Message
-
+from pytgcalls import GroupCallFactory
 from PyroUbot import *
+
+group_call = GroupCallFactory(Ubot).get_group_call()
 
 
 
