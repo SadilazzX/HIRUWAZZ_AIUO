@@ -22,7 +22,7 @@ __HELP__ = f"""
 @PY.GROUP
 @PY.TOP_CMD
 async def _(client, message):
-    await add_blaclist(client, message)
+    await add_blacklist(client, message)
 
 
 @PY.UBOT("unbl", sudo=True)
