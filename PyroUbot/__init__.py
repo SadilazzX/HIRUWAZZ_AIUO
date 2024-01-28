@@ -117,7 +117,7 @@ class Ubot(Client):
         def decorator(func):
             for ub in self._ubot:
                 ub.add_handler(MessageHandler(func, filters), group)
-                setattr(ub, "group_call", GroupCallFactory(ub).get_group_call())
+#                setattr(ub, "group_call", GroupCallFactory(ub).get_group_call())
             return func
 
         return decorator
