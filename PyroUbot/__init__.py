@@ -34,7 +34,7 @@ logger.addHandler(connection_handler)
 
 logging.getLogger("pytgcalls").setLevel(logging.WARNING)
 
-group_call = None
+
 
 BLACKLIST_CHAT = [
     -1001599474353,
