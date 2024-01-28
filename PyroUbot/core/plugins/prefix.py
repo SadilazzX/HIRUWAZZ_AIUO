@@ -5,18 +5,20 @@ async def setprefix(client, message):
     emot_1 = await get_vars(client.me.id, "EMOJI_PROSES")
     emot_proses = emot_1 if emot_1 else "6298454498884978957"
 
+    Tm = None  # Inisialisasi Tm di awal
+
     if client.me.is_premium:
         _prefix = f"""
-<b><emoji id={emot_proses}>⏰</emoji> ᴍᴇᴍᴘᴇʀᴏsᴇs...</b>
+<b><emoji id={emot_proses}>⏰</emoji> Memproses...</b>
 """
     else:
         _prefix = f"""
-<b>ᴍᴇᴍᴘᴇʀᴏsᴇs...</b>
+<b>Memproses...</b>
 """
         Tm = await message.reply(_prefix, quote=True)
 
     if len(message.command) < 2:
-        return await Tm.edit(f"<code>{message.text}</code> Simbol prefix tidak mencukupi")
+        await Tm.edit(f"<code>{message.text}</code> Simbol prefix tidak mencukupi")
     else:
         ub_prefix = []
         for prefix in message.command[1:]:
@@ -33,15 +35,16 @@ async def setprefix(client, message):
 
             if client.me.is_premium:
                 _setuju = f"""
-<b><emoji id={emot_setuju}>✅</emoji> ᴘʀᴇғɪx ᴛᴇʟᴀʜ ᴅɪᴜʙᴀʜ ᴋᴇ: {parsed_prefix}</b>
+<b><emoji id={emot_setuju}>✅</emoji> Prefix telah diubah ke: {parsed_prefix}</b>
 """
             else:
                 _setuju = f"""
-<b>✅ ᴘʀᴇғɪx ᴛᴇʟᴀʜ ᴅɪᴜʙᴀʜ ᴋᴇ: {parsed_prefix}</b>
+<b>✅ Prefix telah diubah ke: {parsed_prefix}</b>
 """
-            await Tm.edit(_setuju)  # Ubah dari return menjadi await Tm.edit
+            await Tm.edit(_setuju)
         except Exception as error:
-            await Tm.edit(str(error))  # Ubah dari return menjadi await Tm.edit
+            if Tm:  # Pastikan Tm sudah didefinisikan sebelum digunakan
+                await Tm.edit(str(error))
 
 
 async def change_emot(client, message):
