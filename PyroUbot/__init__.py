@@ -194,7 +194,7 @@ bot = Bot(
 ubot = Ubot(name="ubot")
 
 for Ubot in ubot:
-    if Ubot not hasattr(Ubot, "GroupCall"):
+if not hasattr(Ubot, "GroupCall"):
         setattr(Ubot, "GroupCall", GroupCallFactory(Ubot).get_group_call())
 
 
