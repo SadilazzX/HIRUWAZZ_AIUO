@@ -1,1 +1,1 @@
-worker: python
+worker: bash start
