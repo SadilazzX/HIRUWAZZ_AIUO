@@ -104,8 +104,7 @@ async def get_prem_user(client, message):
 
 async def add_blacklist(client, message):
     emot_1 = await get_vars(client.me.id, "EMOJI_TUNGGU")
-    emot_tunggu = emot_1 if emot_1 else "6298454498884978957"
-    
+    emot_tunggu = emot_1 if emot_1 else "6298454498884978957" 
     if client.me.is_premium:
         _tunggu = f"""
 <b><emoji id={emot_tunggu}>⏰</emoji>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . .</b>
@@ -114,13 +113,9 @@ async def add_blacklist(client, message):
         _tunggu = f"""
 <b>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . .</b>
 """
-
     Tm = await message.reply(_tunggu)
-    chat_id = message.chat.id  # Assuming 'chat_id' is defined somewhere
-
+    chat_id = message.chat.id
     blacklist_result = await add_chat(client.me.id, chat_id)
-
-    # Check if adding to blacklist was successful
     if blacklist_result:  
         emot_1 = await get_vars(client.me.id, "EMOJI_UDADA")
         emot_udada = emot_1 if emot_1 else "4942776109449085714"
@@ -134,11 +129,8 @@ async def add_blacklist(client, message):
 <b>ɢʀᴏᴜᴘ ɪɴɪ sᴜᴅᴀʜ ᴀᴅᴀ ᴅᴀʟᴀᴍ ʙʟᴀᴄᴋʟɪsᴛ</b>
 """
         return await Tm.edit(_udada)
-
-        # Continue with the rest of your code...
     emot_1 = await get_vars(client.me.id, "EMOJI_BERHASIL")
     emot_berhasil = emot_1 if emot_1 else "4943174368881542467"
-    
     if client.me.is_premium:
         _berhasil = f"""
 <b><emoji id={emot_berhasil}>✅</emoji>{message.chat.title} ʙᴇʀʜᴀsɪʟ ᴅɪᴛᴀᴍʙᴀʜᴋᴀɴ ᴋᴇ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ</b>
