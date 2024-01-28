@@ -85,7 +85,7 @@ async def get_prem_user(client, message):
 # ========================== #
 
 
-async def add_blaclist(client, message):
+async def add_blacklist(client, message):
     Tm = await message.reply("<b>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . .</b>")
     chat_id = message.chat.id
     blacklist = await get_chat(client.me.id)
