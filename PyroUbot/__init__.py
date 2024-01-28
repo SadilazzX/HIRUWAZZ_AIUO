@@ -10,6 +10,7 @@ from pyrogram.handlers import CallbackQueryHandler, MessageHandler
 from pyrogram.types import Message
 from pyromod import listen
 from PyroUbot.config import *
+# from pytgcalls import GroupCallFactory
 
 
 class ConnectionHandler(logging.Handler):
@@ -191,6 +192,10 @@ bot = Bot(
 )
 
 ubot = Ubot(name="ubot")
+
+#if ubot not hasattr(ubot, "GroupCall"):
+#    setattr(ubot, "GroupCall", GroupCallFactory(ubot).get_group_call())
+
 
 from PyroUbot.core.database import *
 from PyroUbot.core.function import *
