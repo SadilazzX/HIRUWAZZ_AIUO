@@ -148,11 +148,8 @@ async def add_blacklist(client, message):
 <b>{message.chat.title} ʙᴇʀʜᴀsɪʟ ᴅɪᴛᴀᴍʙᴀʜᴋᴀɴ ᴋᴇ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ</b>
 """
     await Tm.edit(_berhasil)
-
-    else:
     emot_1 = await get_vars(client.me.id, "EMOJI_KESALAHAN")
     emot_kesalahan = emot_1 if emot_1 else "4942820145748771860"
-    
     if client.me.is_premium:
         _kesalahan = f"""
 <b><emoji id={emot_kesalahan}>❌</emoji>ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ</b>
