@@ -6,53 +6,6 @@ from pytz import timezone
 
 from PyroUbot import *
 
-
-
-# ========================== #
-# 𝔻𝔸𝕋𝔸𝔹𝔸𝕊𝔼 𝔹𝕃𝔸ℂ𝕂𝕃𝕀𝕊𝕋 ℙℝ𝔼𝕄𝕀𝕌𝕄 #
-# ========================== #
-    emot_1 = await get_vars(client.me.id, "EMOJI_TUNGGU")
-    emot_tunggu = emot_1 if emot_1 else "6298454498884978957" 
-    if client.me.is_premium:
-        _tunggu = f"""
-<b><emoji id={emot_tunggu}>⏰</emoji>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . .</b>
-"""
-    else:
-        _tunggu = f"""
-<b>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . .</b>
-"""
-        emot_1 = await get_vars(client.me.id, "EMOJI_UDADA")
-        emot_udada = emot_1 if emot_1 else "4942776109449085714" 
-        if client.me.is_premium:
-            _udada = f"""
-<b><emoji id={emot_udada}>❌</emoji> ɢʀᴏᴜᴘ ɪɴɪ sᴜᴅᴀʜ ᴀᴅᴀ ᴅᴀʟᴀᴍ ʙʟᴀᴄᴋʟɪsᴛ</b>
-"""
-        else:
-            _udada = f"""
-<b>ɢʀᴏᴜᴘ ɪɴɪ sᴜᴅᴀʜ ᴀᴅᴀ ᴅᴀʟᴀᴍ ʙʟᴀᴄᴋʟɪsᴛ</b>
-"""
-    emot_1 = await get_vars(client.me.id, "EMOJI_BERHASIL")
-    emot_berhasil = emot_1 if emot_1 else "4943174368881542467"
-    if client.me.is_premium:
-        _berhasil = f"""
-<b><emoji id={emot_berhasil}>✅</emoji></b>
-"""
-    else:
-        _berhasil = f"""
-<b>{message.chat.title} ʙᴇʀʜᴀsɪʟ ᴅɪᴛᴀᴍʙᴀʜᴋᴀɴ ᴋᴇ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ</b>
-"""
-    emot_1 = await get_vars(client.me.id, "EMOJI_KESALAHAN")
-    emot_kesalahan = emot_1 if emot_1 else "4942820145748771860"
-    if client.me.is_premium:
-        _kesalahan = f"""
-<b><emoji id={emot_kesalahan}>❌</emoji>ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ</b>
-"""
-    else:
-        _kesalahan = f"""
-<b>ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ</b>
-"""
-
-
 # ========================== #
 # 𝔻𝔸𝕋𝔸𝔹𝔸𝕊𝔼 ℙℝ𝔼𝕄𝕀𝕌𝕄 #
 # ========================== #
@@ -83,24 +36,7 @@ async def prem_user(client, message):
         expired = now + relativedelta(months=int(get_bulan))
         await set_expired_date(get_id, expired)
         await Tm.edit(
-            f"<b>•> ɪᴅ: {get_id}\n•> ɴᴀᴍᴇ: {user.mention}\n•> ᴍᴀsᴀ ᴀᴋᴛɪғ: {get_bulan} ʙᴜʟᴀɴ\n•> ᴋᴇᴛᴇʀᴀɴɢᴀɴ: 𝘗𝘳𝘦𝘮𝘪𝘶𝘮\n•> ʙʏ: ᴍᴀxɢᴜɴs ᴜʙᴏᴛ</b>"
-        )
-        await bot.send_message(
-            OWNER_ID,
-            f"<b>•> ɪᴅ-sᴇʟʟᴇʀ: {message.from_user.id}\n\n•> ɪᴅ-ᴄᴜsᴛᴏᴍᴇʀ: {get_id}</b>",
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(
-                            "🔱 sᴇʟʟᴇʀ",
-                            callback_data=f"profil {message.from_user.id}",
-                        ),
-                        InlineKeyboardButton(
-                            "ᴄᴜsᴛᴏᴍᴇʀ ⚜️", callback_data=f"profil {get_id}"
-                        ),
-                    ],
-                ]
-            ),
+            f"<b>•> ɪᴅ: {get_id}\n•> ɴᴀᴍᴇ: {user.mention}\n•> ᴍᴀsᴀ ᴀᴋᴛɪғ: {get_bulan} ʙᴜʟᴀɴ\n•> ᴋᴇᴛᴇʀᴀɴɢᴀɴ: 𝘗𝘳𝘦𝘮𝘪𝘶𝘮\n•> ʙʏ: HikariUserbot.t.me</b>"
         )
     else:
         await Tm.delete()
@@ -150,19 +86,20 @@ async def get_prem_user(client, message):
 
 
 async def add_blaclist(client, message):
-    Tm = await message.reply(_tunggu)
+    Tm = await message.reply("<b>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . .</b>")
     chat_id = message.chat.id
     blacklist = await get_chat(client.me.id)
     if chat_id in blacklist:
-        return await Tm.edit(_udada)
+        return await Tm.edit("ɢʀᴏᴜᴘ ɪɴɪ sᴜᴅᴀʜ ᴀᴅᴀ ᴅᴀʟᴀᴍ ʙʟᴀᴄᴋʟɪsᴛ")
     add_blacklist = await add_chat(client.me.id, chat_id)
     if add_blacklist:
-        await Tm.edit(_berhasil)(f"{message.chat.title} ʙᴇʀʜᴀsɪʟ ᴅɪᴛᴀᴍʙᴀʜᴋᴀɴ ᴋᴇ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ")
+        await Tm.edit(f"{message.chat.title} ʙᴇʀʜᴀsɪʟ ᴅɪᴛᴀᴍʙᴀʜᴋᴀɴ ᴋᴇ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ")
     else:
-        await Tm.edit(_kesalahan)
+        await Tm.edit("ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ")
+
 
 async def del_blacklist(client, message):
-    Tm = await message.reply(_tunggu)
+    Tm = await message.reply("<b>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . .</b>")
     try:
         if not get_arg(message):
             chat_id = message.chat.id
@@ -226,7 +163,7 @@ async def seles_user(client, message):
     added = await add_seles(user.id)
     if added:
         await add_prem(user.id)
-        await Tm.edit(f"<b>•> ɪᴅ: {get_id}\n•> ɴᴀᴍᴇ: {user.mention}\n•> ᴋᴇᴛᴇʀᴀɴɢᴀɴ: 𝘙𝘦𝘴𝘦𝘭𝘭𝘦𝘳\n•> ʙʏ: ᴍᴀxɢᴜɴs ᴜʙᴏᴛ </b>")
+        await Tm.edit(f"<b>•> ɪᴅ: {get_id}\n•> ɴᴀᴍᴇ: {user.mention}\n•> ᴋᴇᴛᴇʀᴀɴɢᴀɴ: 𝘙𝘦𝘴𝘦𝘭𝘭𝘦𝘳\n•> ʙʏ: HikariUserbot.t.me</b>")
     else:
         await Tm.delete()
         await message.reply_text("ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ")
@@ -289,7 +226,7 @@ async def expired_add(client, message):
     now = datetime.now(timezone("Asia/Jakarta"))
     expire_date = now + timedelta(days=int(get_day))
     await set_expired_date(user_id, expire_date)
-    await Tm.edit(f"•> ɪᴅ: {get_id}\n•> ᴀᴋᴛɪғᴋᴀɴ_sᴇʟᴀᴍᴀ: {get_day} ʜᴀʀɪ")
+    await Tm.edit(f"{get_id} ᴛᴇʟᴀʜ ᴅɪᴀᴋᴛɪғᴋᴀɴ sᴇʟᴀᴍᴀ {get_day} ʜᴀʀɪ.")
 
 
 async def expired_cek(client, message):
@@ -302,7 +239,7 @@ async def expired_cek(client, message):
     else:
         remaining_days = (expired_date - datetime.now()).days
         await message.reply(
-            f"•> ɪᴅ: {user_id}\n•> ᴀᴋᴛɪғ_ʜɪɴɢɢᴀ: {expired_date.strftime('%d-%m-%Y %H:%M:%S')}\n•> ᴡᴀᴋᴛᴜ_ᴀᴋᴛɪғ: {remaining_days} ʜᴀʀɪ"
+            f"{user_id} ᴀᴋᴛɪғ ʜɪɴɢɢᴀ {expired_date.strftime('%d-%m-%Y %H:%M:%S')}. sɪsᴀ ᴡᴀᴋᴛᴜ ᴀᴋᴛɪғ {remaining_days} ʜᴀʀɪ."
         )
 
 
