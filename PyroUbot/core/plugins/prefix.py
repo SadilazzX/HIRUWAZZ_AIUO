@@ -2,12 +2,12 @@ from PyroUbot import *
 
 
 async def setprefix(client, message):
-    emot_1 = await get_vars(client.me.id, "EMOJI_PREFIX")
-    emot_prefix = emot_1 if emot_1 else "6298454498884978957"
-    
+    emot_1 = await get_vars(client.me.id, "EMOJI_PROSES")
+    emot_proses = emot_1 if emot_1 else "6298454498884978957"
+
     if client.me.is_premium:
         _prefix = f"""
-<b><emoji id={emot_prefix}>⏰</emoji> ᴍᴇᴍᴘᴇʀᴏsᴇs...</b>
+<b><emoji id={emot_proses}>⏰</emoji> ᴍᴇᴍᴘᴇʀᴏsᴇs...</b>
 """
     else:
         _prefix = f"""
@@ -30,7 +30,7 @@ async def setprefix(client, message):
             parsed_prefix = " ".join(f"<code>{prefix}</code>" for prefix in ub_prefix)
             emot_1 = await get_vars(client.me.id, "EMOJI_SETUJU")
             emot_setuju = emot_1 if emot_1 else "5852871561983299073"
-            
+
             if client.me.is_premium:
                 _setuju = f"""
 <b><emoji id={emot_setuju}>✅</emoji> ᴘʀᴇғɪx ᴛᴇʟᴀʜ ᴅɪᴜʙᴀʜ ᴋᴇ: {parsed_prefix}</b>
@@ -39,9 +39,9 @@ async def setprefix(client, message):
                 _setuju = f"""
 <b>✅ ᴘʀᴇғɪx ᴛᴇʟᴀʜ ᴅɪᴜʙᴀʜ ᴋᴇ: {parsed_prefix}</b>
 """
-            return await Tm.edit(_setuju)
+            await Tm.edit(_setuju)  # Ubah dari return menjadi await Tm.edit
         except Exception as error:
-            return await Tm.edit(str(error))
+            await Tm.edit(str(error))  # Ubah dari return menjadi await Tm.edit
 
 
 async def change_emot(client, message):
