@@ -118,7 +118,7 @@ async def add_blacklist(client, message):
     Tm = await message.reply(_tunggu)
     chat_id = message.chat.id  # Assuming 'chat_id' is defined somewhere
 
-    if chat_id in blacklist:
+    if chat_id in add_blacklist:
         emot_1 = await get_vars(client.me.id, "EMOJI_UDADA")
         emot_udada = emot_1 if emot_1 else "4942776109449085714"
         
