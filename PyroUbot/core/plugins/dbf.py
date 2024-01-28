@@ -135,7 +135,7 @@ async def add_blacklist(client, message):
 """
         return await Tm.edit(_udada)
 
-    # Continue with the rest of your code...
+        # Continue with the rest of your code...
     emot_1 = await get_vars(client.me.id, "EMOJI_BERHASIL")
     emot_berhasil = emot_1 if emot_1 else "4943174368881542467"
     
@@ -148,6 +148,7 @@ async def add_blacklist(client, message):
 <b>{message.chat.title} ʙᴇʀʜᴀsɪʟ ᴅɪᴛᴀᴍʙᴀʜᴋᴀɴ ᴋᴇ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ</b>
 """
     await Tm.edit(_berhasil)
+
     else:
         emot_1 = await get_vars(client.me.id, "EMOJI_KESALAHAN")
         emot_kesalahan = emot_1 if emot_1 else "4942820145748771860"
