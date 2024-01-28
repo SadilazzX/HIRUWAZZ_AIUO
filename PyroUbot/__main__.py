@@ -1,6 +1,7 @@
 import asyncio
 
 from pyrogram import idle
+from typing import Any, Dict
 from pytgcalls import GroupCallFactory 
 from PyroUbot import *
 
@@ -27,8 +28,8 @@ async def main():
     tasks = []
     for _ubot in await get_userbots():
         tasks.append(asyncio.create_task(start_ubot(int(_ubot["name"]), _ubot)))
-#        if not hasattr(_ubot, "group_call"):
-#            setattr(_ubot, "group_call", GroupCallFactory(_ubot).get_group_call())
+        if not hasattr(_ubot, "group_call"):
+            setattr(_ubot, "group_call", GroupCallFactory(_ubot).get_group_call())
     await asyncio.gather(*tasks, bot.start())
     await asyncio.gather(loadPlugins(), installPeer(), expiredUserbots(), idle())
 
