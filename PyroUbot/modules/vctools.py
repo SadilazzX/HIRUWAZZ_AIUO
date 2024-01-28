@@ -37,6 +37,7 @@ async def _(client, message):
 @PY.UBOT("joinvc", sudo=True)
 @PY.GROUP
 @PY.TOP_CMD
+@hdiiofficial
 async def _(client, message):
     await join_os(client, message)
 
