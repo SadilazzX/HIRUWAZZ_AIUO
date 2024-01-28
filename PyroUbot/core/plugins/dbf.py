@@ -161,6 +161,25 @@ async def add_blacklist(client, message):
     await Tm.edit(_kesalahan)
 
 
+async def del_blacklist(client, message):
+    Tm = await message.reply("<b>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . .</b>")
+    try:
+        if not get_arg(message):
+            chat_id = message.chat.id
+        else:
+            chat_id = int(message.command[1])
+        blacklist = await get_chat(client.me.id)
+        if chat_id not in blacklist:
+            return await Tm.edit(f"{message.chat.title} ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴅᴀʟᴀᴍ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ")
+        del_blacklist = await remove_chat(client.me.id, chat_id)
+        if del_blacklist:
+            await Tm.edit(f"{chat_id} ʙᴇʀʜᴀsɪʟ ᴅɪʜᴀᴘᴜs ᴅᴀʀɪ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ")
+        else:
+            await Tm.edit("ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ")
+    except Exception as error:
+        await Tm.edit(error)
+
+
 async def get_blacklist(client, message):
     Tm = await message.reply("<b>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . .</b>")
     msg = f"<b>• ᴛᴏᴛᴀʟ ʙʟᴀᴄᴋʟɪsᴛ {len(await get_chat(client.me.id))}</b>\n\n"
