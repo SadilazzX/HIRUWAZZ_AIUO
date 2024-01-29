@@ -9,20 +9,7 @@ from pyrogram.raw.functions.messages import GetFullChat
 from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall
 from pyrogram.raw.types import InputGroupCall, InputPeerChannel, InputPeerChat
 from pyrogram.types import Message
-from pytgcalls import GroupCallFactory
 from PyroUbot import *
-
-group_call = None
-
-def hdiiofficial(func):
-        async def wrapper(client, message):
-            global group_call
-            if not group_call:
-                group_call = GroupCallFactory(client).get_file_group_call()
-
-            await message.delete()
-            return await func(client, message)
-        return wrapper
 
 
 
@@ -88,47 +75,37 @@ async def stop_vctools(client, message):
         f"<b>ᴏʙʀᴏʟᴀɴ ꜱᴜᴀʀᴀ ᴅɪᴀᴋʜɪʀɪ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     )
 
-"""
- async def join_os(client, message):
+async def join_os(client, message):
     kk = message.from_user.id
-    ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
+    hdi = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
-        await client.group_call(chat_id)
+        await client.vc.start(chat_id)
 
     except Exception as e:
-        return await ky.edit(f"ERROR: {e}")
-    await ky.edit(
+        return await hdi.edit(f"ERROR: {e}")
+    await hdi.edit(
         f"<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     )
-    await client.group_call.set_is_mute(True)
-"""
+    await client.vc.set_is_mute(True)
 
-async def join_os(client, message):
-    cil = await message.reply("join to vcg...")
-    try:
-        await group_call.start(message.chat.id)
-        
-    except Exception as e:
-        return await cil.edit(f"Error: {e}")
-    await cil.edit("sukses")
-    await group_call.set_is_mute(True)
 
 
 async def turun_os(client, message):
-    ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
+    hdi = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     with suppress(ValueError):
         chat_id = int(chat_id)
     try:
       
-        await client.group_call.stop()
+        await client.vc.stop()
 
     except Exception as e:
-        return await ky.edit(f"<b>ERROR:</b> {e}")
+        return await hdi.edit(f"<b>ERROR:</b> {e}")
     msg = "<b>ʙᴇʀʜᴀꜱɪʟ ᴍᴇɴɪɴɢɢᴀʟᴋᴀɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n"
     if chat_id:
         msg += f"<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
-    await ky.edit(msg)
+    await hdi.edit(msg)
+                
