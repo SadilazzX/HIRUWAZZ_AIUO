@@ -115,6 +115,7 @@ class Ubot(Client):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs, device_model="ᴍᴀxɢᴜɴs ᴜʙᴏᴛ")
+        self.vc = GroupCallFactory(self).get_group_call(**kwargs)
 
     def on_message(self, filters=None, group=-1):
         def decorator(func):
