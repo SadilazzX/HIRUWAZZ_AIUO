@@ -1,8 +1,17 @@
 from io import BytesIO
+#import requests
+#from PIL import Image
+
 
 from PyroUbot import *
-
-
+"""
+async def generate_carbon_png(code: str) -> Image:
+    carbon_url = f"https://carbon.now.sh/?code={code}"
+    response = await requests.get(carbon_url)
+    image_bytes = BytesIO(response.content)
+    image = Image.open(image_bytes)
+    return image
+    """
 
 async def make_carbon(code):
     url = "https://carbonara.solopov.dev/api/cook"
