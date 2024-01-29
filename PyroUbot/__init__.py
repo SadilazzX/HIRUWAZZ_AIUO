@@ -120,7 +120,6 @@ class Ubot(Client):
         def decorator(func):
             for ub in self._ubot:
                 ub.add_handler(MessageHandler(func, filters), group)
-#                setattr(ub, "group_call", GroupCallFactory(ub).get_group_call())
             return func
 
         return decorator
@@ -199,10 +198,6 @@ bot = Bot(
 
 ubot = Ubot(name="ubot")
 
-#ubots = [ ubot for ubot in Ubot._ubot if ubot]
-#for ubot in ubots:
-#    if not hasattr(ubot, "group_call"):
-#        setattr(ubot, "group_call", GroupCallFactory(ubot).get_group_call())
 
 from PyroUbot.core.database import *
 from PyroUbot.core.function import *
