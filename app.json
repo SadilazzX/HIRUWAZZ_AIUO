@@ -4,85 +4,49 @@
     "repository": "https://github.com/MaxGuns/MaxGun",
     "stack": "container",
     "env": {
-        "API_ID": {
-           "description": "Get this value from my.telegram.org/apps.",
-           "required": true,
-           "value": "27087758"
-        },
-        "API_HASH": {
-           "description": "Get this value from my.telegram.org/apps.",
-           "required": true,
-           "value": "2ef578f901d8ab62b58e03db98533747"
-        },
-        "ENV": {
-           "description": "Setting this to ANYTHING will enable environment variables. Leave it as it is",
-           "required": true,
-           "value": "ANYTHING"
-        },
-        "LOG_GROUP_ID": {
-           "description": "Event logs channel to note down important bot level events, recommend to make this public. ex: '-123456'",
-           "required": true,
-           "value": "-1002059542096"
-        },
-        "MESSAGE_DUMP_CHAT": {
-           "description": "Event logs channel to note down important bot level events, recommend to make this public. ex: '-123456'",
-           "required": true,
-           "value": "-1006791897538"
-        },
-        "GBAN_LOG_GROUP_ID": {
-           "description": "Log gban ex: '-123456'",
-           "required": true,
-           "value": "-1002059542096"
-        },
-        "ARQ_API_KEY": {
-           "description": "Bebas",
-           "required": true,
-           "value": "PWYOCA-DNGDMB-TAYRQE-UGZMGO-ARQ"
-        },
-        "ARQ_API_URL": {
-           "description": "Bebas ",
-           "required": true,
-           "value": "PWYOCA-DNGDMB-TAYRQE-UGZMGO-ARQ"
-        },
-        "PM_PERMIT": {
-           "description": "Untuk PM Permit Userbot",
-           "required": true,
-           "value": "True"
-        },
         "MONGO_URL": {
-           "description": "Required for database connections.",
-           "required": true,
-           "value": "mongodb+srv://anon:1234@cluster0.hdnoym9.mongodb.net/?retryWrites=true&w=majority",
-        },
-        "USERBOT_PREFIX": {
-           "description": "Prefix userbot.",
-           "required": true,
-           "value": "!"
+            "description": "Fill there an mongo database from mongodb.com",
+            "required": true,
+            "value": "mongodb+srv://anon:1234@cluster0.hdnoym9.mongodb.net/?retryWrites=true&w=majority"
         },
         "OPENAI_API": {
-           "description": "Openai api key.",
-           "required": false,
-           "value": ""
+            "description": "Jika ingin menggunakan openai, isi openai-api-key",
+            "required": false,
+            "value": "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"
         },
-        "SESSION": {
-           "description": "String session pyrogram.",
-           "required": true,
-           "value": "BQGdU44ARLffJ4o979Id7xkbso2XwG8PnfaX8DHz-76xpjY7CubcgYwTL7H7xfiPwIUW7pb2coIzUs9R050M4o1NqfnJ9x279NBkevDv36e9ZYTMAnTHVHsone91zvWVSHx6yfCcxVMW61sD8taI91wO9zEzF07jiaqSle0atBO0r7qMqFYCmMZpU_S23Hi0F84yspXqR37Y3VFH9USrUTZrkp6pk5JCFoPX6FIzK12MPA1f-5WNh2YaFSHUwoD_CCyHS-ryEDl2HMOXhxUVmTkXvbMhcF4IAJx0Jy1-0nH7-IGNZ312nrdj4uGnxxVkrqzbAZOT0KHDA8cGxP9MyVeh7qNHgQAAAAA4B87_AA"
-        },
-        "SUDO_USERS_ID": {
-           "description": "Id Sudo User.",
-           "required": false,
-           "value": ""
+        "BLACKLIST_CHAT":{
+            "required": true,
+            " value": "-1001538826310 -1001462256506 -1001812143750 -1002012397923 -1001812143750 -1001964273937 -1002006883687 -1001951721136 -1002045881007 -1001986858575 -1002044156039 -1001974313872"
+        },   
+        "OWNER_ID": {
+            "description": "Fill there your I'd go to @geezramrobot pm and type /id",
+            "required": true,
+            "value": "6588255955"
         },
         "BOT_TOKEN": {
-           "description": "Get bot token from @BotFather on TG",
-           "required": true,
-           "value": "6903081864:AAF15z-2cPpkRpGfCuFuhpJeGAOg6intD9Y"
-       }
-   },
+            "description": "fill with your bot token get from @BotFather on telegram",
+            "required": true,
+            "value": "6704254633:AAEHvrDTcDU62ASZTrG5zDXCTjkJR9g4nic"
+        },
+        "BOTLOG_CHATID": {
+            "description": "fill with your Publik LOG Group",
+            "required": false,
+            "value": "-1002044156039"
+        },
+        "HEROKU_API_KEY": {
+            "description": "Heroku Api Key",
+            "required": false,
+            "value": ""
+        },
+        "HEROKU_APP_NAME": {
+            "description": "Heroku APP name",
+            "required": false,
+            "value": ""
+        }
+    },
         "buildpacks": [
         {"url": "https://github.com/interconnectit/heroku-buildpack-ffmpeg"},
         {"url": "https://github.com/subinps/heroku-buildpack-nodejs"},
         {"url": "heroku/python"}
     ]
-    }
+}
