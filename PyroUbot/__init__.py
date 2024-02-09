@@ -114,7 +114,7 @@ class Ubot(Client):
     _get_my_peer = {}
 
     def __init__(self, **kwargs):
-        super().__init__(**kwargs, device_model="ᴍᴀxɢᴜɴs ᴜʙᴏᴛ")
+        super().__init__(**kwargs, device_model="ᴋᴜʟʟ ʙᴇᴛ")
         self.vc = GroupCallFactory(self).get_group_call()
 
     def on_message(self, filters=None, group=-1):
