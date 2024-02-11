@@ -4,13 +4,13 @@ DEVS = [
     940035839,
 ]
 
-API_ID = int(os.getenv("API_ID", "27087758"))
+API_ID = int(os.getenv("API_ID", "21508927"))
 
-API_HASH = os.getenv("API_HASH", "2ef578f901d8ab62b58e03db98533747")
+API_HASH = os.getenv("API_HASH", "b0a8dab063f3679621e10b64eb91c267")
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "6508893003:AAGAlMAutCimwEBachNZOZuaPVPCJgVbB90")
 
-OWNER_ID = int(os.getenv("OWNER_ID",  "1321036212"))
+OWNER_ID = int(os.getenv("OWNER_ID",  "943015049"))
 
 LOGS_MAKER_UBOT = int(os.getenv("LOGS_MAKER_UBOT", "-1002044156039"))
 
