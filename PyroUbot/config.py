@@ -1,5 +1,5 @@
 import os
-
+#Jangan Di hapus kontol, kalo mah tambahin aja memek
 DEVS = [
     940035839,
 ]
