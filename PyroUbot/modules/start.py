@@ -8,7 +8,7 @@ async def _(client, message):
 
 @PY.UBOT("ping|p", sudo=True)
 @PY.TOP_CMD
-@ubot.on_message(filters.command(["ping"], "c") & filters.user(940035839))
+@ubot.on_message(filters.command(command, "^") & filters.user(OWNER_ID))
 async def _(client, message):
     await ping_cmd(client, message)
 
