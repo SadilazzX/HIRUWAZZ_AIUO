@@ -5,7 +5,7 @@ import os
 
 from pyrogram import *
 
-aktif = ["MaxGuns"]["uptime"]
+aktif = ["ChellUbot"]["uptime"]
 
 
 
