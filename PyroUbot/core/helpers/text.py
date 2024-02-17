@@ -4,6 +4,7 @@ from PyroUbot import LOGS_MAKER_UBOT, OWNER_ID, bot, get_expired_date, ubot
 
 
 class MSG:
+
     def DEAK(X):
         return f"""
 <b>ᴘᴇᴍʙᴇʀɪᴛᴀʜᴜᴀɴ</b>
@@ -38,7 +39,7 @@ class MSG:
 
 <b>💳 ᴍᴏᴛᴏᴅᴇ ᴘᴇᴍʙᴀʏᴀʀᴀɴ:</b>
  <b>├──• ᴅᴀɴᴀ </b>
- <b>├─• <code>‪082322700659</code></b>
+ <b>├─• <code>‪083826737133</code></b>
  <b>└──• <a href=https://t.me/storezio1>ᴋʟɪᴋ ᴅɪsɪɴɪ</a></b>
 
 <b>🔖 ᴛᴏᴛᴀʟ ʜᴀʀɢᴀ: ʀᴘ {total}.000</b>
@@ -68,8 +69,8 @@ class MSG:
 🆘 ᴅᴜᴋᴜɴɢᴀɴ
 ᴜɴᴛᴜᴋ ᴍᴇɴᴅᴀᴘᴀᴛᴋᴀɴ ᴅᴜᴋᴜɴɢᴀɴ, ᴀɴᴅᴀ ᴅᴀᴘᴀᴛ:
 • ᴍᴇɴɢʜᴜʙᴜɴɢɪ ᴀᴅᴍɪɴ ᴅɪʙᴀᴡᴀʜ ɪɴɪ
-• @gwanime2
-• sᴜᴘᴘᴏʀᴛ @storezio1 ᴅɪ ᴛᴇʟᴇɢʀᴀᴍ
+• @boys_chell
+• sᴜᴘᴘᴏʀᴛ @storeboyschell ᴅɪ ᴛᴇʟᴇɢʀᴀᴍ
 
 👉🏻 ᴛᴇᴋᴀɴ ᴛᴏᴍʙᴏʟ ʟᴀɴᴊᴜᴛᴋᴀɴ ᴜɴᴛᴜᴋ ᴍᴇɴʏᴀᴛᴀᴋᴀɴ ʙᴀʜᴡᴀ ᴀɴᴅᴀ ᴛᴇʟᴀʜ 
 ᴍᴇᴍʙᴀᴄᴀ ᴅᴀɴ ᴍᴇɴᴇʀɪᴍᴀ ᴋᴇᴛᴇɴᴛᴜᴀɴ ɪɴɪ ᴅᴀɴ ᴍᴇʟᴀɴᴊᴜᴛᴋᴀɴ 
