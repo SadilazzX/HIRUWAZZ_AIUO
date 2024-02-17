@@ -26,7 +26,6 @@ telegraph
 pyromod
 openai
 youtube-search-python
-pymongo
 yt-dlp
 wget
 python-dateutil
