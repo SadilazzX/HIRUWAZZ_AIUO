@@ -78,7 +78,7 @@ BLACKLIST_CHAT = [
     -1001302879778,
     -1001861414061,
     -1001638351451,
-    -1001994800407,
+    -1001547153227,
 ]
 
 aiosession = ClientSession()
@@ -86,7 +86,7 @@ aiosession = ClientSession()
 
 class Bot(Client):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs, device_model="ᴋᴜʟʟ ʙᴇᴛ")
+        super().__init__(**kwargs, device_model="á´‹á´œÊŸÊŸ Ê™á´‡á´›")
 
     def on_message(self, filters=None, group=-1):
         def decorator(func):
@@ -114,7 +114,7 @@ class Ubot(Client):
     _get_my_peer = {}
 
     def __init__(self, **kwargs):
-        super().__init__(**kwargs, device_model="ᴋᴜʟʟ ʙᴇᴛ")
+        super().__init__(**kwargs, device_model="á´‹á´œÊŸÊŸ Ê™á´‡á´›")
         self.vc = GroupCallFactory(self).get_group_call()
 
     def on_message(self, filters=None, group=-1):
@@ -187,7 +187,7 @@ class Ubot(Client):
         self._ubot.append(self)
         self._get_my_id.append(self.me.id)
         self._translate[self.me.id] = "id"
-        print(f"[𝐈𝐍𝐅𝐎] - ({self.me.id}) - 𝐒𝐓𝐀𝐑𝐓𝐄𝐃")
+        print(f"[ðˆðð…ðŽ] - ({self.me.id}) - ð’ð“ð€ð‘ð“ð„ðƒ")
 
 
 bot = Bot(
