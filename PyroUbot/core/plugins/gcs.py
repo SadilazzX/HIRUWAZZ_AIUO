@@ -27,7 +27,7 @@ async def broadcast_group_cmd(client, message):
     emot_ceklis = emot_2 if emot_2 else "5852871561983299073"
     if client.me.is_premium:
         _broadcast = f"""
-<b><emoji id={emot_proses}>⏰</emoji>ᴍᴇᴍᴘᴇʀᴏsᴇs...</b>
+<b><emoji id={emot_proses}>⏰</emoji>ʙɪsᴍɪʟʟᴀʜ...</b>
 """
     else:
         _broadcast = f"""
@@ -73,7 +73,7 @@ async def broadcast_group_cmd(client, message):
 """
     else:
         _ceklis = f"""
-<b>✅ ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ɢʀᴏᴜᴘ</b>
+<b>✅ ᴀʟʜᴀᴍᴅᴜʟɪʟʟᴀʜ ᴘᴇsᴀɴ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ɢʀᴏᴜᴘ</b>
 """
     return await msg.edit(_ceklis)
 
@@ -109,10 +109,10 @@ async def broadcast_users_cmd(client, message):
         except Exception:
             pass
 
-    return await msg.edit(f"<b>✅ ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ᴜsᴇʀs</b>")
+    return await msg.edit(f"<b>✅ ᴀʟʜᴀᴍᴅᴜʟɪʟʟᴀʜ ᴘᴇsᴀɴ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ᴜsᴇʀs</b>")
 
 async def broadcast_bot(client, message):
-    msg = await message.reply("sᴇᴅᴀɴɢ ᴍᴇᴍᴘʀᴏsᴇs ᴍᴏʜᴏɴ ʙᴇʀsᴀʙᴀʀ", quote=True)
+    msg = await message.reply("sᴀʙᴀʀ ɴᴊɪɴᴋ", quote=True)
 
     send = get_message(message)
     if not send:
@@ -137,7 +137,7 @@ async def broadcast_bot(client, message):
         except Exception:
             pass
 
-    return await msg.edit(f"<b>✅ ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛ {done} ᴜsᴇʀs</b>")
+    return await msg.edit(f"<b>✅ ᴜᴅᴀʜ sᴇʟᴇsᴀɪ ɴʏᴇᴛ {done} ᴜsᴇʀs</b>")
 
 
 async def send_msg_cmd(client, message):
