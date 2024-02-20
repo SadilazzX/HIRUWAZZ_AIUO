@@ -1,4 +1,5 @@
 import asyncio
+from gc import get_objects
 
 from pyrogram import *
 from pyrogram.enums import ChatType
