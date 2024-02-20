@@ -82,7 +82,7 @@ async def broadcast_users_cmd(client, message):
 
     send = get_message(message)
     if not send:
-        return await msg.edit("ᴍᴏʜᴏɴ ʙᴀʟᴀs sᴇsᴜᴀᴛᴜ ᴀᴛᴀᴜ ᴋᴇᴛɪᴋ sᴇsᴜᴀᴛᴜ...")
+        return await msg.edit("ᴍɪɴɪᴍᴀʟ ᴋᴀsɪʜ ᴋᴀᴛᴀ ᴋᴀᴛᴀ ᴀɴᴊ")
 
     chats = await get_broadcast_id(client, "users")
 
