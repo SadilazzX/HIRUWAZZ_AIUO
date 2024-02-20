@@ -194,4 +194,3 @@ async def send_inline(client, inline_query):
                 )
             ],
     )
-
