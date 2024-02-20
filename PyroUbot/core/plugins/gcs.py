@@ -37,7 +37,7 @@ async def broadcast_group_cmd(client, message):
 
     send = get_message(message)
     if not send:
-        return await msg.edit("ᴍᴏʜᴏɴ ʙᴀʟᴀs sᴇsᴜᴀᴛᴜ ᴀᴛᴀᴜ ᴋᴇᴛɪᴋ sᴇsᴜᴀᴛᴜ")
+        return await msg.edit("ᴍɪɴɪᴍᴀʟ ᴋᴀsɪʜ ɢᴡ ᴋᴀᴛᴀ ᴋᴀᴛᴀ ᴀɴᴊɪɴɢ")
 
     chats = await get_broadcast_id(client, "group")
     blacklist = await get_chat(client.me.id)
