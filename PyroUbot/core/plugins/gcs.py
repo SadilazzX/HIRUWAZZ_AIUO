@@ -1,6 +1,7 @@
 import asyncio
 from gc import get_objects
 
+from pyrogram.enums import ChatType
 from pyrogram.errors.exceptions import FloodWait
 from pyrogram.types import InlineQueryResultArticle, InputTextMessageContent
 
