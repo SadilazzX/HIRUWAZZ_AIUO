@@ -86,7 +86,7 @@ aiosession = ClientSession()
 
 class Bot(Client):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs, device_model="ᴋᴜʟʟ ʙᴇᴛ")
+        super().__init__(**kwargs, device_model="ᴄʜᴇʟʟ ᴜʙᴏᴛ")
 
     def on_message(self, filters=None, group=-1):
         def decorator(func):
