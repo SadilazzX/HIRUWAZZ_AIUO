@@ -32,7 +32,7 @@ async def ping_cmd(client, message):
     if client.me.is_premium:
         _ping = f"""
 <b><emoji id={emot_ping}>🏓</emoji>ᴘᴏɴɢ:</b> <code>{str(delta_ping).replace('.', ',')} ms</code>
-<b><emoji id={emot_uptime}>🕒</emoji>ᴜᴘᴛɪᴍᴇ: - <code>{client.me.mention}</code>
+<b><emoji id={emot_uptime}>🕒</emoji>ᴜᴘᴛɪᴍᴇ: - <code>{uptime}</code></b>
 <b><emoji id={emot_owner}>👑</emoji>ᴏᴡɴᴇʀ:</b> <code>{client.me.mention}</code>
 """
     else:
