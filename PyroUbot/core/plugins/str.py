@@ -16,11 +16,11 @@ from PyroUbot import *
 
 
 async def ping_cmd(client, message):
-    uptime = await get_time((time() - start_time))
     start = datetime.now()
     await client.invoke(Ping(ping_id=0))
     end = datetime.now()
-    delta_ping = (end - start).microseconds / 1000
+    uptime = await get_time((time() - start_time))
+    delta_ping = round((end - start).microseconds / 100000, 2)
     
     emot_1 = await get_vars(client.me.id, "EMOJI_PING")
     emot_2 = await get_vars(client.me.id, "EMOJI_UPTIME")
@@ -31,13 +31,13 @@ async def ping_cmd(client, message):
     
     if client.me.is_premium:
         _ping = f"""
-<b><emoji id={emot_ping}>🏓</emoji>ᴘᴏɴɢ:</b> <code>{str(delta_ping).replace('.', ',')} ms</code>
+<b><emoji id={emot_ping}>🏓</emoji>ᴘᴏɴɢ:</b> <code>{delta_ping} ms</code>
 <b><emoji id={emot_uptime}>🕒</emoji>ᴜᴘᴛɪᴍᴇ: - <code>{uptime}</code></b>
 <b><emoji id={emot_owner}>👑</emoji>ᴏᴡɴᴇʀ:</b> <code>{client.me.mention}</code>
 """
     else:
         _ping = f"""
-<b>ᴘɪɴɢ:</b> <code>{str(delta_ping).replace('.', ',')} ms</code>
+<b>ᴘɪɴɢ:</b> <code>{delta_ping} ms</code>
 <b>ᴜᴘᴛɪᴍᴇ: - <code>{uptime}</code></b>
 <b>ᴜsᴇʀ:</b> <code>{client.me.mention}</code>
 """
