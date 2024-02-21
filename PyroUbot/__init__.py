@@ -10,8 +10,8 @@ from pyrogram.handlers import CallbackQueryHandler, MessageHandler
 from pyrogram.types import Message
 from pyromod import listen
 from PyroUbot.config import *
-from pytgcalls import GroupCallFactory
-
+#from pytgcalls import GroupCallFactory
+from pytgcalls import PyTgCalls
 
 class ConnectionHandler(logging.Handler):
     def emit(self, record):
@@ -107,15 +107,17 @@ class Bot(Client):
 
 
 class Ubot(Client):
+    __module__ = "pyrogram.client"
     _ubot = []
     _prefix = {}
     _get_my_id = []
     _translate = {}
-    _get_my_peer = {}
+    _get_my_peer = {} 
 
     def __init__(self, **kwargs):
-        super().__init__(**kwargs, device_model="á´‹á´œÊŸÊŸ Ê™á´‡á´›")
-        self.vc = GroupCallFactory(self).get_group_call()
+        super().__init__(**kwargs, device_model="Memekubot")
+        self.call_py = PyTgCalls(self)
+        self.device_model = "Memekubot"
 
     def on_message(self, filters=None, group=-1):
         def decorator(func):
@@ -124,7 +126,6 @@ class Ubot(Client):
             return func
 
         return decorator
-
     
 
     def set_prefix(self, user_id, prefix):
@@ -179,6 +180,7 @@ class Ubot(Client):
 
     async def start(self):
         await super().start()
+        await self.call_py.start()
         handler = await get_pref(self.me.id)
         if handler:
             self._prefix[self.me.id] = handler
