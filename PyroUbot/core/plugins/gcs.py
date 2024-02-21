@@ -27,7 +27,7 @@ async def broadcast_group_cmd(client, message):
     emot_ceklis = emot_2 if emot_2 else "5852871561983299073"
     if client.me.is_premium:
         _broadcast = f"""
-<b><emoji id={emot_proses}>⏰</emoji>ᴍᴇᴍᴘᴇʀᴏsᴇs...</b>
+<b><emoji id={emot_proses}>⏰</emoji>ᴘᴇɢᴀɴɢᴀɴ..ᴏᴛᴡ ɴɢᴇɴɢ</b>
 """
     else:
         _broadcast = f"""
@@ -37,7 +37,7 @@ async def broadcast_group_cmd(client, message):
 
     send = get_message(message)
     if not send:
-        return await msg.edit("ᴍᴏʜᴏɴ ʙᴀʟᴀs sᴇsᴜᴀᴛᴜ ᴀᴛᴀᴜ ᴋᴇᴛɪᴋ sᴇsᴜᴀᴛᴜ")
+        return await msg.edit("ᴍɪɴɪᴍᴀʟ ᴋᴀsɪʜ ɢᴡ ᴋᴀᴛᴀ ᴋᴀᴛᴀ ᴀɴᴊ")
 
     chats = await get_broadcast_id(client, "group")
     blacklist = await get_chat(client.me.id)
@@ -69,11 +69,11 @@ async def broadcast_group_cmd(client, message):
     emot_ceklis = emot_1 if emot_1 else "5852871561983299073"
     if client.me.is_premium:
         _ceklis = f"""
-<b><emoji id={emot_ceklis}>✅</emoji>ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ɢʀᴏᴜᴘ</b>
+<b><emoji id={emot_ceklis}>✅</emoji>ᴅᴀʜ sᴀᴍᴘᴀɪ ɴɪʜ {done} ɢʀᴏᴜᴘ</b>
 """
     else:
         _ceklis = f"""
-<b>✅ ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ɢʀᴏᴜᴘ</b>
+<b>✅ ᴅᴀʜ sᴀᴍᴘᴀɪ ɴɪʜ {done} ɢʀᴏᴜᴘ</b>
 """
     return await msg.edit(_ceklis)
 
@@ -82,7 +82,7 @@ async def broadcast_users_cmd(client, message):
 
     send = get_message(message)
     if not send:
-        return await msg.edit("ᴍᴏʜᴏɴ ʙᴀʟᴀs sᴇsᴜᴀᴛᴜ ᴀᴛᴀᴜ ᴋᴇᴛɪᴋ sᴇsᴜᴀᴛᴜ...")
+        return await msg.edit("ᴋᴀᴛᴀ ᴋᴀᴛᴀ ʟᴜ ᴍᴀɴᴀ")
 
     chats = await get_broadcast_id(client, "users")
 
