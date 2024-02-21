@@ -30,3 +30,4 @@ yt-dlp
 wget
 python-dateutil
 emoji
+py-tgcalls==1.1.6
