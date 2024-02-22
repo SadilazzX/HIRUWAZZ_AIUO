@@ -27,7 +27,7 @@ async def broadcast_group_cmd(client, message):
     emot_ceklis = emot_2 if emot_2 else "5852871561983299073"
     if client.me.is_premium:
         _broadcast = f"""
-<b><emoji id={emot_proses}>⏰</emoji>ᴘᴇɢᴀɴɢᴀɴ..ᴏᴛᴡ ɴɢᴇɴɢ</b>
+<b><emoji id={emot_proses}></emoji>ᴘᴇɢᴀɴɢᴀɴ..ᴏᴛᴡ ɴɢᴇɴɢ</b>
 """
     else:
         _broadcast = f"""
