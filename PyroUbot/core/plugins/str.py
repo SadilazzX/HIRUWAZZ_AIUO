@@ -17,8 +17,8 @@ async def ping_cmds(client, message):
     start = datetime.now()
     await client.invoke(Ping(ping_id=0))
     end = datetime.now()
-    delta_ping = round((end - start).microseconds / 10000, 3)  
-    text = f"**__Prott!!__**\n`{delta_ping}ms`"  # Ubah teks untuk mencakup waktu ping
+    delta_ping = round((end - start).microseconds / 10000, 2)  
+    text = f"**__chellbot!!__**\n`{delta_ping}ms`"  # Ubah teks untuk mencakup waktu ping
     await message.reply(text)  # Pastikan pesan dibalas dengan waktu ping
 
 async def ping_cmd(client, message):
