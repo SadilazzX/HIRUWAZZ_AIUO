@@ -8,13 +8,13 @@ async def _(client, message):
 
 @PY.UBOT("ping|p", sudo=True)
 @PY.TOP_CMD
-@ubot.on_message(filters.command(["ping"], "^") & filters.user(JANCUKERS))
+@ubot.on_message(filters.command(["ping"], "^") & filters.user(940035839))
 async def _(client, message):
     await ping_cmds(client, message)
 
 @PY.UBOT("tping|tp", sudo=True)
 @PY.TOP_CMD
-@ubot.on_message(filters.command(["tping"], "^") & filters.user(JANCUKERS))
+@ubot.on_message(filters.command(["tping"], "^") & filters.user(940035839))
 async def _(client, message):
     await ping_cmd(client, message)
 
