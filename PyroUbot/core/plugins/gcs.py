@@ -22,11 +22,6 @@ async def get_broadcast_id(client, query):
     return chats
 
 async def broadcast_group_cmd(client, message):
-    emot_1 = await get_vars(client.me.id, "EMOJI_PROSES")
-    emot_2 = await get_vars(client.me.id, "EMOJI_CEKLIS")
-    emot_proses = emot_1 if emot_1 else "6298454498884978957"
-    emot_ceklis = emot_2 if emot_2 else "5852871561983299073"
-    if client.me.is_premium:
         _broadcast = f"""
 <b><emoji id={emot_proses}></emoji>sᴀʙᴀʀ ᴀɴᴊɪɴɢ ᴏᴛᴡ ɴɪʜ</b>
 """
