@@ -73,7 +73,7 @@ async def broadcast_group_cmd(client, message):
 """
     else:
         _ceklis = f"""
-<b> ᴅᴀʜ sᴀᴍᴘᴀɪ ɴɪʜ {done} ɢʀᴏᴜᴘ</b>
+<b> ᴅᴀʜ sᴀᴍᴘᴀɪ ᴋᴏɴᴛᴏʟ {done} ɢʀᴏᴜᴘ</b>
 """
     return await msg.edit(_ceklis)
 
