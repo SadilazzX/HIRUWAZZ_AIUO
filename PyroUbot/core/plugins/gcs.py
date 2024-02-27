@@ -57,7 +57,7 @@ async def broadcast_group_cmd(client, message):
             await asyncio.sleep(e.value)
             await send.copy(chat_id)
             done += 1
-        except Exception:
+        except:
             pass
 
     emot_1 = await get_vars(client.me.id, "EMOJI_CEKLIS")
@@ -95,7 +95,7 @@ async def broadcast_users_cmd(client, message):
             await asyncio.sleep(e.value)
             await send.copy(chat_id)
             done += 1
-        except Exception:
+        except:
             pass
 
     return await msg.edit(f"<b> ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛᴇʀᴋɪʀɪᴍ ᴋᴇ {done} ᴜsᴇʀs</b>")
@@ -123,7 +123,7 @@ async def broadcast_bot(client, message):
             else:
                 await client.send_message(chat_id, send)
             done += 1
-        except Exception:
+        except:
             pass
 
     return await msg.edit(f"<b> ᴘᴇsᴀɴ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀɴᴅᴀ ᴛ {done} ᴜsᴇʀs</b>")
