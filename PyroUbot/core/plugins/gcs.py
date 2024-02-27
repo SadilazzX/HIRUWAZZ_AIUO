@@ -8,6 +8,7 @@ from pyrogram.types import InlineQueryResultArticle, InputTextMessageContent
 from PyroUbot import *
 from PyroUbot.config import *
 
+#gcast
 async def get_broadcast_id(client, query):
     chats = []
     chat_types = {
@@ -21,62 +22,26 @@ async def get_broadcast_id(client, query):
     return chats
 
 async def broadcast_group_cmd(client, message):
-    emot_1 = await get_vars(client.me.id, "EMOJI_PROSES")
-    emot_2 = await get_vars(client.me.id, "EMOJI_CEKLIS")
-    emot_proses = emot_1 if emot_1 else "6298454498884978957"
-    emot_ceklis = emot_2 if emot_2 else "5852871561983299073"
-    if client.me.is_premium:
-        _broadcast = f"""
-<b><emoji id={emot_proses}></emoji>sᴀʙᴀʀ ᴀɴᴊɪɴɢ ᴏᴛᴡ ɴɪʜ</b>
-"""
-    else:
-        _broadcast = f"""
-<b>ᴘʀᴏsᴇs...</b>
-"""
-    msg = await message.reply(_broadcast, quote=True)
-
-    send = get_message(message)
-    if not send:
-        return await msg.edit("ᴍɪɴɪᴍᴀʟ ᴋᴀsɪʜ ɢᴡ ᴋᴀᴛᴀ ᴋᴀᴛᴀ ᴀɴᴊ")
-
-    chats = await get_broadcast_id(client, "group")
-    blacklist = await get_chat(client.me.id)
-
+    async def gcast(event):
+    xx = event.pattern_match.group(1)
+    if not xx:
+        return await event.edit("`Teks nya mana tolol!!`")
+    tt = event.text
+    msg = tt[6:]
+    kk = await event.edit("`Sedang Mengirim Pesan Secara Global... ⭐`")
+    er = 0
     done = 0
-    for chat_id in chats:
-        if chat_id in blacklist:
-            continue
-        elif chat_id in BLACKLIST_CHAT:
-            continue
+    async for x in bot.iter_dialogs():
+        if x.is_group:
+            chat = x.id
+            try:
+                done += 1
+                await bot.send_message(chat, msg)
+            except BaseException:
+                er += 1
+    await kk.edit(f"**Berhasil Mengirim Pesan Ke** `{done}` **Grup, Gagal Mengirim Pesan Ke** `{er}` **Grup**")
 
-        try:
-            if message.reply_to_message:
-                await send.copy(chat_id)
-            else:
-                await client.send_message(chat_id, send)
-            done += 1
-        except FloodWait as e:
-            await asyncio.sleep(e.value)
-            if message.reply_to_message:
-                await send.copy(chat_id)
-            else:
-                await client.send_message(chat_id, send)
-            done += 1
-        except Exception:
-            pass
-
-    emot_1 = await get_vars(client.me.id, "EMOJI_CEKLIS")
-    emot_ceklis = emot_1 if emot_1 else "5852871561983299073"
-    if client.me.is_premium:
-        _ceklis = f"""
-<b><emoji id={emot_ceklis}></emoji>ᴅᴀʜ sᴀᴍᴘᴀɪ ᴋᴏɴᴛᴏʟ {done} ɢʀᴏᴜᴘ</b>
-"""
-    else:
-        _ceklis = f"""
-<b> ᴅᴀʜ sᴀᴍᴘᴀɪ ᴋᴏɴᴛᴏʟ {done} ɢʀᴏᴜᴘ</b>
-"""
-    return await msg.edit(_ceklis)
-
+#ucast
 async def broadcast_users_cmd(client, message):
     msg = await message.reply("sᴇᴅᴀɴɢ ᴍᴇᴍᴘʀᴏsᴇs ᴍᴏʜᴏɴ ʙᴇʀsᴀʙᴀʀ", quote=True)
 
