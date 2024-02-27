@@ -16,7 +16,7 @@ LOGS_MAKER_UBOT = int(os.getenv("LOGS_MAKER_UBOT", "-4132105015"))
 
 BLACKLIST_CHAT = list(map(int, os.getenv("BLACKLIST_CHAT", "-1001994800407").split()))
 
-MAX_BOT = int(os.getenv("MAX_BOT", "20"))
+MAX_BOT = int(os.getenv("MAX_BOT", "100"))
 
 RMBG_API = os.getenv("RMBG_API", "a6qxsmMJ3CsNo7HyxuKGsP1o")
 
