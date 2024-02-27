@@ -22,6 +22,8 @@ async def get_broadcast_id(client, query):
     return chats
 
 async def broadcast_group_cmd(client, message):
+    if not message.reply_to_message:
+        return await message.reply("Mohon reply pesan yang mau di gcast.")
     emot_1 = await get_vars(client.me.id, "EMOJI_PROSES")
     emot_2 = await get_vars(client.me.id, "EMOJI_CEKLIS")
     emot_proses = emot_1 if emot_1 else "6298454498884978957"
@@ -37,8 +39,6 @@ async def broadcast_group_cmd(client, message):
     msg = await message.reply(_broadcast, quote=True)
 
     send = get_message(message)
-    if not send:
-        return await msg.edit("ᴍɪɴɪᴍᴀʟ ᴋᴀsɪʜ ɢᴡ ᴋᴀᴛᴀ ᴋᴀᴛᴀ ᴀɴᴊ")
 
     chats = await get_broadcast_id(client, "group")
     blacklist = await get_chat(client.me.id)
@@ -51,17 +51,11 @@ async def broadcast_group_cmd(client, message):
             continue
 
         try:
-            if message.reply_to_message:
-                await send.copy(chat_id)
-            else:
-                await client.send_message(chat_id, send)
+            await send.copy(chat_id)
             done += 1
         except FloodWait as e:
             await asyncio.sleep(e.value)
-            if message.reply_to_message:
-                await send.copy(chat_id)
-            else:
-                await client.send_message(chat_id, send)
+            await send.copy(chat_id)
             done += 1
         except Exception:
             pass
@@ -79,11 +73,11 @@ async def broadcast_group_cmd(client, message):
     return await msg.edit(_ceklis)
 
 async def broadcast_users_cmd(client, message):
+    if not message.reply_to_message:
+        return await message.reply("Mohon reply pesan yang mau di gcast.")
     msg = await message.reply("sᴇᴅᴀɴɢ ᴍᴇᴍᴘʀᴏsᴇs ᴍᴏʜᴏɴ ʙᴇʀsᴀʙᴀʀ", quote=True)
 
     send = get_message(message)
-    if not send:
-        return await msg.edit("ᴋᴀᴛᴀ ᴋᴀᴛᴀ ʟᴜ ᴍᴀɴᴀ")
 
     chats = await get_broadcast_id(client, "users")
 
@@ -95,17 +89,11 @@ async def broadcast_users_cmd(client, message):
             continue
 
         try:
-            if message.reply_to_message:
-                await send.copy(chat_id)
-            else:
-                await client.send_message(chat_id, send)
+            await send.copy(chat_id)
             done += 1
         except FloodWait as e:
             await asyncio.sleep(e.value)
-            if message.reply_to_message:
-                await send.copy(chat_id)
-            else:
-                await client.send_message(chat_id, send)
+            await send.copy(chat_id)
             done += 1
         except Exception:
             pass
