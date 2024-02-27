@@ -20,56 +20,35 @@ async def get_broadcast_id(client, query):
 
     return chats
 
-async def broadcast_group_cmd(client, message):
-    emot_1 = await get_vars(client.me.id, "EMOJI_PROSES")
-    emot_2 = await get_vars(client.me.id, "EMOJI_CEKLIS")
-    emot_proses = emot_1 if emot_1 else "6298454498884978957"
-    emot_ceklis = emot_2 if emot_2 else "5852871561983299073"
-    if client.me.is_premium:
-        _broadcast = f"""
-<b><emoji id={emot_proses}></emoji>sᴀʙᴀʀ ᴀɴᴊɪɴɢ ᴏᴛᴡ ɴɪʜ</b>
-"""
+async def gcast_cmd(client: Client, message: Message):
+    if message.reply_to_message or get_arg(message):
+        tex = await message.reply_text("`Memulai Gcast...`")
     else:
-        _broadcast = f"""
-<b>ᴘʀᴏsᴇs...</b>
-"""
-    msg = await message.reply(_broadcast, quote=True)
-
-    send = get_message(message)
-    if not send:
-        return await msg.edit("ᴍɪɴɪᴍᴀʟ ᴋᴀsɪʜ ɢᴡ ᴋᴀᴛᴀ ᴋᴀᴛᴀ ᴀɴᴊ")
-
-    chats = await get_broadcast_id(client, "group")
-    blacklist = await get_chat(client.me.id)
-
+        return await message.edit_text("**Give A Message or Reply**")
     done = 0
-    for chat_id in chats:
-        if chat_id in blacklist:
-            continue
-        elif chat_id in BLACKLIST_CHAT:
-            continue
-
-        try:
+    error = 0
+    async for dialog in client.get_dialogs():
+        if dialog.chat.type in (enums.ChatType.GROUP, enums.ChatType.SUPERGROUP):
             if message.reply_to_message:
-                await send.copy(chat_id)
-            else:
-                await client.send_message(chat_id, send)
-            done += 1
-        except FloodWait as e:
-            await asyncio.sleep(e.value)
-            if message.reply_to_message:
-                await send.copy(chat_id)
-            else:
-                await client.send_message(chat_id, send)
-            done += 1
-        except Exception:
-            pass
+                msg = message.reply_to_message
+            elif get_arg:
+                msg = get_arg(message)
+            chat = dialog.chat.id
+            if chat not in BL_GCAST and chat not in BLACKLIST_GCAST:
+                try:
+                    if message.reply_to_message:
+                        await msg.copy(chat)
+                    elif get_arg:
+                        await client.send_message(chat, msg)
+                    done += 1
+                    await asyncio.sleep(0.3)
+                except Exception:
+                    error += 1
+                    await asyncio.sleep(0.3)
+    await tex.edit_text(
+        f"**Berhasil mengirim ke** `{done}` **Groups chat, Gagal mengirim ke** `{error}` **Groups**"
+    )
 
-    emot_1 = await get_vars(client.me.id, "EMOJI_CEKLIS")
-    emot_ceklis = emot_1 if emot_1 else "5852871561983299073"
-    if client.me.is_premium:
-        _ceklis = f"""
-<b><emoji id={emot_ceklis}></emoji>ᴅᴀʜ sᴀᴍᴘᴀɪ ᴋᴏɴᴛᴏʟ {done} ɢʀᴏᴜᴘ</b>
 """
     else:
         _ceklis = f"""
