@@ -13,29 +13,6 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from PyroUbot import *
 
-#absen
-from pyrogram import Client
-from pyrogram.handlers import MessageHandler
-
-
-async def absen_cmd(client, message):
-    await message.forward("hadir chell")
-
-
-app = Client("my_account")
-@app.on_message(filters.command(["absen"], "^") &
-my_handler = MessageHandler(.)
-app.add_handler(.)
-
-app.run()
-
-@PY.UBOT("ping|p", sudo=True)
-@PY.TOP_CMD
-@ubot.on_message(filters.command(["ping"], "^") & filters.user(940035839))
-async def _(client, message):
-    await ping_cmds(client, message)
-
-
 #ping
 async def ping_cmds(client, message):
     start = datetime.now()
