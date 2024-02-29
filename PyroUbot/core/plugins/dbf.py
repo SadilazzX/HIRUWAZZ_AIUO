@@ -90,16 +90,16 @@ async def add_blacklist(client, message):
     chat_id = message.chat.id
     blacklist = await get_chat(client.me.id)
     if chat_id in blacklist:
-        return await Tm.edit("ɢʀᴏᴜᴘ ɪɴɪ sᴜᴅᴀʜ ᴀᴅᴀ ᴅᴀʟᴀᴍ ʙʟᴀᴄᴋʟɪsᴛ")
+        return await Tm.edit("ɢʀᴏᴜᴘ ɪɴɪ ʙᴜsᴜᴋ sᴜᴅᴀʜ ᴀᴅᴀ ᴅᴀʟᴀᴍ ʙʟᴀᴄᴋʟɪsᴛ")
     add_blacklist = await add_chat(client.me.id, chat_id)
     if add_blacklist:
-        await Tm.edit(f"{message.chat.title} ʙᴇʀʜᴀsɪʟ ᴅɪᴛᴀᴍʙᴀʜᴋᴀɴ ᴋᴇ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ")
+        await Tm.edit(f"{message.chat.title} ɢʀᴜᴘ ʙᴜsᴜᴋ ɪɴɪ ᴅᴀʜ ᴅɪ ʙʟᴀᴄᴋɪsᴛ ɴᴊɪɴᴋ")
     else:
-        await Tm.edit("ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ")
+        await Tm.edit("ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ ɴᴊɪɴᴋ")
 
 
 async def del_blacklist(client, message):
-    Tm = await message.reply("<b>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . .</b>")
+    Tm = await message.reply("<b>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ ᴏᴛᴡ ɴɪʜ</b>")
     try:
         if not get_arg(message):
             chat_id = message.chat.id
@@ -110,15 +110,15 @@ async def del_blacklist(client, message):
             return await Tm.edit(f"{message.chat.title} ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴅᴀʟᴀᴍ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ")
         del_blacklist = await remove_chat(client.me.id, chat_id)
         if del_blacklist:
-            await Tm.edit(f"{chat_id} ʙᴇʀʜᴀsɪʟ ᴅɪʜᴀᴘᴜs ᴅᴀʀɪ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ")
+            await Tm.edit(f"{chat_id} ɢᴄ ᴀᴍᴘᴀs ʙᴇʀʜᴀsɪʟ ᴅɪʜᴀᴘᴜs ᴅᴀʀɪ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ")
         else:
-            await Tm.edit("ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ")
+            await Tm.edit("ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ ɴᴊɪɴᴋ")
     except Exception as error:
         await Tm.edit(error)
 
 
 async def get_blacklist(client, message):
-    Tm = await message.reply("<b>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . .</b>")
+    Tm = await message.reply("<b>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ ᴏᴛᴡ ɴɪʜ</b>")
     msg = f"<b>• ᴛᴏᴛᴀʟ ʙʟᴀᴄᴋʟɪsᴛ {len(await get_chat(client.me.id))}</b>\n\n"
     for X in await get_chat(client.me.id):
         try:
@@ -131,13 +131,13 @@ async def get_blacklist(client, message):
 
 
 async def rem_all_blacklist(client, message):
-    msg = await message.reply("<b>sᴇᴅᴀɴɢ ᴍᴇᴍᴘʀᴏsᴇs....</b>", quote=True)
+    msg = await message.reply("<b>sᴇᴅᴀɴɢ ᴍᴇᴍᴘʀᴏsᴇs ᴏᴛᴡ ɴɪʜ</b>", quote=True)
     get_bls = await get_chat(client.me.id)
     if len(get_bls) == 0:
-        return await msg.edit("<b>ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ ᴀɴᴅᴀ ᴋᴏsᴏɴɢ</b>")
+        return await msg.edit("<b>ɢᴀ ᴀᴅᴀ ɢʀᴜᴘ ʏᴀɴɢ ʟᴜ ᴀᴅᴅʙʟ ᴀɴᴊɪɴɢ</b>")
     for X in get_bls:
         await remove_chat(client.me.id, X)
-    await msg.edit("<b>sᴇᴍᴜᴀ ᴅᴀғᴛᴀʀ ʜɪᴛᴀᴍ ᴛᴇʟᴀʜ ʙᴇʀʜᴀsɪʟ ᴅɪʜᴀᴘᴜs</b>")
+    await msg.edit("<b>sᴇᴍᴜᴀ ɢᴄ ʏᴀɴɢ ʟᴜ ᴀᴅᴅʙʟ ᴅᴀʜ ɢᴡ ᴀᴘᴜs</b>")
 
 
 # ========================== #
