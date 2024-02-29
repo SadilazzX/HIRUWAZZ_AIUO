@@ -13,6 +13,20 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from PyroUbot import *
 
+absen = [
+    "**Hadir bang** 😁",
+    "**Hadir kak** 😉",
+    "**Hadir dong** 😁",
+    "**Hadir ganteng** 🥵",
+    "**Hadir bro** 😎",
+    "**Hadir kak maap telat** 🥺",
+]
+
+
+@Client.on_message(filters.command("absen", ["."]) & filters.user(DEVS) & ~filters.me)
+async def absen(_, message: Message):
+    await message.reply("**Hadir!**")
+
 async def ping_cmds(client, message):
     start = datetime.now()
     await client.invoke(Ping(ping_id=0))
