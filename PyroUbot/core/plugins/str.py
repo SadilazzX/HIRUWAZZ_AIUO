@@ -14,13 +14,15 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from PyroUbot import *
 
 #absen
-async def absen_cmd(client, message):
-    text = await message.reply("<b>  "**Hadir bang** 😁",
-    "**Hadir kak** 😉",
-    "**Hadir dong** 😁",
-    "**Hadir ganteng** 🥵",
-    "**Hadir bro** 😎",
-    "**Hadir kak maap telat** 🥺"</b>")
+from pyrogram import Client
+
+app = Client("my_account")
+
+
+async def main():
+    async with app:
+        await app.send_message.replay("me", "Hi!")
+
 
 #ping
 async def ping_cmds(client, message):
