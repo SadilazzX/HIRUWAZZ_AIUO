@@ -81,7 +81,7 @@ async def start_cmd(client, message):
                     reply_to_message_id=message.id,
                 )
                 await send.delete()
-                await asyncio.sleep(120)
+                await asyncio.sleep(0.001)
                 await message.delete()
                 await text.delete()
         elif "copyMsg" in txt:
