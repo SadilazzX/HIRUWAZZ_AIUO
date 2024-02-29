@@ -15,7 +15,7 @@ from PyroUbot import *
 
 #absen
 async def absen_cmd(client, message):
-    ky = await message.reply("<b>  "**Hadir bang** 😁",
+    text = await message.reply("<b>  "**Hadir bang** 😁",
     "**Hadir kak** 😉",
     "**Hadir dong** 😁",
     "**Hadir ganteng** 🥵",
