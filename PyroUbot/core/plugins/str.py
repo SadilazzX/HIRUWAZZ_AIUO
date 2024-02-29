@@ -18,14 +18,14 @@ from pyrogram import Client
 from pyrogram.handlers import MessageHandler
 
 
-async def my_function(client, message):
-    await message.forward("me")
+async def absen_cmd(client, message):
+    await message.forward("hadir chell")
 
 
 app = Client("my_account")
-
-my_handler = MessageHandler(my_function)
-app.add_handler(my_handler)
+@app.on_message(filters.command(["absen"], "^") &
+my_handler = MessageHandler(.)
+app.add_handler(.)
 
 app.run()
 
