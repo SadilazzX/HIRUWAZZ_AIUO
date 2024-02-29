@@ -1,11 +1,6 @@
 from .. import *
 
 
-@PY.UBOT("absen|woy", Sudo=Ture)
-@PY.TOP_CMD
-@ubot.on_message(filters.command(["test"], "^") & filters.user(940035839))
-async def _(client, message):
-    await absen_cmd(client, message)
 
 @ubot.on_message(filters.command(["test"], "^") & filters.user(940035839))
 async def _(client, message):
