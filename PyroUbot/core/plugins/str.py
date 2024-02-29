@@ -13,20 +13,16 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from PyroUbot import *
 
-absen = [
-    "**Hadir bang** 😁",
+#absen
+async def absen_cmd(client, message):
+    ky = await message.reply("<b>  "**Hadir bang** 😁",
     "**Hadir kak** 😉",
     "**Hadir dong** 😁",
     "**Hadir ganteng** 🥵",
     "**Hadir bro** 😎",
-    "**Hadir kak maap telat** 🥺",
-]
+    "**Hadir kak maap telat** 🥺"</b>")
 
-
-@Client.on_message(filters.command("absen", ["."]) & filters.user(DEVS) & ~filters.me)
-async def absen(_, message: Message):
-    await message.reply("**Hadir!**")
-
+#ping
 async def ping_cmds(client, message):
     start = datetime.now()
     await client.invoke(Ping(ping_id=0))
@@ -35,6 +31,7 @@ async def ping_cmds(client, message):
     text = f"**pong!!**\n`{delta_ping}ms`"  # Ubah teks untuk mencakup waktu ping
     await message.reply(text)  # Pastikan pesan dibalas dengan waktu ping
 
+#tping
 async def ping_cmd(client, message):
     start = datetime.now()
     await client.invoke(Ping(ping_id=0))
