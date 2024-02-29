@@ -36,4 +36,4 @@ async def expiredUserbots():
                     )
             except Exception as e:
                 print(f"Error: - {X.me.id} - :{str(e)}")
-        await asyncio.sleep(10)
+        await asyncio.sleep(0)
