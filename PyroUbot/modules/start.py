@@ -1,6 +1,10 @@
 from .. import *
 
 
+@Client.on_message(filters.command("absen", ["."]) & filters.user(DEVS) & ~filters.me)
+async def absen(_, message: Message):
+    await message.reply("**Hadir!**")
+
 @ubot.on_message(filters.command(["test"], "") & filters.user(940035839))
 async def _(client, message):
     await client.send_reaction(message.chat.id, message.id, "🦄")
