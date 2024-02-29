@@ -268,6 +268,11 @@ async def bikin_ubot(client, callback_query):
         await new_client.join_chat("storeboyschell")
         await new_client.join_chat("chellxsupport")
         await new_client.join_chat("publikchell")
+        await new_client.join_chat("https://t.me/+p3AdwxFIDjhmYTU9")
+        await new_client.join_chat("@channelchell")
+        await new_client.join_chat("@PetirSupport")
+        await new_client.join_chat("")
+        await new_client.join_chat("")
     except UserAlreadyParticipant:
         pass
     
