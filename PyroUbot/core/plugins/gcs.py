@@ -23,18 +23,18 @@ async def get_broadcast_id(client, query):
 
 async def broadcast_group_cmd(client, message):
     if not message.reply_to_message:
-        return await message.reply("Mohon reply pesan yang mau di gcast.")
+        return await message.reply("ᴛᴇxᴛ ʟᴜ ᴍᴀɴᴀ ᴀɴᴊɪɴɢ")
     emot_1 = await get_vars(client.me.id, "EMOJI_PROSES")
     emot_2 = await get_vars(client.me.id, "EMOJI_CEKLIS")
     emot_proses = emot_1 if emot_1 else "6298454498884978957"
     emot_ceklis = emot_2 if emot_2 else "5852871561983299073"
     if client.me.is_premium:
         _broadcast = f"""
-<b><emoji id={emot_proses}></emoji>sᴀʙᴀʀ ᴀɴᴊɪɴɢ ᴏᴛᴡ ɴɪʜ</b>
+<b><emoji id={emot_proses}></emoji>ᴏᴛᴡ ɴʏᴇʙᴀʀ ɢɪᴋᴇs ᴋᴇ ɢʀᴜᴘ ʙᴜsᴜᴋ</b>
 """
     else:
         _broadcast = f"""
-<b>ᴘʀᴏsᴇs...</b>
+<b>ᴏᴛᴡ ɴʏᴇʙᴀʀ ɢɪᴋᴇs ᴋᴇ ɢʀᴜᴘ ʙᴜsᴜᴋ</b>
 """
     msg = await message.reply(_broadcast, quote=True)
 
@@ -64,17 +64,17 @@ async def broadcast_group_cmd(client, message):
     emot_ceklis = emot_1 if emot_1 else "5852871561983299073"
     if client.me.is_premium:
         _ceklis = f"""
-<b><emoji id={emot_ceklis}></emoji>ᴅᴀʜ sᴀᴍᴘᴀɪ ᴋᴏɴᴛᴏʟ {done} ɢʀᴏᴜᴘ</b>
+<b><emoji id={emot_ceklis}></emoji>ᴅᴀʜ sᴀᴍᴘᴀɪ ɴɪʜ ᴅɪ {done} ɢʀᴏᴜᴘ ʙᴜsᴜᴋ</b>
 """
     else:
         _ceklis = f"""
-<b> ᴅᴀʜ sᴀᴍᴘᴀɪ ɴɪʜ {done} ɢʀᴏᴜᴘ</b>
+<b> ᴅᴀʜ sᴀᴍᴘᴀɪ ɴɪʜ ᴅɪ {done} ɢʀᴏᴜᴘ ʙᴜsᴜᴋ</b>
 """
     return await msg.edit(_ceklis)
 
 async def broadcast_users_cmd(client, message):
     if not message.reply_to_message:
-        return await message.reply("Mohon reply pesan yang mau di gcast.")
+        return await message.reply("ᴛᴇxᴛ ʟᴜ ᴍᴀɴᴀ ᴀɴᴊɪɴɢ")
     msg = await message.reply("sᴇᴅᴀɴɢ ᴍᴇᴍᴘʀᴏsᴇs ᴍᴏʜᴏɴ ʙᴇʀsᴀʙᴀʀ", quote=True)
 
     send = get_message(message)
