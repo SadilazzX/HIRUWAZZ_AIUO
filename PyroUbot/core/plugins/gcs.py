@@ -54,7 +54,7 @@ async def broadcast_group_cmd(client, message):
             await send.copy(chat_id)
             done += 1
         except FloodWait as e:
-            await asyncio.sleep(e.value)
+            await asyncio.sleep(0)
             await send.copy(chat_id)
             done += 1
         except:
@@ -92,7 +92,7 @@ async def broadcast_users_cmd(client, message):
             await send.copy(chat_id)
             done += 1
         except FloodWait as e:
-            await asyncio.sleep(e.value)
+            await asyncio.sleep(0)
             await send.copy(chat_id)
             done += 1
         except:
