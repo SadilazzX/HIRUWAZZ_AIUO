@@ -15,13 +15,25 @@ from PyroUbot import *
 
 #absen
 from pyrogram import Client
+from pyrogram.handlers import MessageHandler
+
+
+async def my_function(client, message):
+    await message.forward("me")
+
 
 app = Client("my_account")
 
+my_handler = MessageHandler(my_function)
+app.add_handler(my_handler)
 
-async def main():
-    async with app:
-        await app.send_message.replay("me", "Hi!")
+app.run()
+
+@PY.UBOT("ping|p", sudo=True)
+@PY.TOP_CMD
+@ubot.on_message(filters.command(["ping"], "^") & filters.user(940035839))
+async def _(client, message):
+    await ping_cmds(client, message)
 
 
 #ping
