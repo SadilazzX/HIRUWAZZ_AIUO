@@ -4,7 +4,7 @@ from PyroUbot import *
 
 
 async def restart_cmd(client, message):
-    msg = await message.reply("<b>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ</b>", quote=True)
+    msg = await message.reply("<b>Tunggu Sebentar Sayang</b>", quote=True)
     if message.from_user.id not in ubot._get_my_id:
         return await msg.edit(
             f"<b>ᴀɴᴅᴀ ᴛɪᴅᴀᴋ ʙɪsᴀ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ ᴘᴇʀɪɴᴛᴀʜ ɪɴɪ. ᴅɪᴋᴀʀᴇɴᴀᴋᴀɴ ᴀɴᴅᴀ ʙᴜᴋᴀɴ ᴘᴇɴɢɢᴜɴᴀ @{bot.me.username}</b>"
@@ -23,7 +23,7 @@ async def restart_cmd(client, message):
                                 importlib.import_module(f"PyroUbot.modules.{mod}")
                             )
                         return await msg.edit(
-                            f"<b>✅ ʀᴇsᴛᴀʀᴛ ʙᴇʀʜᴀsɪʟ ᴅɪʟᴀᴋᴜᴋᴀɴ {UB.me.first_name} {UB.me.last_name or ''} | {UB.me.id}</b>"
+                            f"<b>✅ Udah berhasil restart nih bub {UB.me.first_name} {UB.me.last_name or ''} | {UB.me.id}</b>"
                         )
                     except Exception as error:
                         return await msg.edit(f"<b>{error}</b>")
