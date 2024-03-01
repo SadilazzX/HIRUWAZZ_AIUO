@@ -45,7 +45,7 @@ aiosession = ClientSession()
 
 class Bot(Client):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs, device_model="á´‹á´œÊŸÊŸ Ê™á´‡á´›")
+        super().__init__(**kwargs, device_model="Chellubot")
 
     def on_message(self, filters=None, group=-1):
         def decorator(func):
@@ -148,7 +148,7 @@ class Ubot(Client):
         self._ubot.append(self)
         self._get_my_id.append(self.me.id)
         self._translate[self.me.id] = "id"
-        print(f"[ðˆðð…ðŽ] - ({self.me.id}) - ð’ð“ð€ð‘ð“ð„ðƒ")
+        print(f"[akun] - ({self.me.id}) - berhasil di aktifkan")
 
 
 bot = Bot(
