@@ -1,7 +1,7 @@
 import os
 #Jangan Di hapus kontol, kalo mah tambahin aja memek
 DEVS = [
-    943015049,
+    943015049,1898690696,
 ]
 
 API_ID = int(os.getenv("API_ID", "21508927"))
