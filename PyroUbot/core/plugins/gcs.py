@@ -23,7 +23,7 @@ async def get_broadcast_id(client, query):
 
 async def broadcast_group_cmd(client, message):
     if not message.reply_to_message:
-        return await message.reply("ᴛᴇxᴛ ʟᴜ ᴍᴀɴᴀ ᴀɴᴊɪɴɢ")
+        return await message.reply("ᴛᴇxᴛ ᴀɴᴅᴀ ᴍᴀɴᴀ ᴛᴜᴀɴ")
     emot_1 = await get_vars(client.me.id, "EMOJI_PROSES")
     emot_2 = await get_vars(client.me.id, "EMOJI_CEKLIS")
     emot_proses = emot_1 if emot_1 else "6298454498884978957"
