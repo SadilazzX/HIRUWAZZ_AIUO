@@ -30,11 +30,11 @@ async def broadcast_group_cmd(client, message):
     emot_ceklis = emot_2 if emot_2 else "5852871561983299073"
     if client.me.is_premium:
         _broadcast = f"""
-<b><emoji id={emot_proses}></emoji>ᴏᴛᴡ ɴʏᴇʙᴀʀ ɢɪᴋᴇs ᴋᴇ ɢʀᴜᴘ ʙᴜsᴜᴋ</b>
+<b><emoji id={emot_proses}></emoji>ᴘʀᴏsᴇs ɢɪᴋᴇs ᴛᴜᴀɴ</b>
 """
     else:
         _broadcast = f"""
-<b>ᴏᴛᴡ ɴʏᴇʙᴀʀ ɢɪᴋᴇs ᴋᴇ ɢʀᴜᴘ ʙᴜsᴜᴋ</b>
+<b>ᴘʀᴏsᴇs ɢɪᴋᴇs ᴛᴜᴀɴ</b>
 """
     msg = await message.reply(_broadcast, quote=True)
 
@@ -63,11 +63,11 @@ async def broadcast_group_cmd(client, message):
     emot_ceklis = emot_1 if emot_1 else "5852871561983299073"
     if client.me.is_premium:
         _ceklis = f"""
-<b><emoji id={emot_ceklis}></emoji>ᴅᴀʜ sᴀᴍᴘᴀɪ ɴɪʜ ᴅɪ {done} ɢʀᴏᴜᴘ ʙᴜsᴜᴋ</b>
+<b><emoji id={emot_ceklis}></emoji>✅ᴅᴀʜ sᴀᴍᴘᴀɪ ᴛᴜᴀɴ ᴅɪ {done} ɢʀᴏᴜᴘ ʙᴜsᴜᴋ</b>
 """
     else:
         _ceklis = f"""
-<b> ᴅᴀʜ sᴀᴍᴘᴀɪ ɴɪʜ ᴅɪ {done} ɢʀᴏᴜᴘ ʙᴜsᴜᴋ</b>
+<b> ᴅᴀʜ sᴀᴍᴘᴀɪ ᴛᴜᴀɴ ᴅɪ {done} ɢʀᴏᴜᴘ ʙᴜsᴜᴋ</b>
 """
     return await msg.edit(_ceklis)
 
