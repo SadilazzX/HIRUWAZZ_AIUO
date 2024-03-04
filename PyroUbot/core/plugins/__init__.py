@@ -1,4 +1,4 @@
-$from PyroUbot.core.plugins.absen import *
+#from PyroUbot.core.plugins.absen import *
 from PyroUbot.core.plugins.anime import *
 from PyroUbot.core.plugins.aspn import *
 from PyroUbot.core.plugins.spt import *
