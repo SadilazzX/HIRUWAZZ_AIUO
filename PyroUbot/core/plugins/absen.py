@@ -1,3 +1,7 @@
+
+
+import random
+
 kopi = [
     "**Hadir Bang** 😁",
     "**Mmuaahh** 😉",
