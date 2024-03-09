@@ -1,6 +1,6 @@
 pytgcalls==3.0.0.dev22
 python-dotenv
-git+https://github.com/XtomiX/pyrogram
+#git+https://github.com/XtomiX/pyrogram
 tgcrypto
 pytz
 psutil
