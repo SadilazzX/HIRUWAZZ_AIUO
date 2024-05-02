@@ -255,7 +255,7 @@ async def bikin_ubot(client, callback_query):
             [InlineKeyboardButton("⬅️ ᴋᴇᴍʙᴀʟɪ", callback_data=f"home {user_id}")],
         ]
     text_done = f"""
-<b>🤖 ᴜsᴇʀʙᴏᴛ ᴅɪᴀᴋᴛɪғᴋᴀɴ</b>
+<b>🤖 ᴜsᴇʀʙᴏᴛ ᴀᴋᴛɪғ ɴʏᴇᴛ</b>
 <b>👤 ɴᴀᴍᴇ :</b> <a href=tg://user?id={new_client.me.id}>{new_client.me.first_name} {new_client.me.last_name or ''}</a>
 <b>📋 ɪᴅ :</b> <code>{new_client.me.id}</code>
 <b>🔧 ᴘʀᴇғɪxᴇs :</b> <code>{' '.join(SH)}</code>
